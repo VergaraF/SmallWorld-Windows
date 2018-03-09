@@ -12,10 +12,12 @@
 
 void runGameMapDriver();
 void runGameMapLoader();
+void runDice();
 
 int main() {
 	bool testGameMapDriver = false;
-	bool testGameMapLoader = true;
+	bool testGameMapLoader = false;
+	bool testDiceFacility = true;
 	
 	if (testGameMapDriver){
 		runGameMapDriver();
@@ -24,9 +26,22 @@ int main() {
 	if (testGameMapLoader) {
 		runGameMapLoader();
 	}
+
+	if (testDiceFacility) {
+		runDice();
+	}
 	return 0;
 }
 
+void runDice() {
+	Dice* dice = new Dice();
+	dice->roll();
+
+	for (unsigned int i = 0; i < 10000; ++i) {
+		dice->roll();	
+	}
+	std::cout << dice->getStatistics() << std::endl;
+}
 void runGameMapLoader() {
 	MapLoader* gameMapLoader = new MapLoader();
 	GameMap gameMap = gameMapLoader->readFile("./MapFileForTwoPlayers.txt");

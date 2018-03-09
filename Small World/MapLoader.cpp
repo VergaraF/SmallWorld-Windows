@@ -9,7 +9,6 @@
 
 GameMap MapLoader::readFile(std::string filepath) {
 	std::ifstream input(filepath);
-	//input.open(;
 
 	if (input.fail()) {
 		std::cout << " File does not exist or it has wrong format" << std::endl;
@@ -39,6 +38,17 @@ GameMap MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 
 		std::stringstream temp(lineTokens[0]);
 		temp >> regionIndex;
+
+		if (!(regionIndex >= 0 && regionIndex <= 47)) {
+			std::cout << "Invalid region number, thus invalid map" << std::endl;
+			return NULL;
+		}
+
+		if (lineTokens.size() < 3) {
+			std::cout << "Invalid region map. A region must have an index, name and at least one neighbour" << std::endl;
+			return NULL;
+		}
+
 		regionName = lineTokens[1];
 
 		int tempInt;

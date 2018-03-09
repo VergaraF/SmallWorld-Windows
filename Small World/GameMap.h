@@ -17,7 +17,10 @@ typedef boost::adjacency_list<boost::listS,
                               boost::listS,
                               boost::undirectedS,
                               Region,
-							 boost::no_property> Graph;
+							  boost::no_property> Graph;
+
+typedef boost::graph_traits<Graph>::vertex_descriptor vertex_d;
+typedef boost::graph_traits<Graph>::edge_descriptor edge_d;
 
 enum Players{ TWO = 2,
 			  THREE = 3,
@@ -32,7 +35,7 @@ enum Regions{ FOR_TWO_PLAYERS = 23,
 class GameMap{
 
 private:
-	Graph* gameMap;
+	Graph gameMap;
 
 public:
 	GameMap();
@@ -40,13 +43,13 @@ public:
 	GameMap(Players);
 	//GameMap(int, Region*, Graph::vertex_descriptor*);
 	~GameMap();
-	Graph::vertex_descriptor addRegion(Region);
-	Graph* getGameMap();
-	void makeRegionConnection(Graph::vertex_descriptor, Graph::vertex_descriptor);
-	void createMapForTwoPlayers(Graph::vertex_descriptor*);
-	void createMapForThreePlayers(Graph::vertex_descriptor*);
-	void createMapForFourPlayers(Graph::vertex_descriptor*);
-	void createMapForFivePlayers(Graph::vertex_descriptor*);
+	vertex_d addRegion(Region);
+	Graph getGameMap();
+	void makeRegionConnection(vertex_d, vertex_d);
+	void createMapForTwoPlayers(vertex_d*);
+	void createMapForThreePlayers(vertex_d*);
+	void createMapForFourPlayers(vertex_d*);
+	void createMapForFivePlayers(vertex_d*);
 
 };
 

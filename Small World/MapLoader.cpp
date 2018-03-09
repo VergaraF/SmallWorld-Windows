@@ -80,7 +80,8 @@ GameMap readInfoFromFile(std::ifstream fileContents){
 		std::vector<Graph::vertex_descriptor> vertices;
 		for (unsigned i = 0; i < allRegions.size(); i++){
 			//force casting/ - may induce errors
-			vertices.push_back(gameMap.addRegion(Region(allRegions.at(i)->index, 0)));
+			//FIX
+		//	vertices.push_back(gameMap.addRegion(gameMap, Region(allRegions.at(i)->index, 0), i));
 		}
 		for (unsigned i = 0; i < allRegions.size(); i++) {
 			for (unsigned j = 0; j < allRegions[i]->neighbours.size(); j++) {

@@ -12,7 +12,6 @@
 class Region
 {
 private:
-
 	unsigned int index;
 	Player ownedBy;
 	unsigned int tokens;
@@ -22,8 +21,10 @@ public:
 	Region();
 	Player getOwnerPlayer();
 	unsigned int getTokens();
+	unsigned int getIndex();
 	void setOwnerPlayer(Player&);
 	void setTokens(unsigned int);
+	void setRegionIndex(unsigned int);
 };
 
 

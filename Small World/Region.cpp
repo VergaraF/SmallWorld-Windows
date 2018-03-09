@@ -9,24 +9,28 @@
 #include "Player.h"
 #include "Region.h"
 
-Region::Region(){ // @suppress("Class members should be properly initialized")
-
-	this->index = 0;
+Region::Region(){
 	std::cout << "Creating default region" << std::endl;
-	this->tokens++;
+	this->index = 0;
+	this->tokens = 0;
 }
 
 Region::Region(unsigned int index, unsigned int tokens = 0){
+	std::cout << "Creating region with index " << index << std::endl;
 	this->index = index;
 	this->tokens = tokens;
 }
 
 Player Region::getOwnerPlayer(){
-		return this->ownedBy;
+	return this->ownedBy;
 }
 
 unsigned int Region::getTokens(){
 	return this->tokens;
+}
+
+unsigned int Region::getIndex() {
+	return this->index;
 }
 
 void Region::setOwnerPlayer(Player& pl){
@@ -34,5 +38,9 @@ void Region::setOwnerPlayer(Player& pl){
 }
 
 void Region::setTokens(unsigned int token){
-		this->tokens = token;
+	this->tokens = token;
+}
+
+void Region::setRegionIndex(unsigned int index) {
+	this->index = index;
 }

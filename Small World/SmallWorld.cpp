@@ -36,5 +36,7 @@ int main() {
 	default: std::cout << "Invalid number of players" << std::endl;;
 		break;
 	}
+	int i;
+	std::cin >> i;
 	return 0;
 }

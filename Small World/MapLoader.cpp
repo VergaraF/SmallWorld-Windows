@@ -7,66 +7,59 @@
 
 #include "MapLoader.h"
 
-GameMap MapLoader::readFile() {
-	std::ifstream input("./MapFile.txt");
+GameMap MapLoader::readFile(std::string filepath) {
+	std::ifstream input(filepath);
 	//input.open(;
 
 	if (input.fail()) {
 		std::cout << " File does not exist or it has wrong format" << std::endl;
 		std::cout << "Exit program" << std::endl;
 		return NULL;
-
 	}
 
 	GameMap m = readInfoFromFile(input);
-	//	m = readInfoFromFile(myReadFile);
 	return m;
 }
 
 GameMap MapLoader::readInfoFromFile(std::ifstream& fileContents) {
-
-	int regionNum(0);
-
+	
+	int regionIndex = 0;
 	std::string regionName;
 	std::vector<int> neighbourRegions;
 
-	//read line by line and add to a vector of string tokens
-	std::string token;
-	std::vector<std::string> tokens;
-
 	std::string line;
-	std::stringstream linestream(line);
-
-	int tempInt(0);
-
-	while (!fileContents.eof()) {
-		while (getline(fileContents, line)) {
-			getline(linestream, token);
-
-			while (!linestream.eof()) {
-				linestream >> token;
-				tokens.push_back(token);
-			}
-			std::stringstream temp(tokens[0]);
-			temp >> regionNum;
-			regionName = tokens[1];
-
-			for (unsigned i = 2; i < tokens.size(); i++) {
-				temp.str(tokens[i]);
-				temp >> tempInt;
-				neighbourRegions.push_back(tempInt);
-			}
-
-			//create a new region for this line
-			RegionToAdd regionToAdd;
-			regionToAdd.index = regionNum;
-			regionToAdd.region = Region();
-			regionToAdd.region.setRegionIndex(regionToAdd.index);
-			regionToAdd.neighbours = neighbourRegions;
-
-			//and add it to the list of regions
-			allRegions.push_back(regionToAdd);
+	std::vector<std::string> lineTokens;
+	
+	std::string token;
+	while (std::getline(fileContents, line))
+	{
+		for (std::istringstream stringstream(line); stringstream >> token;) {
+			lineTokens.push_back(token);
 		}
+
+		std::stringstream temp(lineTokens[0]);
+		temp >> regionIndex;
+		regionName = lineTokens[1];
+
+		int tempInt;
+		for (unsigned i = 2; i < lineTokens.size(); i++) {
+			std::stringstream temp(lineTokens[i]);
+			temp >> tempInt;
+			neighbourRegions.push_back(tempInt);
+		}
+
+		//create a new region for this line
+		RegionToAdd regionToAdd;
+		regionToAdd.index = regionIndex;
+		regionToAdd.region = Region();
+		regionToAdd.region.setRegionIndex(regionToAdd.index);
+		regionToAdd.neighbours = neighbourRegions;
+
+		//and add it to the list of regions
+		allRegions.push_back(regionToAdd);
+
+		lineTokens.clear();
+		neighbourRegions.clear();
 	}
 
 	//create empty map
@@ -79,9 +72,8 @@ GameMap MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 
 	for (unsigned i = 0; i < this->allRegions.size(); i++) {
 
-		for (const auto& regionNeighbourIndex : this->allRegions[i].neighbours)
-		{
-			gameMap.makeRegionConnection(vertices.at[i], vertices.at(regionNeighbourIndex));
+		for each(int j in this->allRegions[i].neighbours) {
+		//	gameMap.makeRegionConnection(vertices.at[i], vertices.at(j));
 		}
 		
 	}

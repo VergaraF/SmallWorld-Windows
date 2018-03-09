@@ -10,16 +10,29 @@
 #include "GameMapDriver.h"
 #include "MapLoader.h"
 
-void testGameMapDriver();
+void runGameMapDriver();
+void runGameMapLoader();
 
 int main() {
 	bool testGameMapDriver = false;
 	bool testGameMapLoader = true;
 	
+	if (testGameMapDriver){
+		runGameMapDriver();
+	}
+
+	if (testGameMapLoader) {
+		runGameMapLoader();
+	}
 	return 0;
 }
 
-testGameMapDriver() {
+void runGameMapLoader() {
+	MapLoader* gameMapLoader = new MapLoader();
+	gameMapLoader->readFile("./MapFileForTwoPlayers.txt");
+
+}
+void runGameMapDriver() {
 	GameMapDriver* gameMapDriver = new GameMapDriver();
 	int players = 0;
 	//gameMapDriver->createGameMapForNumberOfPlayers(2);

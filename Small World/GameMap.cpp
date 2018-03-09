@@ -126,7 +126,6 @@ void GameMap::createMapForTwoPlayers(vertex_d* vertexDescriptors) {
 
 	makeRegionConnection(vertexDescriptors[12], vertexDescriptors[13]);
 	makeRegionConnection(vertexDescriptors[12], vertexDescriptors[17]);
-	makeRegionConnection(vertexDescriptors[12], vertexDescriptors[17]);
 	makeRegionConnection(vertexDescriptors[12], vertexDescriptors[18]);
 
 	makeRegionConnection(vertexDescriptors[13], vertexDescriptors[14]);

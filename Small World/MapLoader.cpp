@@ -71,12 +71,9 @@ GameMap MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 	}
 
 	for (unsigned i = 0; i < this->allRegions.size(); i++) {
-
-		for each(int j in this->allRegions[i].neighbours) {
-		//	gameMap.makeRegionConnection(vertices.at[i], vertices.at(j));
+		for (unsigned j = 0; j < this->allRegions[i].neighbours.size(); ++j) {
+			gameMap.makeRegionConnection(vertices[i], vertices[j]);
 		}
-		
 	}
-
 	return gameMap;
 }

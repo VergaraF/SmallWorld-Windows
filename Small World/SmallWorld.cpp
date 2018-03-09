@@ -29,7 +29,7 @@ int main() {
 
 void runGameMapLoader() {
 	MapLoader* gameMapLoader = new MapLoader();
-	gameMapLoader->readFile("./MapFileForTwoPlayers.txt");
+	GameMap gameMap = gameMapLoader->readFile("./MapFileForTwoPlayers.txt");
 
 }
 void runGameMapDriver() {

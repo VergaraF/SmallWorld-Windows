@@ -8,8 +8,18 @@
 
 #include <iostream>
 #include "GameMapDriver.h"
+#include "MapLoader.h"
+
+void testGameMapDriver();
 
 int main() {
+	bool testGameMapDriver = false;
+	bool testGameMapLoader = true;
+	
+	return 0;
+}
+
+testGameMapDriver() {
 	GameMapDriver* gameMapDriver = new GameMapDriver();
 	int players = 0;
 	//gameMapDriver->createGameMapForNumberOfPlayers(2);
@@ -38,5 +48,4 @@ int main() {
 	}
 	int i;
 	std::cin >> i;
-	return 0;
 }

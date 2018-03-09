@@ -76,9 +76,9 @@ GameMap::GameMap(Players numberOfPlayers) {
 
 void GameMap::createMapForTwoPlayers(vertex_d* vertexDescriptors) {
 	//we can optimize this hard coded values by using a for loop and liked i to i++,
-			//except for three places where that rule does not apply.
+	//except for three places where that rule does not apply.
 
-			//First row
+	//First row
 	makeRegionConnection(vertexDescriptors[0], vertexDescriptors[1]);
 	makeRegionConnection(vertexDescriptors[0], vertexDescriptors[5]);
 
@@ -154,9 +154,6 @@ void GameMap::createMapForTwoPlayers(vertex_d* vertexDescriptors) {
 	makeRegionConnection(vertexDescriptors[20], vertexDescriptors[22]);
 
 	makeRegionConnection(vertexDescriptors[21], vertexDescriptors[22]);
-
-
-
 }
 
 void GameMap::createMapForThreePlayers(vertex_d* vertexDescriptors) {

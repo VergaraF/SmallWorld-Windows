@@ -52,7 +52,6 @@ GameMap*  GameMapDriver::createGameMapForNumberOfPlayers(int players){
 		}
 		default: {
 			std::cout << "Invalid number of players" << std::endl;
-
 			return this->gameMap;
 			break;
 		}

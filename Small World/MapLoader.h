@@ -15,14 +15,17 @@
 #include "Region.h"
 #include "GameMap.h"
 
-GameMap readInfoFromFile(std::ifstream);
-
-GameMap readFile();
-
-struct RegionToAdd{
+struct RegionToAdd {
 	int index;
 	Region region;
 	std::vector<int> neighbours;
+};
+
+class MapLoader {
+public:	
+	std::vector<RegionToAdd> allRegions;
+	GameMap readInfoFromFile(std::ifstream&s);
+	GameMap readFile();
 };
 
 #endif /* CONTROLLER_INC_MAPLOADER_H_ */

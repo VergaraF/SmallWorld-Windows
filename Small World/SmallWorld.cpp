@@ -37,7 +37,7 @@ void runDice() {
 	Dice* dice = new Dice();
 	dice->roll();
 
-	for (unsigned int i = 0; i < 10000; ++i) {
+	for (unsigned int i = 0; i < 100; ++i) {
 		dice->roll();	
 	}
 	std::cout << dice->getStatistics() << std::endl;

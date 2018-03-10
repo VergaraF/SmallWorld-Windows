@@ -23,6 +23,7 @@ class Race
 {
 public:
 	Race(RaceType);
+	Race();
 	~Race();
 private:
 	RaceType race;

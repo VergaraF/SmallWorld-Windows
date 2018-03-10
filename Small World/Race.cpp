@@ -7,6 +7,7 @@ Race::Race(RaceType race)
 	this->race = race;
 }
 
+Race::Race() {}
 
 Race::~Race()
 {

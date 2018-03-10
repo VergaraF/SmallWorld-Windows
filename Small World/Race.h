@@ -16,7 +16,8 @@ enum class RaceType{
 	HUMANS,
 	ORCS,
 	TROLLS,
-	WIZARDS
+	WIZARDS,
+	NONE
 };
 
 class Race

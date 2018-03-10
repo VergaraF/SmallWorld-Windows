@@ -4,7 +4,7 @@
 
 Coin::Coin(int val)
 {
-	this->value - val;
+	this->value = val;
 }
 
 int Coin::getValue() {

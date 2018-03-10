@@ -113,26 +113,41 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="SummarySheet.cpp" />
+    <ClCompile Include="UniqueSpecialPowerBadge.cpp" />
+    <ClCompile Include="Coin.cpp" />
+    <ClCompile Include="Deck.cpp" />
     <ClCompile Include="Dice.cpp" />
+    <ClCompile Include="FantasyRaceBanner.cpp" />
     <ClCompile Include="GameMap.cpp" />
     <ClCompile Include="GameMapDriver.cpp" />
+    <ClCompile Include="GamePiece.cpp" />
+    <ClCompile Include="LostTribeToken.cpp" />
     <ClCompile Include="MapLoader.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Race.cpp" />
-    <ClCompile Include="RaceToken.cpp" />
+    <ClCompile Include="MatchingRaceToken.cpp" />
     <ClCompile Include="Region.cpp" />
     <ClCompile Include="SmallWorld.cpp" />
     <ClCompile Include="Token.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="SummarySheet.h" />
+    <ClInclude Include="UniqueSpecialPowerBadge.h" />
+    <ClInclude Include="Coin.h" />
+    <ClInclude Include="Deck.h" />
     <ClInclude Include="Dice.h" />
+    <ClInclude Include="FantasyRaceBanner.h" />
     <ClInclude Include="GameMap.h" />
     <ClInclude Include="GameMapDriver.h" />
+    <ClInclude Include="GamePiece.h" />
+    <ClInclude Include="LostTribeToken.h" />
     <ClInclude Include="MapLoader.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Race.h" />
-    <ClInclude Include="RaceToken.h" />
+    <ClInclude Include="MatchingRaceToken.h" />
     <ClInclude Include="Region.h" />
+    <ClInclude Include="resource1.h" />
     <ClInclude Include="Token.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

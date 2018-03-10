@@ -42,6 +42,7 @@ void runDice() {
 	}
 	std::cout << dice->getStatistics() << std::endl;
 }
+
 void runGameMapLoader() {
 	MapLoader* gameMapLoader = new MapLoader();
 	GameMap gameMap = gameMapLoader->readFile("./MapFileForTwoPlayers.txt");

@@ -2,10 +2,11 @@
 
 
 
-FantasyRaceBanner::FantasyRaceBanner(RaceType raceType)
+FantasyRaceBanner::FantasyRaceBanner(RaceType raceType, SpecialPowerType powerType)
 {
 	this->status = Status::ACTIVE;
 	this->race = new Race(raceType);
+	this->power = new UniqueSpecialPowerBadge(powerType);
 }
 
 FantasyRaceBanner::~FantasyRaceBanner()
@@ -23,4 +24,9 @@ Status FantasyRaceBanner::getStatus() {
 
 Race* FantasyRaceBanner::getRace() {
 	return this->race;
+}
+
+SpecialPowerType FantasyRaceBanner::getPower()
+{
+	return this->power->getType();
 }

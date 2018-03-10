@@ -50,7 +50,7 @@ void createDeck() {
 
 	//Creating 14 fantasy race banners... with "NONE" race for now
 	for (int banners = 0; banners < 14; ++banners) {
-		deck->fantasyRaceBanners.push_back(new FantasyRaceBanner(RaceType::NONE));
+		deck->fantasyRaceBanners.push_back(new FantasyRaceBanner(RaceType::NONE, SpecialPowerType::BLANK));
 	}
 
 	//Creating 168 Matching Race tokens & 18 Lost Tribe Tokens

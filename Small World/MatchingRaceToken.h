@@ -1,12 +1,12 @@
 #pragma once
 #include "Token.h"
 #include "Race.h"
-class RaceToken :
+class MatchingRaceToken :
 	public Token
 {
 public:
-	RaceToken(RaceType);
-	~RaceToken();
+	MatchingRaceToken(RaceType);
+	~MatchingRaceToken();
 	Race* getRace();
 
 private:

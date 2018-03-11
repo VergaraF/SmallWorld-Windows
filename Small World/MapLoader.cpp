@@ -24,7 +24,8 @@ GameMap* MapLoader::readFile(std::string filepath) {
 GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 	GameMap* gameMap = new GameMap();
 	int regionIndex = 0;
-	std::string regionName;
+	std::string regionType;
+    std::string isEdge;
 	std::vector<int> neighbourRegions;
 
 	std::string line;
@@ -50,19 +51,36 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 			return NULL;
 		}
 
-		regionName = lineTokens[1];
+		regionType= lineTokens[1];
+		isEdge = lineTokens[2];
 
 		int tempInt;
-		for (unsigned i = 2; i < lineTokens.size(); i++) {
+		for (unsigned i = 3; i < lineTokens.size(); i++) {
 			std::stringstream temp(lineTokens[i]);
 			temp >> tempInt;
 			neighbourRegions.push_back(tempInt);
+		}
+		Region reg;
+
+		std::transform(regionType.begin(), regionType.end(), regionType.begin(), ::tolower);
+		std::transform(isEdge.begin(), isEdge.end(), isEdge.begin(), ::tolower);
+
+		if (regionType.compare("water")) {
+			reg.isWater = true;
+		}
+
+		if (isEdge.compare("edge")) {
+			reg.isEdge = true;
+		}
+		else if (!isEdge.compare("no")) {
+			std::cout << "Invalid map. A region can either be edge or not. " << std::endl;
+			return NULL;
 		}
 
 		//create a new region for this line
 		RegionToAdd regionToAdd;
 		regionToAdd.index = regionIndex;
-		regionToAdd.region = Region();
+		regionToAdd.region = reg;
 		regionToAdd.region.setRegionIndex(regionToAdd.index);
 		regionToAdd.neighbours = neighbourRegions;
 

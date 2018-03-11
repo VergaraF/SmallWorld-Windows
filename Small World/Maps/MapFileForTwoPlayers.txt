@@ -1,22 +1,23 @@
-0 Region0 1 5
-1 Region1 2 6
-2 Region2 3 6 7 8
-3 Region3 4 8 9
-4 Region4 9 10
-5 Region5 6 11
-6 Region6 7 11 12
-7 Region7 8 12 13
-8 Region8 9 13 14
-9 Region9 10 14
-10 Region10 14 15
-11 Region11 12 16 17
-12 Region12 13 17 18
-13 Region13 14 18 19 20
-14 Region14 15 20 21
-15 Region15 21 22
-16 Region16 17
-17 Region17 18
-18 Region18 19
-19 Region19 20
-20 Region20 21 22
-21 Region21 22
+0 water edge 1 5
+1 none edge 2 6
+2 none edge 3 6 7 8
+3 none edge 4 8 9
+4 none edge 9 10
+5 none edge 6 11
+6 none no 7 11 12
+7 water no 8 12 13
+8 none no 9 13 14
+9 none no 10 14
+10 none edge 14 15
+11 none edge 12 16 17
+12 none no 13 17 18
+13 none no 14 18 19 20
+14 none no 15 20 21
+15 none edge 21 22
+16 none edge 17
+17 none edge 18
+18 none edge 19
+19 none edge 20
+20 none edge 21 22
+21 none no 22
+21 water edge

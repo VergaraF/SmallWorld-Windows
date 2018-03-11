@@ -33,7 +33,8 @@ public:
 	std::vector<Region*> getConqueredRegions();
 	std::vector<Coin*> getCoins();
 	std::vector<MatchingRaceToken*> getRaceTokens();
-	bool hasGameTurnMarker;
+	int gameTurnMarkerPosition;
+
 private:
 	std::string name;
 	FantasyRaceBanner* fantasyRaceBanner;

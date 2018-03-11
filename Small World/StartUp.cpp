@@ -10,7 +10,9 @@ StartUp::StartUp()
 	this->raceBanners = getRaceBannersFromDeck();
 	//this->gameMap.getGameMap()[0].setTokens(1000);
 	setTokensOnRegions();
-	std::cout << "test" << std::endl;
+//	int indexToStart = this->getStartingPlayer();
+//	std::cout << "Player " << indexToStart << " will start the match, as it has the most pointed ears" << std::endl;
+
 }
 void StartUp::executeStartPlug() {
 	this->gameMap = this->startPlug->loadMap();
@@ -18,6 +20,16 @@ void StartUp::executeStartPlug() {
 	int numOfPlayers = 0;
 	std::cin >> numOfPlayers;
 	this->startPlug->createPlayers(numOfPlayers);
+	
+}
+
+void StartUp::setCoinsToPlayers() {
+	for (int player = 0; player < this->startPlug->players.size(); ++player) {
+		for (int i = 0; i < 3; ++i) {
+			this->startPlug->players[player]->getCoins().push_back(new Coin(1));
+			this->deck->coinsWithValueOne.pop_back();
+		}
+	}
 }
 
 std::vector<FantasyRaceBanner*> StartUp::getRaceBannersFromDeck() {
@@ -93,5 +105,23 @@ void StartUp::setTokensOnRegions()
 }
 StartUp::~StartUp()
 {
+}
+
+int StartUp::getIndexStartingPlayer()
+{
+	return this->indexPlayerStartingGame;
+}
+
+int StartUp::getStartingPlayer()
+{
+	//the lower the temp, the first to start and then we go clockwise
+	unsigned int temp = 20;
+	for (unsigned int i = 0; i < this->startPlug->players.size(); ++i) {
+		if (this->startPlug->players[i]->getFantasyRaceBanner()->getRace()->getPriority() < temp) {
+			temp = this->startPlug->players[i]->getFantasyRaceBanner()->getRace()->getPriority();
+		}
+	}
+	this->indexPlayerStartingGame = temp;
+	return temp;
 }
 

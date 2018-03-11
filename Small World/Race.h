@@ -31,7 +31,9 @@ public:
 	Race(RaceType);
 	Race();
 	~Race();
+	unsigned int getPriority();
 private:
 	RaceType race;
+	int priority; //lower better
 };
 

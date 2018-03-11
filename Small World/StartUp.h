@@ -18,6 +18,8 @@ public:
 	StartUp();
 	~StartUp();
 	std::vector<FantasyRaceBanner*> raceBanners;
+	int getIndexStartingPlayer();
+	int getStartingPlayer();
 private:
 	Deck * deck;
 	StartPlug* startPlug;
@@ -25,9 +27,11 @@ private:
 	std::vector<FantasyRaceBanner*> getRaceBannersFromDeck();
 	void executeStartPlug();
 	void setTokensOnRegions();
+	void setCoinsToPlayers();
 	std::vector<int> takenRaces;
 	std::vector<int> takenSpecialPowers;
 	std::vector<vertex_d> vertex_descriptors;
+	int indexPlayerStartingGame;
 
 };
 

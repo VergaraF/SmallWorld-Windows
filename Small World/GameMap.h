@@ -39,7 +39,7 @@ private:
 
 public:
 	GameMap();
-	GameMap(int);
+	//GameMap(int);
 	GameMap(Players);
 	//GameMap(int, Region*, Graph::vertex_descriptor*);
 	~GameMap();

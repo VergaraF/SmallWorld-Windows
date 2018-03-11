@@ -25,6 +25,7 @@ Player::Player(std::string name) {
 
 void Player::picks_race() {
 	std::cout << "Pick a race from the following. Enter the number for desired race: " << std::endl;
+	//Logic to pick available races
 
 }
 

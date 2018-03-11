@@ -11,17 +11,21 @@
 #include "MapLoader.h"
 #include "Deck.h"
 #include "Dice.h"
+#include "StartPlug.h"
+#include <cstdio>
 
 void runGameMapDriver();
 void runGameMapLoader();
 void runDice();
 void createDeck();
+void startStartPlug();
 
 int main() {
 	bool testGameMapDriver = false;
 	bool testGameMapLoader = false;
 	bool testDiceFacility = false;
-	bool createDeckFlag = true;
+	bool createDeckFlag = false;
+	bool testStartPlug = true;
 	
 	if (testGameMapDriver){
 		runGameMapDriver();
@@ -38,7 +42,21 @@ int main() {
 	if (createDeckFlag) {
 		createDeck();
 	}
+
+	if (testStartPlug) {
+		startStartPlug();
+	}
 	return 0;
+}
+
+void startStartPlug() {
+	StartPlug* startPlug = new StartPlug();
+	startPlug->loadMap();
+	std::cout << "Enter number of players : " << std::endl;
+	int numOfPlayers = 0;
+	std::cin >> numOfPlayers;
+	startPlug->createPlayers(numOfPlayers);
+
 }
 
 void createDeck() {
@@ -183,6 +201,8 @@ void runDice() {
 void runGameMapLoader() {
 	MapLoader* gameMapLoader = new MapLoader();
 	GameMap gameMap = gameMapLoader->readFile("./MapFileForTwoPlayers.txt");
+
+	std::getchar();
 
 }
 void runGameMapDriver() {

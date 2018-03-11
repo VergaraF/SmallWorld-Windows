@@ -11,14 +11,14 @@
 #include <boost/graph/undirected_graph.hpp>
 
 GameMap::GameMap() {
-	std::cout << "Creating default game map (graph), no players" << std::endl;
+	std::cout << "Creating game map (graph)..." << std::endl;
 	this->gameMap = Graph();
 }
 
-GameMap::GameMap(int regions) {
-	std::cout << "Creating game map (graph), no players, " << regions << "regions (nodes)" << std::endl;
-	this->gameMap = Graph(regions);
-}
+//GameMap::GameMap(int regions) {
+//	std::cout << "Creating game map (graph), no players, " << regions << "regions (nodes)" << std::endl;
+//	this->gameMap = Graph(regions);
+//}
 
 GameMap::GameMap(Players numberOfPlayers) {
 	Graph g;

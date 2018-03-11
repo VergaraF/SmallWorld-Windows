@@ -8,17 +8,23 @@
 #include "Player.h"
 
 Player::Player(){
-	this->coins.push_back(nullptr);
-	this->conqueredRegions.push_back(nullptr);
-	//this->fantasyRaceBanner.push_back(new FantasyRaceBanner(RaceType::NONE, SpecialPowerType::BLANK));
+	this->name = "No name";
+	this->fantasyRaceBanner = new FantasyRaceBanner(RaceType::NONE, SpecialPowerType::BLANK);
+	this->rollingDiceFacility = new Dice();
+	this->summarySheet = new SummarySheet();
 
 }
 
 Player::Player(std::string name) {
 	this->name = name;
+	this->fantasyRaceBanner = new FantasyRaceBanner(RaceType::NONE, SpecialPowerType::BLANK);
+	picks_race();
+	this->rollingDiceFacility = new Dice();
+	this->summarySheet = new SummarySheet();
 }
 
 void Player::picks_race() {
+	std::cout << "Pick a race from the following. Enter the number for desired race: " << std::endl;
 
 }
 

@@ -10,7 +10,7 @@
 class Deck
 {
 public:
-	Deck();
+	Deck(bool);
 	~Deck();
 	std::vector<FantasyRaceBanner*> fantasyRaceBanners;
 	std::vector<MatchingRaceToken*> raceTokens;
@@ -22,5 +22,8 @@ public:
 	std::vector<Coin*> coinsWithValueThree;
 	std::vector<Coin*> coinsWithValueOne;
 	std::vector<SummarySheet*> summarySheets;
+private:
+	void initDeck();
+
 };
 

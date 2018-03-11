@@ -60,7 +60,7 @@ void startStartPlug() {
 }
 
 void createDeck() {
-	Deck* deck = new Deck();
+	Deck* deck = new Deck(false);
 	
 	//Creating players summary sheet, implying there are 5 players and the extra one to serve as a game turn reference for the group
 	for (int players = 0; players < 6; ++players) {

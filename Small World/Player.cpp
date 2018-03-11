@@ -12,6 +12,7 @@ Player::Player(){
 	this->fantasyRaceBanner = new FantasyRaceBanner(RaceType::NONE, SpecialPowerType::BLANK);
 	this->rollingDiceFacility = new Dice();
 	this->summarySheet = new SummarySheet();
+	this->hasGameTurnMarker = false;
 
 }
 
@@ -21,6 +22,7 @@ Player::Player(std::string name) {
 	picks_race();
 	this->rollingDiceFacility = new Dice();
 	this->summarySheet = new SummarySheet();
+	this->hasGameTurnMarker = false;
 }
 
 void Player::picks_race() {

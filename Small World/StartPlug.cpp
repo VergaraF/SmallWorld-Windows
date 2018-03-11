@@ -1,10 +1,6 @@
 #include "StartPlug.h"
 
-
-
 StartPlug::StartPlug(){}
-
-
 StartPlug::~StartPlug(){}
 
 void StartPlug::loadMap()

@@ -30,3 +30,15 @@ SpecialPowerType FantasyRaceBanner::getPower()
 {
 	return this->power->getType();
 }
+
+void FantasyRaceBanner::setRace(RaceType raceType)
+{ 
+	delete this->race;
+	this->race = new Race(raceType);
+}
+
+void FantasyRaceBanner::setSpecialPower(SpecialPowerType powerType)
+{
+	delete this->power;
+	this->power = new UniqueSpecialPowerBadge(powerType);
+}

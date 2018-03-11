@@ -16,11 +16,13 @@ public:
 	Status getStatus();
 	Race* getRace();
 	SpecialPowerType getPower();
-
+	void setRace(RaceType);
+	void setSpecialPower(SpecialPowerType);
 private:
 	Race* race;
 	UniqueSpecialPowerBadge* power;
 	Status status;
+
 
 };
 

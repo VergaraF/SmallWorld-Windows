@@ -20,6 +20,11 @@ enum class RaceType{
 	NONE
 };
 
+enum class Utils {
+	NUMBER_OF_RACES = 14,
+	NUMBER_OF_SPECIAL_POWER_BADGES = 20
+};
+
 class Race
 {
 public:

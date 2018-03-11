@@ -10,13 +10,14 @@ enum class Status {
 class FantasyRaceBanner
 {
 public:
+	FantasyRaceBanner(Race*, UniqueSpecialPowerBadge*);
 	FantasyRaceBanner(RaceType, SpecialPowerType);
 	~FantasyRaceBanner();
 	void setStatus(Status);
 	Status getStatus();
 	Race* getRace();
-	SpecialPowerType getPower();
-	void setRace(RaceType);
+	UniqueSpecialPowerBadge* getPower();
+	void setRace(Race*);
 	void setSpecialPower(SpecialPowerType);
 private:
 	Race* race;

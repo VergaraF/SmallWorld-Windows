@@ -13,19 +13,22 @@
 #include "Dice.h"
 #include "StartPlug.h"
 #include <cstdio>
+#include "StartUp.h"
 
 void runGameMapDriver();
 void runGameMapLoader();
 void runDice();
 void createDeck();
 void startStartPlug();
+void runGameStartUp();
 
 int main() {
 	bool testGameMapDriver = false;
 	bool testGameMapLoader = false;
 	bool testDiceFacility = false;
 	bool createDeckFlag = false;
-	bool testStartPlug = true;
+	bool testStartPlug = false;
+	bool testGameStartUp = true;
 	
 	if (testGameMapDriver){
 		runGameMapDriver();
@@ -46,7 +49,14 @@ int main() {
 	if (testStartPlug) {
 		startStartPlug();
 	}
+
+	if (testGameStartUp) {
+		runGameStartUp();
+	}
 	return 0;
+}
+void runGameStartUp() {
+
 }
 
 void startStartPlug() {

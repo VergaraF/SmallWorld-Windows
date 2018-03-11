@@ -19,7 +19,7 @@ Dice::Dice() {
 int Dice::roll() {
 	std::cout << "Rolling dice" << std::endl;
 	this->totalNumberOfRolls++;
-	this->currentNumber = numbersOnDice[rand() % 6 + 1];
+	this->currentNumber = numbersOnDice[rand() % 7];
 	this->numbersRolled[this->currentNumber]++;
 	return this->currentNumber;
 }

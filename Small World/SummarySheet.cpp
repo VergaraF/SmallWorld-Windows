@@ -2,14 +2,14 @@
 
 
 
-SummarySheet::SummarySheet(Player* player)
+SummarySheet::SummarySheet()
 {
-	this->owner = player;
+	//this->owner = player;
 }
 
-Player* SummarySheet::getOwnerOfSummarySheet() {
-	return this->owner;
-}
+//Player* SummarySheet::getOwnerOfSummarySheet() {
+//	return this->owner;
+//}
 
 SummarySheet::~SummarySheet()
 {

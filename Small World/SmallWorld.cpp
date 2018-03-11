@@ -10,6 +10,7 @@
 #include "GameMapDriver.h"
 #include "MapLoader.h"
 #include "Deck.h"
+#include "Dice.h"
 
 void runGameMapDriver();
 void runGameMapLoader();
@@ -45,7 +46,7 @@ void createDeck() {
 	
 	//Creating players summary sheet, implying there are 5 players and the extra one to serve as a game turn reference for the group
 	for (int players = 0; players < 6; ++players) {
-		deck->summarySheets.push_back(new SummarySheet(new Player()));
+		deck->summarySheets.push_back(new SummarySheet());
 	}
 
 	//Creating 14 fantasy race banners... with "NONE" race for now

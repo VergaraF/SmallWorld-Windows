@@ -1,14 +1,13 @@
 #pragma once
 
-#include "Player.h"
 class SummarySheet
 {
 public:
-	SummarySheet(Player*);
+	SummarySheet();
 	~SummarySheet();
-	Player* getOwnerOfSummarySheet();
+	//Player* getOwnerOfSummarySheet();
 
 private:
-	Player* owner;
+	//Player* owner;
 };
 

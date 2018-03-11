@@ -4,25 +4,25 @@
  *  Created on: Jan 24, 2018
  *      Author: fvergara
  */
-#include "Player.h"
+
 #ifndef MODEL_REGION_H_
 #define MODEL_REGION_H_
-
+//#include "Player.h"
 
 class Region
 {
 private:
 	unsigned int index;
-	Player ownedBy;
+//	Player* ownedBy;
 	unsigned int tokens;
 
 public:
 	Region(unsigned int, unsigned int);
 	Region();
-	Player getOwnerPlayer();
+	//Player* getOwnerPlayer();
 	unsigned int getTokens();
 	unsigned int getIndex();
-	void setOwnerPlayer(Player&);
+	//void setOwnerPlayer(Player*);
 	void setTokens(unsigned int);
 	void setRegionIndex(unsigned int);
 };

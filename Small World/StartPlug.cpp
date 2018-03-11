@@ -3,7 +3,7 @@
 StartPlug::StartPlug(){}
 StartPlug::~StartPlug(){}
 
-void StartPlug::loadMap()
+GameMap* StartPlug::loadMap()
 {
 	MapLoader* mapLoader = new MapLoader();
 	std::cout << "Please enter the number corresponding to the file map you want to load" << std::endl;
@@ -28,10 +28,10 @@ void StartPlug::loadMap()
 
 	if (userResponse > fileName.size() || userResponse < 0) {
 		std::cout << "Invalid entry, there's no such map file." << std::endl;
-		return;
+		std::exit;
 	}
-
-	GameMap gameMap = mapLoader->readFile(fileName[userResponse]);
+	
+	return mapLoader->readFile(fileName[userResponse]);
 }
 
 void StartPlug::createPlayers(int numOfPlayers)

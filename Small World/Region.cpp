@@ -12,11 +12,19 @@
 Region::Region(){
 	this->index = 0;
 	this->tokens = 0;
+	this->isEdge = false;
+	this->isMountain = false;
+	this->isWater = false;
+	this->containsLostTribe = false;
 }
 
 Region::Region(unsigned int index, unsigned int tokens = 0){
 	this->index = index;
 	this->tokens = tokens;
+	this->isEdge = false;
+	this->isMountain = false;
+	this->isWater = false;
+	this->containsLostTribe = false;
 }
 
 //Player* Region::getOwnerPlayer(){
@@ -35,7 +43,7 @@ unsigned int Region::getIndex() {
 //	this->ownedBy = pl;
 //}
 
-void Region::setTokens(unsigned int token){
+void Region::setTokens(unsigned int token) {
 	this->tokens = token;
 }
 

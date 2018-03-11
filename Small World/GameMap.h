@@ -13,8 +13,8 @@
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/undirected_graph.hpp>
 
-typedef boost::adjacency_list<boost::listS,
-                              boost::listS,
+typedef boost::adjacency_list<boost::vecS,
+                              boost::vecS,
                               boost::undirectedS,
                               Region,
 							  boost::no_property> Graph;
@@ -44,7 +44,8 @@ public:
 	//GameMap(int, Region*, Graph::vertex_descriptor*);
 	~GameMap();
 	vertex_d addRegion(Region);
-	Graph getGameMap();
+	Graph* getGameMap();
+	void setGameMap(Graph);
 	void makeRegionConnection(vertex_d, vertex_d);
 	void createMapForTwoPlayers(vertex_d*);
 	void createMapForThreePlayers(vertex_d*);

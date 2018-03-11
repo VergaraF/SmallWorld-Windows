@@ -577,8 +577,13 @@ vertex_d GameMap::addRegion(Region reg) {
 	return regionVertex;
 }
 
-Graph GameMap::getGameMap() {
-	return this->gameMap;
+Graph* GameMap::getGameMap() {
+	return &this->gameMap;
+}
+
+void GameMap::setGameMap(Graph map)
+{
+	this->gameMap = map;
 }
 
 GameMap::~GameMap() {

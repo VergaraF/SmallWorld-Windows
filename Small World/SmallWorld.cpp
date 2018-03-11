@@ -56,12 +56,15 @@ int main() {
 	return 0;
 }
 void runGameStartUp() {
+	StartUp* startUp = new StartUp();
 
+	
 }
 
 void startStartPlug() {
+	GameMap* map;
 	StartPlug* startPlug = new StartPlug();
-	startPlug->loadMap();
+	map = startPlug->loadMap();
 	std::cout << "Enter number of players : " << std::endl;
 	int numOfPlayers = 0;
 	std::cin >> numOfPlayers;
@@ -210,7 +213,7 @@ void runDice() {
 
 void runGameMapLoader() {
 	MapLoader* gameMapLoader = new MapLoader();
-	GameMap gameMap = gameMapLoader->readFile("./MapFileForTwoPlayers.txt");
+	GameMap* gameMap = gameMapLoader->readFile("./MapFileForTwoPlayers.txt");
 
 	std::getchar();
 

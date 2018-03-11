@@ -24,8 +24,8 @@ struct RegionToAdd {
 class MapLoader {
 public:	
 	std::vector<RegionToAdd> allRegions;
-	GameMap readInfoFromFile(std::ifstream&);
-	GameMap readFile(std::string);
+	GameMap* readInfoFromFile(std::ifstream&);
+	GameMap* readFile(std::string);
 };
 
 #endif /* CONTROLLER_INC_MAPLOADER_H_ */

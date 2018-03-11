@@ -15,6 +15,10 @@ private:
 	unsigned int index;
 //	Player* ownedBy;
 	unsigned int tokens;
+	bool containsLostTribe;
+	bool isMountain;
+	bool isWater;
+	bool isEdge;
 
 public:
 	Region(unsigned int, unsigned int);

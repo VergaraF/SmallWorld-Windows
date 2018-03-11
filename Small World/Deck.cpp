@@ -16,10 +16,6 @@ Deck::~Deck()
 
 void Deck::initDeck() {
 
-	//Creating players summary sheet, implying there are 5 players and the extra one to serve as a game turn reference for the group
-	for (int players = 0; players < 6; ++players) {
-		this->summarySheets.push_back(new SummarySheet());
-	}
 
 	//Creating 14 fantasy race banners... with "NONE" race for now
 	for (int banners = 0; banners < 14; ++banners) {

@@ -7,21 +7,22 @@
 
 #include "MapLoader.h"
 
+
 GameMap MapLoader::readFile(std::string filepath) {
 	std::ifstream input(filepath);
-
+	GameMap m;
 	if (input.fail()) {
 		std::cout << " File does not exist or it has wrong format" << std::endl;
 		std::cout << "Exit program" << std::endl;
-		return NULL;
+		return m;
 	}
 
-	GameMap m = readInfoFromFile(input);
+	 m = readInfoFromFile(input);
 	return m;
 }
 
 GameMap MapLoader::readInfoFromFile(std::ifstream& fileContents) {
-	
+	GameMap gameMap;
 	int regionIndex = 0;
 	std::string regionName;
 	std::vector<int> neighbourRegions;
@@ -41,12 +42,12 @@ GameMap MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 
 		if (!(regionIndex >= 0 && regionIndex <= 47)) {
 			std::cout << "Invalid region number, thus invalid map" << std::endl;
-			return NULL;
+			return gameMap;
 		}
 
 		if (lineTokens.size() < 3) {
 			std::cout << "Invalid region map. A region must have an index, name and at least one neighbour" << std::endl;
-			return NULL;
+			return gameMap;
 		}
 
 		regionName = lineTokens[1];
@@ -73,7 +74,7 @@ GameMap MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 	}
 
 	//create empty map
-	GameMap gameMap;
+	
 
 	std::vector<vertex_d> vertices;
 	for (unsigned i = 0; i < this->allRegions.size(); i++) {

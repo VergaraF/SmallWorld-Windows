@@ -69,6 +69,9 @@
     <ClCompile Include="StartPlug.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StartUp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dice.h">
@@ -123,6 +126,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StartPlug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StartUp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

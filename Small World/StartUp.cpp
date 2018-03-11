@@ -5,7 +5,7 @@
 StartUp::StartUp()
 {
 	this->deck = new Deck(true);
-	StartPlug* startPlug = new StartPlug();
+	this->startPlug = new StartPlug();
 	executeStartPlug();
 	this->raceBanners = getRaceBannersFromDeck();
 	//this->gameMap.getGameMap()[0].setTokens(1000);
@@ -17,7 +17,7 @@ void StartUp::executeStartPlug() {
 	std::cout << "Enter number of players : " << std::endl;
 	int numOfPlayers = 0;
 	std::cin >> numOfPlayers;
-	startPlug->createPlayers(numOfPlayers);
+	this->startPlug->createPlayers(numOfPlayers);
 }
 
 std::vector<FantasyRaceBanner*> StartUp::getRaceBannersFromDeck() {

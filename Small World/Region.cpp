@@ -12,19 +12,19 @@
 Region::Region(){
 	this->index = 0;
 	this->tokens = 0;
-	this->isEdge = false;
-	this->isMountain = false;
-	this->isWater = false;
-	this->containsLostTribe = false;
+	this->edgeType = false;
+	this->mountainType = false;
+	this->waterType = false;
+	this->hasLostTribe = false;
 }
 
 Region::Region(unsigned int index, unsigned int tokens = 0){
 	this->index = index;
 	this->tokens = tokens;
-	this->isEdge = false;
-	this->isMountain = false;
-	this->isWater = false;
-	this->containsLostTribe = false;
+	this->edgeType = false;
+	this->mountainType = false;
+	this->waterType = false;
+	this->hasLostTribe = false;
 }
 
 //Player* Region::getOwnerPlayer(){
@@ -49,4 +49,42 @@ void Region::setTokens(unsigned int token) {
 
 void Region::setRegionIndex(unsigned int index) {
 	this->index = index;
+}
+
+void Region::setRegionType(RegionType type)
+{
+	switch (type) {
+	case RegionType::WATER: {
+		this->waterType = true;
+		break;
+	}
+	case RegionType::EDGE: {
+		this->edgeType = true;
+		break;
+	}
+	case RegionType::MOUNTAIN: {
+		this->mountainType = true;
+		break;
+	}
+	}
+}
+
+bool Region::containsLostTribe()
+{
+	return this->hasLostTribe;
+}
+
+bool Region::isMountain()
+{
+	return this->mountainType;
+}
+
+bool Region::isWater()
+{
+	return this->waterType;
+}
+
+bool Region::isEdge()
+{
+	return this->edgeType;
 }

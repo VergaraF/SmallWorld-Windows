@@ -9,7 +9,7 @@ StartUp::StartUp()
 	executeStartPlug();
 	this->raceBanners = getRaceBannersFromDeck();
 	//this->gameMap.getGameMap()[0].setTokens(1000);
-	setLostTribeTokens();
+	setTokensOnRegions();
 	std::cout << "test" << std::endl;
 }
 void StartUp::executeStartPlug() {
@@ -17,7 +17,7 @@ void StartUp::executeStartPlug() {
 	std::cout << "Enter number of players : " << std::endl;
 	int numOfPlayers = 0;
 	std::cin >> numOfPlayers;
-	//startPlug->createPlayers(numOfPlayers);
+	startPlug->createPlayers(numOfPlayers);
 }
 
 std::vector<FantasyRaceBanner*> StartUp::getRaceBannersFromDeck() {
@@ -56,7 +56,7 @@ std::vector<FantasyRaceBanner*> StartUp::getRaceBannersFromDeck() {
 
 	return banners;
 }
-void StartUp::setLostTribeTokens()
+void StartUp::setTokensOnRegions()
 {
 	typedef graph_traits<Graph>::vertex_descriptor vertex_d;
 	Graph map = *(this->gameMap->getGameMap());
@@ -72,7 +72,17 @@ void StartUp::setLostTribeTokens()
 	for (vp = vertices(*(this->gameMap->getGameMap())); vp.first != vp.second; ++vp.first) {
 		vertex_d ver = *vp.first;
 		this->vertex_descriptors.push_back(ver);
-		map[ver].setTokens(100);
+		if (map[ver].containsLostTribe()) {
+			map[ver].setTokens(map[ver].getTokens() + 1);
+			map[ver].raceTokens.push_back(new LostTribeToken());
+			this->deck->lostTribeTokens.pop_back();
+		}
+
+		if (map[ver].isMountain()) {
+			map[ver].propertyTokens.push_back(new GamePiece(GamePieceType::MOUNTAIN));
+			//TODO: do not forget to remove mountain tokens from the deck
+		}
+		//map[ver].setTokens(100);
 		std::cout << index[ver] << " ";
 	
 	}

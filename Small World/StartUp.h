@@ -24,7 +24,7 @@ private:
 	GameMap* gameMap;
 	std::vector<FantasyRaceBanner*> getRaceBannersFromDeck();
 	void executeStartPlug();
-	void setLostTribeTokens();
+	void setTokensOnRegions();
 	std::vector<int> takenRaces;
 	std::vector<int> takenSpecialPowers;
 	std::vector<vertex_d> vertex_descriptors;

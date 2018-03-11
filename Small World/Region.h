@@ -9,26 +9,37 @@
 #define MODEL_REGION_H_
 //#include "Player.h"
 
+#include <vector>
+#include "Token.h"
+enum class RegionType {
+	WATER,
+	MOUNTAIN,
+	EDGE
+};
 class Region
 {
 private:
 	unsigned int index;
-//	Player* ownedBy;
 	unsigned int tokens;
-	bool containsLostTribe;
-	bool isMountain;
-	bool isWater;
-	bool isEdge;
+	bool hasLostTribe;
+	bool mountainType;
+	bool waterType;
+	bool edgeType;
 
 public:
 	Region(unsigned int, unsigned int);
 	Region();
-	//Player* getOwnerPlayer();
+	std::vector<Token*> raceTokens;
+	std::vector<Token*> propertyTokens;
 	unsigned int getTokens();
 	unsigned int getIndex();
-	//void setOwnerPlayer(Player*);
 	void setTokens(unsigned int);
 	void setRegionIndex(unsigned int);
+	void setRegionType(RegionType);
+	bool containsLostTribe();
+	bool isMountain();
+	bool isWater();
+	bool isEdge();
 };
 
 

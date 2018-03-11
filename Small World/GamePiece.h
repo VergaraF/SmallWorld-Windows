@@ -1,4 +1,5 @@
 #pragma once
+#include "Token.h"
 
 enum class GamePieceType {
 	TROLL_LAIR,
@@ -10,7 +11,7 @@ enum class GamePieceType {
 	DRAGON
 };
 
-class GamePiece
+class GamePiece : public Token
 {
 public:
 	GamePiece(GamePieceType);

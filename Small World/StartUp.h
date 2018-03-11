@@ -18,6 +18,7 @@ public:
 	StartUp();
 	~StartUp();
 	std::vector<FantasyRaceBanner*> raceBanners;
+	std::vector<Player*> getPlayers();
 	int getIndexStartingPlayer();
 	int getStartingPlayer();
 private:

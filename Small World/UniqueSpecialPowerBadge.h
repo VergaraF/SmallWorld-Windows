@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 enum class SpecialPowerType {
 	ALCHEMIST,
@@ -29,7 +30,9 @@ public:
 	UniqueSpecialPowerBadge(SpecialPowerType);
 	~UniqueSpecialPowerBadge();
 	SpecialPowerType getType();
+	std::string toString();
 private:
 	SpecialPowerType type;
+	std::string powerName;
 };
 

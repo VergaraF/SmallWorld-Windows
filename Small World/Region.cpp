@@ -69,6 +69,11 @@ void Region::setRegionType(RegionType type)
 	}
 }
 
+void Region::setEdgeRegion(bool edgy)
+{
+	this->edgeType = true;
+}
+
 bool Region::containsLostTribe()
 {
 	return this->hasLostTribe;

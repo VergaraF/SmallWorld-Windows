@@ -66,11 +66,14 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 		std::transform(isEdge.begin(), isEdge.end(), isEdge.begin(), ::tolower);
 
 		if (regionType.compare("water")) {
-			reg.isWater = true;
+			reg.setRegionType(RegionType::WATER);
+		}
+		else if (regionType.compare("mountain")) {
+			reg.setRegionType(RegionType::MOUNTAIN);
 		}
 
 		if (isEdge.compare("edge")) {
-			reg.isEdge = true;
+			reg.setEdgeRegion(true);
 		}
 		else if (!isEdge.compare("no")) {
 			std::cout << "Invalid map. A region can either be edge or not. " << std::endl;

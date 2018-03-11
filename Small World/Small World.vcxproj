@@ -113,6 +113,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="StartPlug.cpp" />
     <ClCompile Include="StartUp.cpp" />
     <ClCompile Include="SummarySheet.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="Token.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MainGame.h" />
     <ClInclude Include="StartPlug.h" />
     <ClInclude Include="StartUp.h" />
     <ClInclude Include="SummarySheet.h" />

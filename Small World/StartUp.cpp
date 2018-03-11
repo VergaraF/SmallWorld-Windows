@@ -107,6 +107,11 @@ StartUp::~StartUp()
 {
 }
 
+std::vector<Player*> StartUp::getPlayers()
+{
+	return this->startPlug->players;
+}
+
 int StartUp::getIndexStartingPlayer()
 {
 	return this->indexPlayerStartingGame;

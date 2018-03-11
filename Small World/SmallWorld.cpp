@@ -21,8 +21,8 @@ void runDice();
 void createDeck();
 void startStartPlug();
 void runGameStartUp();
-
-int main() {
+//RENAME TO MAIN AND RENAME MAINGAME MAIN TO SOMETHING ELSE
+int someTests() {
 	bool testGameMapDriver = false;
 	bool testGameMapLoader = false;
 	bool testDiceFacility = false;

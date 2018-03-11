@@ -19,16 +19,24 @@ Player::Player(){
 Player::Player(std::string name) {
 	this->name = name;
 	this->fantasyRaceBanner = new FantasyRaceBanner(RaceType::NONE, SpecialPowerType::BLANK);
-	picks_race();
+	//picks_race();
 	this->rollingDiceFacility = new Dice();
 	this->summarySheet = new SummarySheet();
 	this->gameTurnMarkerPosition = 0;
 }
 
-void Player::picks_race() {
+int Player::picks_race(std::vector<FantasyRaceBanner*> banners) {
 	std::cout << "Pick a race from the following. Enter the number for desired race: " << std::endl;
-	//Logic to pick available races
+	std::stringstream temp;
+	for (int i = 0; i < banners.size(); ++i) {
+		temp << "[" << i << "] " << banners[i]->getRace()->toString() << " : " << banners[i]->getPower()->toString() << std::endl;
+	}
+	std::cout << temp.str() << std::endl;
+	int userInput;
+	std::cin >> userInput;
 
+	this->fantasyRaceBanner = banners[userInput];
+	return userInput;
 }
 
 void Player::conquers() {

@@ -36,6 +36,7 @@ public:
 	void setTokens(unsigned int);
 	void setRegionIndex(unsigned int);
 	void setRegionType(RegionType);
+	void setEdgeRegion(bool);
 	bool containsLostTribe();
 	bool isMountain();
 	bool isWater();

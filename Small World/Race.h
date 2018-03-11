@@ -32,7 +32,9 @@ public:
 	Race();
 	~Race();
 	unsigned int getPriority();
+	std::string toString();
 private:
+	std::string raceName;
 	RaceType race;
 	int priority; //lower better
 };

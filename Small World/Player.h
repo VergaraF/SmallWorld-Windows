@@ -23,7 +23,7 @@ class Player
 public:
 	Player();
 	Player(std::string);
-	void picks_race();
+	int picks_race(std::vector<FantasyRaceBanner*>);
 	void conquers();
 	void scores();
 	void setName(std::string);

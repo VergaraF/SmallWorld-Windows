@@ -39,7 +39,7 @@ int Player::picks_race(std::vector<FantasyRaceBanner*> banners) {
 	return userInput;
 }
 
-void Player::conquers() {
+void Player::conquers(int regionIndex) {
 
 }
 
@@ -53,6 +53,28 @@ void Player::setName(std::string name) {
 
 FantasyRaceBanner* Player::getFantasyRaceBanner() {
 	return this->fantasyRaceBanner;
+}
+
+FantasyRaceBanner * Player::getSecondFantasyRaceBanner()
+{
+	return this->secondFantasyRaceBanner;
+}
+
+int Player::goInDecline(std::vector<FantasyRaceBanner*> banners)
+{
+	this->fantasyRaceBanner->setStatus(Status::DECLINE);
+
+	std::cout << "Pick a race from the following. Enter the number for desired race: " << std::endl;
+	std::stringstream temp;
+	for (int i = 0; i < banners.size(); ++i) {
+		temp << "[" << i << "] " << banners[i]->getRace()->toString() << " : " << banners[i]->getPower()->toString() << std::endl;
+	}
+	std::cout << temp.str() << std::endl;
+	int userInput;
+	std::cin >> userInput;
+
+	this->fantasyRaceBanner = banners[userInput];
+	return userInput;
 }
 
 SummarySheet* Player::getSummarySheet() {

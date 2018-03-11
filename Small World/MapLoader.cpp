@@ -107,5 +107,6 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 			gameMap->makeRegionConnection(vertices[i], vertices[j]);
 		}
 	}
+	gameMap->numberOfRegions = this->allRegions.size();
 	return gameMap;
 }

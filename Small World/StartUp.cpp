@@ -7,7 +7,6 @@ StartUp::StartUp()
 	this->deck = new Deck(true);
 	this->startPlug = new StartPlug();
 	executeStartPlug();
-	this->raceBanners = getRaceBannersFromDeck();
 	//this->gameMap.getGameMap()[0].setTokens(1000);
 	setTokensOnRegions();
 //	int indexToStart = this->getStartingPlayer();
@@ -32,25 +31,34 @@ void StartUp::setCoinsToPlayers() {
 	}
 }
 
+//std::vector<FantasyRaceBanner*> StartUp::getRaceBannersFromDeck(std::vector<int> racesToAvoid, std::vector<int> powersToAvoid) {
 std::vector<FantasyRaceBanner*> StartUp::getRaceBannersFromDeck() {
 	// we need 5 racebanner with 5 random races and 5 random powers
 	std::vector<FantasyRaceBanner*> banners;
 
+	//takenRaces = racesToAvoid;
+	//takenSpecialPowers = powersToAvoid;
+	takenRaces;
+	takenSpecialPowers;
+
 	bool keepLookingForRace = true;
 	bool keepLookingForSpecialPower = true;
 	for (int raceOnBanner = 0; raceOnBanner < 5; ++raceOnBanner) {
+		if (this->deck->fantasyRaceBanners.size() == 0) {
+			break;
+		}
 		int randomRace; 
 		int randomPower;
 
 		while (keepLookingForRace) {
-			randomRace = rand() % (int)Utils::NUMBER_OF_RACES;
+			randomRace = (rand() % (int)Utils::NUMBER_OF_RACES);
 			if (raceOnBanner == 0 || std::find(takenRaces.begin(), takenRaces.end(), randomRace) == takenRaces.end()) {
 				keepLookingForRace = false;
 			}
 		}
 
 		while (keepLookingForSpecialPower) {
-			randomPower = rand() % (int)Utils::NUMBER_OF_SPECIAL_POWER_BADGES;
+			randomPower = (rand() % (int)Utils::NUMBER_OF_SPECIAL_POWER_BADGES);
 			if (raceOnBanner == 0 || std::find(takenSpecialPowers.begin(), takenSpecialPowers.end(), randomPower) == takenSpecialPowers.end()) {
 				keepLookingForSpecialPower = false;
 			}
@@ -60,12 +68,13 @@ std::vector<FantasyRaceBanner*> StartUp::getRaceBannersFromDeck() {
 
 		Race* race = new Race((RaceType)randomRace);
 		UniqueSpecialPowerBadge* specialPowerBadge = new UniqueSpecialPowerBadge((SpecialPowerType)randomPower);
+		
 		this->deck->fantasyRaceBanners.pop_back();
 		banners.push_back(new FantasyRaceBanner(race, specialPowerBadge));
 		takenRaces.push_back(randomRace);
 		takenSpecialPowers.push_back(randomPower);
 	}
-
+	this->raceBanners = banners;
 	return banners;
 }
 void StartUp::setTokensOnRegions()
@@ -94,8 +103,6 @@ void StartUp::setTokensOnRegions()
 			map[ver].propertyTokens.push_back(new GamePiece(GamePieceType::MOUNTAIN));
 			//TODO: do not forget to remove mountain tokens from the deck
 		}
-		//map[ver].setTokens(100);
-		std::cout << index[ver] << " ";
 	
 	}
 	std::cout << std::endl;
@@ -121,12 +128,19 @@ int StartUp::getStartingPlayer()
 {
 	//the lower the temp, the first to start and then we go clockwise
 	unsigned int temp = 20;
+	unsigned int tempIndex = 0;
 	for (unsigned int i = 0; i < this->startPlug->players.size(); ++i) {
 		if (this->startPlug->players[i]->getFantasyRaceBanner()->getRace()->getPriority() < temp) {
 			temp = this->startPlug->players[i]->getFantasyRaceBanner()->getRace()->getPriority();
+			tempIndex = i;
 		}
 	}
 	this->indexPlayerStartingGame = temp;
-	return temp;
+	return tempIndex;
+}
+
+GameMap * StartUp::getGameMap()
+{
+	return this->gameMap;
 }
 

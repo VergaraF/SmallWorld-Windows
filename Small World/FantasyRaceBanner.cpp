@@ -49,3 +49,4 @@ void FantasyRaceBanner::setSpecialPower(SpecialPowerType powerType)
 	delete this->power;
 	this->power = new UniqueSpecialPowerBadge(powerType);
 }
+

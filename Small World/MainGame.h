@@ -15,9 +15,13 @@ public:
 	~MainGame();
 	std::vector<Player*> players;
 	int currentGameTurnPosition;
+	int gameTurnRack;
 	int firstPlayer;
 	StartUp* startUp;
 	void letPlayersChooseRace();
+	void playGameLoop(int);
 	int getFirstPlayerIndex();
+	std::vector<int> racesToAvoid;
+	std::vector<int> powersToAvoid;
 };
 

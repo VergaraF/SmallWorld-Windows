@@ -21,16 +21,19 @@ public:
 	std::vector<Player*> getPlayers();
 	int getIndexStartingPlayer();
 	int getStartingPlayer();
+	GameMap* getGameMap();
+	//std::vector<FantasyRaceBanner*> getRaceBannersFromDeck(std::vector<int>, std::vector<int>);
+	std::vector<FantasyRaceBanner*> getRaceBannersFromDeck();
+	std::vector<int> takenRaces;
+	std::vector<int> takenSpecialPowers;
 private:
 	Deck * deck;
 	StartPlug* startPlug;
 	GameMap* gameMap;
-	std::vector<FantasyRaceBanner*> getRaceBannersFromDeck();
 	void executeStartPlug();
 	void setTokensOnRegions();
 	void setCoinsToPlayers();
-	std::vector<int> takenRaces;
-	std::vector<int> takenSpecialPowers;
+
 	std::vector<vertex_d> vertex_descriptors;
 	int indexPlayerStartingGame;
 

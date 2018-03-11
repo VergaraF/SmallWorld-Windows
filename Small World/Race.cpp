@@ -90,6 +90,11 @@ unsigned int Race::getPriority()
 	return this->priority;
 }
 
+RaceType Race::getRaceType()
+{
+	return race;
+}
+
 std::string Race::toString()
 {
 	return this->raceName;

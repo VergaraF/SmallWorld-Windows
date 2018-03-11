@@ -24,10 +24,12 @@ public:
 	Player();
 	Player(std::string);
 	int picks_race(std::vector<FantasyRaceBanner*>);
-	void conquers();
+	void conquers(int);
 	void scores();
 	void setName(std::string);
 	FantasyRaceBanner* getFantasyRaceBanner();
+	FantasyRaceBanner* getSecondFantasyRaceBanner();
+	int goInDecline(std::vector<FantasyRaceBanner*>);
 	SummarySheet* getSummarySheet();
 	Dice* getRollingDiceFacility();
 	std::vector<Region*> getConqueredRegions();
@@ -38,6 +40,7 @@ public:
 private:
 	std::string name;
 	FantasyRaceBanner* fantasyRaceBanner;
+	FantasyRaceBanner* secondFantasyRaceBanner;
 	SummarySheet* summarySheet;
 	Dice* rollingDiceFacility;
 	std::vector<Region*> conqueredRegions;

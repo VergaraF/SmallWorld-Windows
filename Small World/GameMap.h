@@ -51,6 +51,7 @@ public:
 	void createMapForThreePlayers(vertex_d*);
 	void createMapForFourPlayers(vertex_d*);
 	void createMapForFivePlayers(vertex_d*);
+	int numberOfRegions;
 
 };
 

@@ -91,7 +91,7 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 			std::cout << "Invalid map. A region can either have a tribe on it or not. " << std::endl;
 			return NULL;
 		}
-
+		reg.neighborIndexes = neighbourRegions;
 		//create a new region for this line
 		RegionToAdd regionToAdd;
 		regionToAdd.index = regionIndex;

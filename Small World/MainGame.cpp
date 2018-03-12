@@ -66,7 +66,7 @@ void MainGame::assignRaceTokenPerPlayer()
 	int numberOfCoinsToGive = 0;
 	for (int player = 0; player < this->players.size(); ++player) {
 		switch (players[player]->getFantasyRaceBanner()->getRace()->getRaceType()) {
-			{
+
 		case RaceType::ELVES: {
 			numberOfCoinsToGive = 6;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
@@ -74,7 +74,7 @@ void MainGame::assignRaceTokenPerPlayer()
 				//this->startUp->getDeck().
 				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
-			
+
 			break;
 		}
 		case RaceType::ORCS: {
@@ -204,10 +204,9 @@ void MainGame::assignRaceTokenPerPlayer()
 				//this->startUp->getDeck().
 				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
-
 			break;
 		}
-			}
+
 		}
 	}
 }

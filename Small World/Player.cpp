@@ -46,9 +46,16 @@ void Player::conquers(Region* regionConquered) {
 	std::cout << "Congratulations, you have conquered a region! How many tokens do you want to put in it ? " << std::endl;
 	int userInput;
 	std::cin >> userInput;
+	if (userInput <= this->raceTokens.size()) {
+		for (int i = 0; i < userInput; ++i) {
+			this->raceTokens.pop_back();
+			regionConquered->raceTokens.push_back(new MatchingRaceToken(this->fantasyRaceBanner->getRace()->getRaceType()));		
+		}	
+	}
+	else {
+		std::cout << "You don't have enough tokens to perform this action";
+	}
 	std::cout << "Tokens placed." << std::endl;
-	//TODO: Put player tokens in that region and remove tokens from player's hand
-	//Check if user has enough tokens to put on
 }
 
 void Player::scores() {

@@ -24,7 +24,7 @@ public:
 	Player();
 	Player(std::string);
 	int picks_race(std::vector<FantasyRaceBanner*>);
-	void conquers(int);
+	void conquers(Region*);
 	void scores();
 	void setName(std::string);
 	FantasyRaceBanner* getFantasyRaceBanner();
@@ -36,6 +36,7 @@ public:
 	std::vector<Coin*> getCoins();
 	std::vector<MatchingRaceToken*> getRaceTokens();
 	int gameTurnMarkerPosition;
+	std::string getName();
 
 private:
 	std::string name;

@@ -39,8 +39,16 @@ int Player::picks_race(std::vector<FantasyRaceBanner*> banners) {
 	return userInput;
 }
 
-void Player::conquers(int regionIndex) {
-
+void Player::conquers(Region* regionConquered) {
+	this->conqueredRegions.push_back(regionConquered);
+	regionConquered->hasBeenConquered(true);
+	regionConquered->ownedBy = this->name;
+	std::cout << "Congratulations, you have conquered a region! How many tokens do you want to put in it ? " << std::endl;
+	int userInput;
+	std::cin >> userInput;
+	std::cout << "Tokens placed." << std::endl;
+	//TODO: Put player tokens in that region and remove tokens from player's hand
+	//Check if user has enough tokens to put on
 }
 
 void Player::scores() {
@@ -95,5 +103,10 @@ std::vector<Coin*> Player::getCoins() {
 
 std::vector<MatchingRaceToken*> Player::getRaceTokens() {
 	return this->raceTokens;
+}
+
+std::string Player::getName()
+{
+	return this->name;
 }
 

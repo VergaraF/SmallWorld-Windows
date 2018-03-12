@@ -38,7 +38,10 @@ void StartPlug::createPlayers(int numOfPlayers)
 {
 	if (numOfPlayers >= 2 && numOfPlayers <= 5) {
 		for (int player = 0; player < numOfPlayers; ++player) {
-			this->players.push_back(new Player());
+			std::string name;
+			std::cout << "Enter player name :" << std::endl;
+			std::cin >> name;
+			this->players.push_back(new Player(name));
 		}
 		std::cout << numOfPlayers << " players created succesfully!" << std::endl;
 	}

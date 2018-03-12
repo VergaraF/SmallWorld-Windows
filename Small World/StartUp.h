@@ -8,6 +8,7 @@
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/undirected_graph.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
+#include "MapConquerer.h"
 
 using namespace boost;
 typedef property_map<Graph, vertex_index_t>::type IndexMap;
@@ -26,6 +27,8 @@ public:
 	std::vector<FantasyRaceBanner*> getRaceBannersFromDeck();
 	std::vector<int> takenRaces;
 	std::vector<int> takenSpecialPowers;
+	MapConquerer* mapConquerer;
+	Deck* getDeck();
 private:
 	Deck * deck;
 	StartPlug* startPlug;

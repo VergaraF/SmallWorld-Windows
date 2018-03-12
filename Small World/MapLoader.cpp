@@ -26,6 +26,7 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 	int regionIndex = 0;
 	std::string regionType;
     std::string isEdge;
+	std::string hasTribe;
 	std::vector<int> neighbourRegions;
 
 	std::string line;
@@ -54,8 +55,10 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 		regionType= lineTokens[1];
 		isEdge = lineTokens[2];
 
+		hasTribe = lineTokens[3];
+
 		int tempInt;
-		for (unsigned i = 3; i < lineTokens.size(); i++) {
+		for (unsigned i = 4; i < lineTokens.size(); i++) {
 			std::stringstream temp(lineTokens[i]);
 			temp >> tempInt;
 			neighbourRegions.push_back(tempInt);
@@ -64,6 +67,7 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 
 		std::transform(regionType.begin(), regionType.end(), regionType.begin(), ::tolower);
 		std::transform(isEdge.begin(), isEdge.end(), isEdge.begin(), ::tolower);
+		std::transform(hasTribe.begin(), hasTribe.end(), hasTribe.begin(), ::tolower);
 
 		if (regionType.compare("water")) {
 			reg.setRegionType(RegionType::WATER);
@@ -77,6 +81,14 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 		}
 		else if (!isEdge.compare("no")) {
 			std::cout << "Invalid map. A region can either be edge or not. " << std::endl;
+			return NULL;
+		}
+
+		if (hasTribe.compare("tribe")) {
+			reg.setTribeOnRegion(true);
+		}
+		else if (!hasTribe.compare("notribe")) {
+			std::cout << "Invalid map. A region can either have a tribe on it or not. " << std::endl;
 			return NULL;
 		}
 

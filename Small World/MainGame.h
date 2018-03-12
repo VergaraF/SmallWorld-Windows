@@ -18,10 +18,12 @@ public:
 	int gameTurnRack;
 	int firstPlayer;
 	StartUp* startUp;
+	MapConquerer* mapConquerer;
 	void letPlayersChooseRace();
 	void playGameLoop(int);
 	int getFirstPlayerIndex();
 	std::vector<int> racesToAvoid;
 	std::vector<int> powersToAvoid;
+	void assignRaceTokenPerPlayer();
 };
 

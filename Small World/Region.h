@@ -11,11 +11,13 @@
 
 #include <vector>
 #include "Token.h"
+
 enum class RegionType {
 	WATER,
 	MOUNTAIN,
 	EDGE
 };
+
 class Region
 {
 private:
@@ -25,6 +27,7 @@ private:
 	bool mountainType;
 	bool waterType;
 	bool edgeType;
+	bool conquered;
 
 public:
 	Region(unsigned int, unsigned int);
@@ -37,10 +40,14 @@ public:
 	void setRegionIndex(unsigned int);
 	void setRegionType(RegionType);
 	void setEdgeRegion(bool);
+	void setTribeOnRegion(bool);
 	bool containsLostTribe();
 	bool isMountain();
 	bool isWater();
 	bool isEdge();
+	bool isConquered();
+	bool hasBeenConquered(bool);
+	std::string ownedBy;
 };
 
 

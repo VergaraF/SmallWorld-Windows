@@ -11,6 +11,7 @@ StartUp::StartUp()
 	setTokensOnRegions();
 //	int indexToStart = this->getStartingPlayer();
 //	std::cout << "Player " << indexToStart << " will start the match, as it has the most pointed ears" << std::endl;
+	this->mapConquerer = new MapConquerer(this->gameMap);
 
 }
 void StartUp::executeStartPlug() {
@@ -77,6 +78,10 @@ std::vector<FantasyRaceBanner*> StartUp::getRaceBannersFromDeck() {
 	this->raceBanners = banners;
 	return banners;
 }
+Deck * StartUp::getDeck()
+{
+	return this->deck;
+}
 void StartUp::setTokensOnRegions()
 {
 	typedef graph_traits<Graph>::vertex_descriptor vertex_d;
@@ -86,7 +91,6 @@ void StartUp::setTokensOnRegions()
 	Region region;
 	IndexMap index = get(vertex_index, map);
 
-	std::cout << "vertices(this->graph) = ";
 	typedef graph_traits<Graph>::vertex_iterator vertex_iter;
 	std::pair<vertex_iter, vertex_iter> vp;
 	
@@ -107,7 +111,6 @@ void StartUp::setTokensOnRegions()
 	}
 	std::cout << std::endl;
 
-	
 	this->gameMap->setGameMap(map);
 }
 StartUp::~StartUp()

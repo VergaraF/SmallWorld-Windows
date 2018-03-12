@@ -114,6 +114,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="MapConquerer.cpp" />
     <ClCompile Include="StartPlug.cpp" />
     <ClCompile Include="StartUp.cpp" />
     <ClCompile Include="SummarySheet.cpp" />
@@ -136,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="MapConquerer.h" />
     <ClInclude Include="StartPlug.h" />
     <ClInclude Include="StartUp.h" />
     <ClInclude Include="SummarySheet.h" />

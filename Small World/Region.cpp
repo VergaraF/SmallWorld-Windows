@@ -16,6 +16,7 @@ Region::Region(){
 	this->mountainType = false;
 	this->waterType = false;
 	this->hasLostTribe = false;
+	//this->isConquered = false;
 }
 
 Region::Region(unsigned int index, unsigned int tokens = 0){
@@ -25,6 +26,7 @@ Region::Region(unsigned int index, unsigned int tokens = 0){
 	this->mountainType = false;
 	this->waterType = false;
 	this->hasLostTribe = false;
+	//this->isConquered = false;
 }
 
 //Player* Region::getOwnerPlayer(){
@@ -74,6 +76,11 @@ void Region::setEdgeRegion(bool edgy)
 	this->edgeType = true;
 }
 
+void Region::setTribeOnRegion(bool value)
+{
+	this->hasLostTribe = value;
+}
+
 bool Region::containsLostTribe()
 {
 	return this->hasLostTribe;
@@ -92,4 +99,15 @@ bool Region::isWater()
 bool Region::isEdge()
 {
 	return this->edgeType;
+}
+
+bool Region::isConquered()
+{
+	return (this->hasLostTribe || !this->raceTokens.empty());
+}
+
+bool Region::hasBeenConquered(bool value)
+{
+	this->conquered = true;
+	return this->conquered;
 }

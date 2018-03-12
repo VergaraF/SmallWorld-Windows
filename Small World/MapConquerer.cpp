@@ -48,12 +48,13 @@ bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering) {
 				if (isAdj) {
 					playerConquering->conquers(reg);
 					foundAdjRegion = isAdj;
-					break;
+					return true;
 				}
 			}
 
 			if (!foundAdjRegion) {
 				std::cout << "The region you are trying to conquer is NOT an edge nor connected to any of you regions." << std::endl;
+				return false;
 			}
 		}
 	}
@@ -67,9 +68,11 @@ bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering) {
 			int numberOfTokensInRegion = reg->raceTokens.size();
 			if (numberOfTokensInRegion < (playerConquering->getRaceTokens().size() + numberRolled)) {
 				playerConquering->conquers(reg);
+				return true;
 			}
 			else {
 				std::cout << "Impossible to conquer region. " << std::endl;
+				return false;
 			}
 		}
 		else {
@@ -93,20 +96,30 @@ bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering) {
 					int numberOfTokensInRegion = reg->raceTokens.size();
 					if (numberOfTokensInRegion < (playerConquering->getRaceTokens().size() + numberRolled)) {
 						playerConquering->conquers(reg);
+						
 					}
 					else {
 						std::cout << "Impossible to conquer region. " << std::endl;
+						return false;
 					}
 					foundAdjRegion = isAdj;
-					break;
+					return true;
 				}
 			}
 
 			if (!foundAdjRegion) {
 				std::cout << "The region you are trying to conquer is NOT an edge nor connected to any of you regions." << std::endl;
+				return false;
 			}
 		}
 		
 	}
 	return true;
+}
+
+bool MapConquerer::redeployTroops(Player *)
+{
+	//TODO Redeploy troops implementation
+	return true;
+
 }

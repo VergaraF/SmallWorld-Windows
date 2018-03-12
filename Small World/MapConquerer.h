@@ -10,5 +10,6 @@ public:
 	GameMap* gameMap;
 	void attemptToConquerRegion(Player*);
 	bool conquerRegion(int, Player*);
+	bool redeployTroops(Player*);
 };
 

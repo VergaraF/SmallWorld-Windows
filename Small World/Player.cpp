@@ -7,7 +7,8 @@
 
 #include "Player.h"
 
-Player::Player(){
+Player::Player() 
+{
 	this->name = "No name";
 	this->fantasyRaceBanner = new FantasyRaceBanner(RaceType::NONE, SpecialPowerType::BLANK);
 	this->rollingDiceFacility = new Dice();
@@ -16,7 +17,8 @@ Player::Player(){
 
 }
 
-Player::Player(std::string name) {
+Player::Player(std::string name) 
+{
 	this->name = name;
 	this->fantasyRaceBanner = new FantasyRaceBanner(RaceType::NONE, SpecialPowerType::BLANK);
 	//picks_race();
@@ -25,7 +27,8 @@ Player::Player(std::string name) {
 	this->gameTurnMarkerPosition = 0;
 }
 
-int Player::picks_race(std::vector<FantasyRaceBanner*> banners) {
+int Player::picks_race(std::vector<FantasyRaceBanner*> banners) 
+{
 	std::cout << "Pick a race from the following. Enter the number for desired race: " << std::endl;
 	std::stringstream temp;
 	for (int i = 0; i < banners.size(); ++i) {
@@ -39,7 +42,8 @@ int Player::picks_race(std::vector<FantasyRaceBanner*> banners) {
 	return userInput;
 }
 
-void Player::conquers(Region* regionConquered) {
+void Player::conquers(Region* regionConquered) 
+{
 	this->conqueredRegions.push_back(regionConquered);
 	regionConquered->hasBeenConquered(true);
 	regionConquered->ownedBy = this->name;
@@ -49,8 +53,8 @@ void Player::conquers(Region* regionConquered) {
 	if (userInput <= this->raceTokens.size()) {
 		for (int i = 0; i < userInput; ++i) {
 			this->raceTokens.pop_back();
-			regionConquered->raceTokens.push_back(new MatchingRaceToken(this->fantasyRaceBanner->getRace()->getRaceType()));		
-		}	
+			regionConquered->raceTokens.push_back(new MatchingRaceToken(this->fantasyRaceBanner->getRace()->getRaceType()));
+		}
 	}
 	else {
 		std::cout << "You don't have enough tokens to perform this action";
@@ -58,15 +62,26 @@ void Player::conquers(Region* regionConquered) {
 	std::cout << "Tokens placed." << std::endl;
 }
 
-void Player::scores() {
+void Player::scores() 
+{
+	//TODO: getr score from special powers
+	int temp = 0;
+	for (int region = 0; region < this->conqueredRegions.size(); ++region) {
+		temp += this->conqueredRegions[region]->raceTokens.size();
 
+
+	}
+
+	this->score = temp;
 }
 
-void Player::setName(std::string name) {
+void Player::setName(std::string name) 
+{
 	this->name = name;
 }
 
-FantasyRaceBanner* Player::getFantasyRaceBanner() {
+FantasyRaceBanner* Player::getFantasyRaceBanner() 
+{
 	return this->fantasyRaceBanner;
 }
 
@@ -92,23 +107,28 @@ int Player::goInDecline(std::vector<FantasyRaceBanner*> banners)
 	return userInput;
 }
 
-SummarySheet* Player::getSummarySheet() {
+SummarySheet* Player::getSummarySheet() 
+{
 	return this->summarySheet;
 }
 
-Dice* Player::getRollingDiceFacility() {
+Dice* Player::getRollingDiceFacility() 
+{
 	return this->rollingDiceFacility;
 }
 
-std::vector<Region*> Player::getConqueredRegions() {
+std::vector<Region*> Player::getConqueredRegions() 
+{
 	return this->conqueredRegions;
 }
 
-std::vector<Coin*> Player::getCoins() {
+std::vector<Coin*> Player::getCoins() 
+{
 	return this->coins;
 }
 
-std::vector<MatchingRaceToken*> Player::getRaceTokens() {
+std::vector<MatchingRaceToken*> Player::getRaceTokens() 
+{
 	return this->raceTokens;
 }
 

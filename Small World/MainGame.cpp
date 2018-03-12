@@ -213,7 +213,7 @@ void MainGame::assignRaceTokenPerPlayer()
 
 void MainGame::playGameLoop(int startPlayerIndex) {
 	std::vector<FantasyRaceBanner*> racesAvailable = this->startUp->raceBanners;
-
+	bool keepConquering = true;
 	bool isFirstTurn = true;
 	int count = 0;
 	while (this->currentGameTurnPosition <= this->gameTurnRack) {
@@ -226,7 +226,22 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 			}
 
 			if (isFirstTurn) {
-				mapConquerer->attemptToConquerRegion(this->players[player]);
+				while (keepConquering) {
+					mapConquerer->attemptToConquerRegion(this->players[player]);
+					if (this->players[player]->getRaceTokens().size() > 0) {
+						std::cout << "Player [ " << player << "] Do you want to keep conquering? Type 1 for yes or 0 for no " << std::endl;
+						int userInput;
+						std::cin >> userInput;
+						if (userInput == 0) {
+							keepConquering = false;
+						}
+					}
+					else {
+						std::cout << "Player [ " << player << "] You don't have more tokens to keep conquering at the moment " << std::endl;
+
+					}
+				}
+				
 				//this->players[player]->conquers();
 
 			}
@@ -241,11 +256,33 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 					racesAvailable = this->startUp->getRaceBannersFromDeck();
 				}
 				else if (userInput == 0) {
-					mapConquerer->attemptToConquerRegion(this->players[player]);
+					while (keepConquering) {
+						mapConquerer->attemptToConquerRegion(this->players[player]);
+						if (this->players[player]->getRaceTokens().size() > 0) {
+							std::cout << "Player [ " << player << "] Do you want to keep conquering? Type 1 for yes or 0 for no " << std::endl;
+							int userInput;
+							std::cin >> userInput;
+							if (userInput == 0) {
+								keepConquering = false;
+							}
+						}
+						else {
+							std::cout << "Player [ " << player << "] You don't have more tokens to keep conquering at the moment " << std::endl;
+
+						}
+					}
+					//mapConquerer->attemptToConquerRegion(this->players[player]);
 				}
 				else {
 					std::cout << "Invalid entry." << std::endl;
 				}
+			}
+
+			std::cout << "You can't conquer more regions at the moment. Do you want to redeploy your troops ? press 1 for yes, 0 for no" << std::endl;
+			int userInput;
+			std::cin >> userInput;
+			if (userInput == 0) {
+				mapConquerer->redeployTroops(this->players[player]);
 			}
 
 			this->players[player]->scores();

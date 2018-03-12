@@ -47,6 +47,7 @@ private:
 	std::vector<Region*> conqueredRegions;
 	std::vector<Coin*> coins;
 	std::vector<MatchingRaceToken*> raceTokens;
+	int score;
 };
 
 

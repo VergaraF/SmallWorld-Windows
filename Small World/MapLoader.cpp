@@ -64,31 +64,43 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 			neighbourRegions.push_back(tempInt);
 		}
 
-		Region reg;
+		Region* reg = new Region();
 
 		std::transform(regionType.begin(), regionType.end(), regionType.begin(), ::tolower);
 		std::transform(isEdge.begin(), isEdge.end(), isEdge.begin(), ::tolower);
 		std::transform(hasTribe.begin(), hasTribe.end(), hasTribe.begin(), ::tolower);
 
-		if (regionType.compare("water")) {
-			reg.setRegionType(RegionType::WATER);
+		
+		if (!regionType.compare("water")) {
+			reg->setRegionType(RegionType::WATER);
 		}
-		else if (regionType.compare("mountain")) {
-			reg.setRegionType(RegionType::MOUNTAIN);
+		else if (!regionType.compare("mountain")) {
+			reg->setRegionType(RegionType::MOUNTAIN);
+		}
+		else if (!regionType.compare("none")) {
+			//do nothing
+		}
+		else{
+			std::cout << "Invalid region type" << std::endl;
 		}
 
-		if (isEdge.compare("edge")) {
-			reg.setEdgeRegion(true);
+		if (!isEdge.compare("edge")) {
+			reg->setRegionType(RegionType::EDGE);
 		}
 		else if (!isEdge.compare("no")) {
+			//do nothing
+		}else
+		{
 			std::cout << "Invalid map. A region can either be edge or not. " << std::endl;
 			std::exit;
 		}
 
-		if (hasTribe.compare("tribe")) {
-			reg.setTribeOnRegion(true);
+		if (!hasTribe.compare("tribe")) {
+			reg->setTribeOnRegion(true);
 		}
 		else if (!hasTribe.compare("notribe")) {
+			//do nothing
+		}else{
 			std::cout << "Invalid map. A region can either have a tribe on it or not. " << std::endl;
 			std::exit;
 		}
@@ -100,6 +112,8 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 		RegionToAdd regionToAdd;
 		regionToAdd.index = regionIndex;
 		regionToAdd.region = reg;
+		regionToAdd.region->setRegionIndex(regionToAdd.index);
+		
 		for (int i = 0; i < neighbourRegions.size(); ++i) {
 			regionToAdd.neighbours.push_back(neighbourRegions[i]);
 		}
@@ -117,7 +131,7 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 
 	std::vector<vertex_d> vertices;
 	for (unsigned i = 0; i < this->allRegions.size(); i++) {
-		vertices.push_back(gameMap->addRegion(allRegions[i].region));
+		vertices.push_back(gameMap->addRegion(*allRegions[i].region));
 	}
 
 	for (unsigned i = 0; i < this->allRegions.size(); i++) {

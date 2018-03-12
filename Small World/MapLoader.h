@@ -17,7 +17,7 @@
 
 struct RegionToAdd {
 	int index;
-	Region region;
+	Region* region;
 	std::vector<int> neighbours;
 };
 

@@ -73,7 +73,7 @@ void Region::setRegionType(RegionType type)
 
 void Region::setEdgeRegion(bool edgy)
 {
-	this->edgeType = true;
+	this->edgeType = edgy;
 }
 
 void Region::setTribeOnRegion(bool value)

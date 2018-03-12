@@ -137,3 +137,8 @@ std::string Player::getName()
 	return this->name;
 }
 
+void Player::giveRaceTokens(RaceType raceType)
+{
+	this->raceTokens.push_back(new MatchingRaceToken(raceType));
+}
+

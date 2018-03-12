@@ -14,7 +14,7 @@ GameMap* MapLoader::readFile(std::string filepath) {
 	if (input.fail()) {
 		std::cout << " File does not exist or it has wrong format" << std::endl;
 		std::cout << "Exit program" << std::endl;
-		return NULL;
+		std::exit;
 	}
 
 	 m = readInfoFromFile(input);
@@ -44,12 +44,12 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 
 		if (!(regionIndex >= 0 && regionIndex <= 47)) {
 			std::cout << "Invalid region number, thus invalid map" << std::endl;
-			return NULL;
+			std::exit;
 		}
 
 		if (lineTokens.size() < 3) {
 			std::cout << "Invalid region map. A region must have an index, name and at least one neighbour" << std::endl;
-			return NULL;
+			std::exit;
 		}
 
 		regionType= lineTokens[1];
@@ -63,6 +63,7 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 			temp >> tempInt;
 			neighbourRegions.push_back(tempInt);
 		}
+
 		Region reg;
 
 		std::transform(regionType.begin(), regionType.end(), regionType.begin(), ::tolower);
@@ -81,7 +82,7 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 		}
 		else if (!isEdge.compare("no")) {
 			std::cout << "Invalid map. A region can either be edge or not. " << std::endl;
-			return NULL;
+			std::exit;
 		}
 
 		if (hasTribe.compare("tribe")) {
@@ -89,15 +90,20 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 		}
 		else if (!hasTribe.compare("notribe")) {
 			std::cout << "Invalid map. A region can either have a tribe on it or not. " << std::endl;
-			return NULL;
+			std::exit;
 		}
-		reg.neighborIndexes = neighbourRegions;
+
+		//reg.neighborIndexes = neighbourRegions;
 		//create a new region for this line
+
+		//Region test = reg;
 		RegionToAdd regionToAdd;
 		regionToAdd.index = regionIndex;
 		regionToAdd.region = reg;
-		regionToAdd.region.setRegionIndex(regionToAdd.index);
-		regionToAdd.neighbours = neighbourRegions;
+		for (int i = 0; i < neighbourRegions.size(); ++i) {
+			regionToAdd.neighbours.push_back(neighbourRegions[i]);
+		}
+		//regionToAdd.neighbours = neighbourRegions;
 
 		//and add it to the list of regions
 		allRegions.push_back(regionToAdd);

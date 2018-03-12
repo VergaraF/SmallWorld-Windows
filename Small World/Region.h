@@ -48,7 +48,6 @@ public:
 	bool isConquered();
 	bool hasBeenConquered(bool);
 	std::string ownedBy;
-	std::vector<int> neighborIndexes;
 };
 
 

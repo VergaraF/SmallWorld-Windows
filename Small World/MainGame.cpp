@@ -70,7 +70,7 @@ void MainGame::assignRaceTokenPerPlayer()
 		case RaceType::ELVES: {
 			numberOfCoinsToGive = 6;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
-				players[player]->getRaceTokens().push_back(new MatchingRaceToken(RaceType::ELVES));
+				players[player]->giveRaceTokens(RaceType::ELVES);
 				//this->startUp->getDeck().
 				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
@@ -80,7 +80,7 @@ void MainGame::assignRaceTokenPerPlayer()
 		case RaceType::ORCS: {
 			numberOfCoinsToGive = 5;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
-				players[player]->getRaceTokens().push_back(new MatchingRaceToken(RaceType::ORCS));
+				players[player]->giveRaceTokens(RaceType::ORCS);
 				//this->startUp->getDeck().
 				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
@@ -90,7 +90,7 @@ void MainGame::assignRaceTokenPerPlayer()
 		case RaceType::RATMEN: {
 			numberOfCoinsToGive = 8;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
-				players[player]->getRaceTokens().push_back(new MatchingRaceToken(RaceType::RATMEN));
+				players[player]->giveRaceTokens(RaceType::RATMEN);
 				//this->startUp->getDeck().
 				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
@@ -100,7 +100,7 @@ void MainGame::assignRaceTokenPerPlayer()
 		case RaceType::TROLLS: {
 			numberOfCoinsToGive = 5;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
-				players[player]->getRaceTokens().push_back(new MatchingRaceToken(RaceType::TROLLS));
+				players[player]->giveRaceTokens(RaceType::TROLLS);
 				//this->startUp->getDeck().
 				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
@@ -110,7 +110,7 @@ void MainGame::assignRaceTokenPerPlayer()
 		case RaceType::HALFLINGS: {
 			numberOfCoinsToGive = 6;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
-				players[player]->getRaceTokens().push_back(new MatchingRaceToken(RaceType::HALFLINGS));
+				players[player]->giveRaceTokens(RaceType::HALFLINGS);
 				//this->startUp->getDeck().
 				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
@@ -120,7 +120,8 @@ void MainGame::assignRaceTokenPerPlayer()
 		case RaceType::WIZARDS: {
 			numberOfCoinsToGive = 5;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
-				players[player]->getRaceTokens().push_back(new MatchingRaceToken(RaceType::WIZARDS));
+				//players[player]->getRaceTokens().push_back(new MatchingRaceToken(RaceType::WIZARDS));
+				players[player]->giveRaceTokens(RaceType::WIZARDS);
 				//this->startUp->getDeck().
 				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
@@ -130,7 +131,7 @@ void MainGame::assignRaceTokenPerPlayer()
 		case RaceType::AMAZON: {
 			numberOfCoinsToGive = 6;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
-				players[player]->getRaceTokens().push_back(new MatchingRaceToken(RaceType::AMAZON));
+				players[player]->giveRaceTokens(RaceType::AMAZON);
 				//this->startUp->getDeck().
 				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
@@ -140,7 +141,7 @@ void MainGame::assignRaceTokenPerPlayer()
 		case RaceType::SORCERERS: {
 			numberOfCoinsToGive = 5;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
-				players[player]->getRaceTokens().push_back(new MatchingRaceToken(RaceType::SORCERERS));
+				players[player]->giveRaceTokens(RaceType::SORCERERS);
 				//this->startUp->getDeck().
 				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
@@ -150,7 +151,7 @@ void MainGame::assignRaceTokenPerPlayer()
 		case RaceType::DWARVES: {
 			numberOfCoinsToGive = 3;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
-				players[player]->getRaceTokens().push_back(new MatchingRaceToken(RaceType::DWARVES));
+				players[player]->giveRaceTokens(RaceType::DWARVES);
 				//this->startUp->getDeck().
 				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
@@ -160,7 +161,7 @@ void MainGame::assignRaceTokenPerPlayer()
 		case RaceType::GHOULS: {
 			numberOfCoinsToGive = 5;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
-				players[player]->getRaceTokens().push_back(new MatchingRaceToken(RaceType::GHOULS));
+				players[player]->giveRaceTokens(RaceType::GHOULS);
 				//this->startUp->getDeck().
 				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
@@ -170,7 +171,7 @@ void MainGame::assignRaceTokenPerPlayer()
 		case RaceType::TRITONS: {
 			numberOfCoinsToGive = 6;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
-				players[player]->getRaceTokens().push_back(new MatchingRaceToken(RaceType::TRITONS));
+				players[player]->giveRaceTokens(RaceType::TRITONS);
 				//this->startUp->getDeck().
 				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
@@ -180,7 +181,7 @@ void MainGame::assignRaceTokenPerPlayer()
 		case RaceType::GIANTS: {
 			numberOfCoinsToGive = 6;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
-				players[player]->getRaceTokens().push_back(new MatchingRaceToken(RaceType::GIANTS));
+				players[player]->giveRaceTokens(RaceType::GIANTS);
 				//this->startUp->getDeck().
 				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
@@ -190,7 +191,7 @@ void MainGame::assignRaceTokenPerPlayer()
 		case RaceType::HUMANS: {
 			numberOfCoinsToGive = 5;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
-				players[player]->getRaceTokens().push_back(new MatchingRaceToken(RaceType::HUMANS));
+				players[player]->giveRaceTokens(RaceType::HUMANS);
 				//this->startUp->getDeck().
 				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
@@ -200,7 +201,7 @@ void MainGame::assignRaceTokenPerPlayer()
 		case RaceType::SKELETONS: {
 			numberOfCoinsToGive = 6;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
-				players[player]->getRaceTokens().push_back(new MatchingRaceToken(RaceType::SKELETONS));
+				players[player]->giveRaceTokens(RaceType::SKELETONS);
 				//this->startUp->getDeck().
 				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}

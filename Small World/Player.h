@@ -37,6 +37,7 @@ public:
 	std::vector<MatchingRaceToken*> getRaceTokens();
 	int gameTurnMarkerPosition;
 	std::string getName();
+	void giveRaceTokens(RaceType);
 
 private:
 	std::string name;

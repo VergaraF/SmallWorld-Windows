@@ -9,7 +9,6 @@
 #include <stdlib.h>
 #include <random>
 
-
 Dice::Dice() {
 	this->currentNumber = 0;
 	this->totalNumberOfRolls = 0;
@@ -19,6 +18,7 @@ Dice::Dice() {
 int Dice::roll() {
 	std::cout << "Rolling dice" << std::endl;
 	this->totalNumberOfRolls++;
+	std::srand(std::time (0));
 	this->currentNumber = numbersOnDice[rand() % 7];
 	this->numbersRolled[this->currentNumber]++;
 	return this->currentNumber;

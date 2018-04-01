@@ -31,7 +31,8 @@ bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering) {
 	if (!regionIsConquered) {
 	
 		if (reg->isEdge()) {
-			playerConquering->conquers(reg);
+			g[regionIndex] = playerConquering->conquers(reg);
+		
 		}
 		else {
 			Region tempReg;
@@ -46,7 +47,7 @@ bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering) {
 				bool isAdj = boost::edge(boost::vertex(regToConquerDescriptor, g), boost::vertex(regConqueredByPlater, g), g).second;
 			
 				if (isAdj) {
-					playerConquering->conquers(reg);
+					g[regionIndex] = playerConquering->conquers(reg);
 					foundAdjRegion = isAdj;
 					return true;
 				}
@@ -61,13 +62,18 @@ bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering) {
 	else {
 		if (reg->isEdge()) {
 			int numberOfRaceTokens = reg->raceTokens.size();
+			
+			if ( !playerConquering->getName().compare(reg->ownedBy)){
+				std::cout << "Imposible to conquer region. You already own this region" << std::endl;
+				return false;
+			}
 			std::cout << "[Player " << playerConquering->getName() << "] This region is already conquered and has " << numberOfRaceTokens << " tokens on it. You will roll a dice!" << std::endl;
 			int numberRolled = playerConquering->getRollingDiceFacility()->roll();
 			std::cout << "The dice shows a number " << numberRolled << std::endl;
 			std::cout << "You have " << playerConquering->getRaceTokens().size() << " tokens and rolled a number " << numberRolled << std::endl;
 			int numberOfTokensInRegion = reg->raceTokens.size();
 			if (numberOfTokensInRegion < (playerConquering->getRaceTokens().size() + numberRolled)) {
-				playerConquering->conquers(reg);
+				g[regionIndex] = playerConquering->conquers(reg);
 				return true;
 			}
 			else {
@@ -95,7 +101,7 @@ bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering) {
 					std::cout << "You have " << playerConquering->getRaceTokens().size() << " tokens and rolled a number " << numberRolled << std::endl;
 					int numberOfTokensInRegion = reg->raceTokens.size();
 					if (numberOfTokensInRegion < (playerConquering->getRaceTokens().size() + numberRolled)) {
-						playerConquering->conquers(reg);
+						g[regionIndex] = playerConquering->conquers(reg);
 						
 					}
 					else {
@@ -114,6 +120,7 @@ bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering) {
 		}
 		
 	}
+	this->gameMap->setGameMap(g);
 	return true;
 }
 

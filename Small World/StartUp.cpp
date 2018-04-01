@@ -52,6 +52,7 @@ std::vector<FantasyRaceBanner*> StartUp::getRaceBannersFromDeck() {
 		int randomPower;
 
 		while (keepLookingForRace) {
+			std::srand(std::time(0));
 			randomRace = (rand() % (int)Utils::NUMBER_OF_RACES);
 			if (raceOnBanner == 0 || std::find(takenRaces.begin(), takenRaces.end(), randomRace) == takenRaces.end()) {
 				keepLookingForRace = false;
@@ -59,6 +60,7 @@ std::vector<FantasyRaceBanner*> StartUp::getRaceBannersFromDeck() {
 		}
 
 		while (keepLookingForSpecialPower) {
+			std::srand(std::time(0));
 			randomPower = (rand() % (int)Utils::NUMBER_OF_SPECIAL_POWER_BADGES);
 			if (raceOnBanner == 0 || std::find(takenSpecialPowers.begin(), takenSpecialPowers.end(), randomPower) == takenSpecialPowers.end()) {
 				keepLookingForSpecialPower = false;

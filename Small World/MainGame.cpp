@@ -219,7 +219,7 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 	int count = 0;
 	while (this->currentGameTurnPosition <= this->gameTurnRack) {
 		for (int player = startPlayerIndex; player < this->players.size(); ++player) {
-			std::cout << "Player [ " << player << "] turn # " << currentGameTurnPosition << std::endl;
+			std::cout << "Player [ " << player  << " : " << this->players[player]->getName() << "] turn # " << currentGameTurnPosition << std::endl;
 
 			if (player == startPlayerIndex) {
 				this->currentGameTurnPosition++;
@@ -230,7 +230,7 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 				while (keepConquering) {
 					mapConquerer->attemptToConquerRegion(this->players[player]);
 					if (this->players[player]->getRaceTokens().size() > 0) {
-						std::cout << "Player [ " << player << "] Do you want to keep conquering? Type 1 for yes or 0 for no " << std::endl;
+						std::cout << "Player [ #" << player << " : " << this->players[player]->getName() << "] Do you want to keep conquering? Type 1 for yes or 0 for no " << std::endl;
 						int userInput;
 						std::cin >> userInput;
 						if (userInput == 0) {
@@ -238,7 +238,8 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 						}
 					}
 					else {
-						std::cout << "Player [ " << player << "] You don't have more tokens to keep conquering at the moment " << std::endl;
+						std::cout << "Player [ #" << player << " : " << this->players[player]->getName() << "] You don't have more tokens to keep conquering at the moment " << std::endl;
+						keepConquering = false;
 
 					}
 				}

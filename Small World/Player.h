@@ -24,7 +24,7 @@ public:
 	Player();
 	Player(std::string);
 	int picks_race(std::vector<FantasyRaceBanner*>);
-	void conquers(Region*);
+	Region& conquers(Region*);
 	void scores();
 	void setName(std::string);
 	FantasyRaceBanner* getFantasyRaceBanner();

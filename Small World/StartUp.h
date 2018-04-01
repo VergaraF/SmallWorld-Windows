@@ -9,6 +9,7 @@
 #include <boost/graph/undirected_graph.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 #include "MapConquerer.h"
+#include <ctime>
 
 using namespace boost;
 typedef property_map<Graph, vertex_index_t>::type IndexMap;

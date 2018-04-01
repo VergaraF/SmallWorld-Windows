@@ -11,6 +11,7 @@
 #include<iostream>
 #include<string>
 #include <sstream>
+#include <ctime>
 
 const static int numbersOnDice[6] = {0, 0, 0, 1 ,2 ,3};
 //static int numbersRolled[4] = { 0,0,0,0 };

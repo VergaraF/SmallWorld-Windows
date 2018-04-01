@@ -573,7 +573,8 @@ void GameMap::makeRegionConnection(vertex_d region1, vertex_d region2) {
 vertex_d GameMap::addRegion(Region reg) {
 	std::cout << "Adding region to the map" << std::endl;
 	vertex_d regionVertex = boost::add_vertex(this->gameMap);
-	this->gameMap[regionVertex].setRegionIndex(reg.getIndex());
+	//this->gameMap[regionVertex].setRegionIndex(reg.getIndex());
+	this->gameMap[regionVertex] = reg;
 	return regionVertex;
 }
 

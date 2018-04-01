@@ -42,7 +42,7 @@ int Player::picks_race(std::vector<FantasyRaceBanner*> banners)
 	return userInput;
 }
 
-void Player::conquers(Region* regionConquered) 
+Region& Player::conquers(Region* regionConquered) 
 {
 	this->conqueredRegions.push_back(regionConquered);
 	regionConquered->hasBeenConquered(true);
@@ -60,6 +60,7 @@ void Player::conquers(Region* regionConquered)
 		std::cout << "You don't have enough tokens to perform this action";
 	}
 	std::cout << "Tokens placed." << std::endl;
+	return *regionConquered;
 }
 
 void Player::scores() 

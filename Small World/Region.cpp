@@ -58,14 +58,17 @@ void Region::setRegionType(RegionType type)
 	switch (type) {
 	case RegionType::WATER: {
 		this->waterType = true;
+		return;
 		break;
 	}
 	case RegionType::EDGE: {
 		this->edgeType = true;
+		return;
 		break;
 	}
 	case RegionType::MOUNTAIN: {
 		this->mountainType = true;
+		return;
 		break;
 	}
 	}

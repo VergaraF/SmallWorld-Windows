@@ -35,6 +35,7 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 	std::string token;
 	while (std::getline(fileContents, line))
 	{
+		Region* reg = new Region();
 		for (std::istringstream stringstream(line); stringstream >> token;) {
 			lineTokens.push_back(token);
 		}
@@ -64,7 +65,7 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 			neighbourRegions.push_back(tempInt);
 		}
 
-		Region* reg = new Region();
+		
 
 		std::transform(regionType.begin(), regionType.end(), regionType.begin(), ::tolower);
 		std::transform(isEdge.begin(), isEdge.end(), isEdge.begin(), ::tolower);

@@ -32,22 +32,26 @@ bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering) {
 	
 		if (reg->isEdge()) {
 			g[regionIndex] = playerConquering->conquers(reg);
+			this->gameMap->setGameMap(g);
 		
 		}
 		else {
-			Region tempReg;
+			Region* tempReg;
 			bool foundAdjRegion = false;
+			std::vector<Region*> currentRegions = playerConquering->getConqueredRegions();
 			for (int i = 0; i < playerConquering->getConqueredRegions().size(); ++i){
-				tempReg = *(playerConquering->getConqueredRegions()[i]);
+				
+				tempReg = currentRegions[i];
 				
 				vertex_d regToConquerDescriptor = regionIndex;
-				vertex_d regConqueredByPlater = tempReg.getIndex();
+				vertex_d regConqueredByPlater = tempReg->getIndex();
 				// boost::vertex(regOneDescriptor, g);
 					//tempReg.getIndex();
 				bool isAdj = boost::edge(boost::vertex(regToConquerDescriptor, g), boost::vertex(regConqueredByPlater, g), g).second;
 			
 				if (isAdj) {
 					g[regionIndex] = playerConquering->conquers(reg);
+					this->gameMap->setGameMap(g);
 					foundAdjRegion = isAdj;
 					return true;
 				}
@@ -74,6 +78,7 @@ bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering) {
 			int numberOfTokensInRegion = reg->raceTokens.size();
 			if (numberOfTokensInRegion < (playerConquering->getRaceTokens().size() + numberRolled)) {
 				g[regionIndex] = playerConquering->conquers(reg);
+				this->gameMap->setGameMap(g);
 				return true;
 			}
 			else {
@@ -102,6 +107,7 @@ bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering) {
 					int numberOfTokensInRegion = reg->raceTokens.size();
 					if (numberOfTokensInRegion < (playerConquering->getRaceTokens().size() + numberRolled)) {
 						g[regionIndex] = playerConquering->conquers(reg);
+						this->gameMap->setGameMap(g);
 						
 					}
 					else {

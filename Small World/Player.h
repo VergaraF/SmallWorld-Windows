@@ -38,14 +38,13 @@ public:
 	int gameTurnMarkerPosition;
 	std::string getName();
 	void giveRaceTokens(RaceType);
-
+	std::vector<Region*> conqueredRegions;
 private:
 	std::string name;
 	FantasyRaceBanner* fantasyRaceBanner;
 	FantasyRaceBanner* secondFantasyRaceBanner;
 	SummarySheet* summarySheet;
 	Dice* rollingDiceFacility;
-	std::vector<Region*> conqueredRegions;
 	std::vector<Coin*> coins;
 	std::vector<MatchingRaceToken*> raceTokens;
 	int score;

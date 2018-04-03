@@ -251,8 +251,6 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 				std::cin >> userInput;
 				if (userInput == 1) {
 					int indexOfRaceBannerChose = this->players[player]->goInDecline(racesAvailable);
-					//[TODO] FIX: known bug, it may still give races that were given already
-					//racesAvailable = this->startUp->getRaceBannersFromDeck(this->startUp->takenRaces, this->startUp->takenSpecialPowers);
 					racesAvailable = this->startUp->getRaceBannersFromDeck();
 				}
 				else if (userInput == 0) {
@@ -281,7 +279,7 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 			std::cout << "You can't conquer more regions at the moment. Do you want to redeploy your troops ? press 1 for yes, 0 for no" << std::endl;
 			int userInput;
 			std::cin >> userInput;
-			if (userInput == 0) {
+			if (userInput == 1) {
 				mapConquerer->redeployTroops(this->players[player]);
 			}
 

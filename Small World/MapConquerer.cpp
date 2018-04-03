@@ -83,6 +83,16 @@ bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering, int 
 				}
 				else {
 					std::cout << "This region was owned by : " << reg->ownedBy << std::endl;
+					for (int i = 0; i < players.size(); ++i) {
+						if (!players[i]->getName().compare(reg->ownedBy)) {
+							for (int j = 0; j < players[i]->conqueredRegions.size(); ++j) {
+								if( players[i]->conqueredRegions[j]->getIndex() == reg->getIndex()) {
+									players[i]->conqueredRegions.erase(players[i]->conqueredRegions.begin() + j);
+									break;
+								}
+							}
+						}
+					}
 				}
 			//	std::cout << MainGame().players.size() << std::endl;
 				g[regionIndex] = playerConquering->conquers(reg);

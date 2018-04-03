@@ -7,10 +7,7 @@ StartUp::StartUp()
 	this->deck = new Deck(true);
 	this->startPlug = new StartPlug();
 	executeStartPlug();
-	//this->gameMap.getGameMap()[0].setTokens(1000);
 	setTokensOnRegions();
-//	int indexToStart = this->getStartingPlayer();
-//	std::cout << "Player " << indexToStart << " will start the match, as it has the most pointed ears" << std::endl;
 	this->mapConquerer = new MapConquerer(this->gameMap);
 
 }
@@ -99,6 +96,7 @@ void StartUp::setTokensOnRegions()
 	for (vp = vertices(*(this->gameMap->getGameMap())); vp.first != vp.second; ++vp.first) {
 		vertex_d ver = *vp.first;
 		this->vertex_descriptors.push_back(ver);
+
 		if (map[ver].containsLostTribe()) {
 			map[ver].setTokens(map[ver].getTokens() + 1);
 			map[ver].raceTokens.push_back(new LostTribeToken());
@@ -107,7 +105,12 @@ void StartUp::setTokensOnRegions()
 
 		if (map[ver].isMountain()) {
 			map[ver].propertyTokens.push_back(new GamePiece(GamePieceType::MOUNTAIN));
-			//TODO: do not forget to remove mountain tokens from the deck
+			for (int i = 0; i < this->deck->gamePieces.size(); ++i) {
+				if (this->deck->gamePieces[i]->getGamePiece() == GamePieceType::MOUNTAIN) {
+					this->deck->gamePieces.erase(this->deck->gamePieces.begin() + i);
+					break;
+				}
+			}
 		}
 	
 	}

@@ -96,7 +96,7 @@ FantasyRaceBanner * Player::getSecondFantasyRaceBanner()
 int Player::goInDecline(std::vector<FantasyRaceBanner*> banners)
 {
 	this->fantasyRaceBanner->setStatus(Status::DECLINE);
-
+	this->secondFantasyRaceBanner = this->fantasyRaceBanner;
 	std::cout << "Pick a race from the following. Enter the number for desired race: " << std::endl;
 	std::stringstream temp;
 	for (int i = 0; i < banners.size(); ++i) {
@@ -105,8 +105,8 @@ int Player::goInDecline(std::vector<FantasyRaceBanner*> banners)
 	std::cout << temp.str() << std::endl;
 	int userInput;
 	std::cin >> userInput;
-
 	this->fantasyRaceBanner = banners[userInput];
+	banners.erase(banners.begin() + userInput);
 	return userInput;
 }
 

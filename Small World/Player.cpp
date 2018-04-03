@@ -46,6 +46,8 @@ Region& Player::conquers(Region* regionConquered)
 {
 	regionConquered->hasBeenConquered(true);
 	regionConquered->ownedBy = this->name;
+	regionConquered->setTokens(0);
+	regionConquered->raceTokens.clear();
 	std::cout << "Congratulations, you have conquered a region! How many tokens do you want to put in it ? " << std::endl;
 	int userInput;
 	std::cin >> userInput;

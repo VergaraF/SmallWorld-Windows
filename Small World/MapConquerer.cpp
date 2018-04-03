@@ -12,16 +12,16 @@ MapConquerer::~MapConquerer()
 {
 }
 
-void MapConquerer::attemptToConquerRegion(Player* playerConquering)
+void MapConquerer::attemptToConquerRegion(Player* playerConquering, int playerIndex, std::vector<Player*> players)
 {
 	std::cout << "Please enter the region index that you'd like to conquer. " << std::endl
 		<< "Your map has " << this->gameMap->numberOfRegions << " to choose from" << std::endl;
 	int userInput;
 	std::cin >> userInput;
-	conquerRegion(userInput, playerConquering);
+	conquerRegion(userInput, playerConquering, playerIndex, players);
 }
 
-bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering) {
+bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering, int playerIndex, std::vector<Player*> players) {
 	//bool regionIsConquered;
 	Graph g = *(this->gameMap->getGameMap());
 	Region* reg = &g[regionIndex];
@@ -47,8 +47,8 @@ bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering) {
 				vertex_d regConqueredByPlater = tempReg->getIndex();
 				// boost::vertex(regOneDescriptor, g);
 					//tempReg.getIndex();
-				bool isAdj = boost::edge(boost::vertex(regToConquerDescriptor, g), boost::vertex(regConqueredByPlater, g), g).second;
-			
+				bool isAdj = boost::edge(regToConquerDescriptor, regConqueredByPlater, g).second;
+
 				if (isAdj) {
 					g[regionIndex] = playerConquering->conquers(reg);
 					this->gameMap->setGameMap(g);
@@ -71,12 +71,20 @@ bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering) {
 				std::cout << "Imposible to conquer region. You already own this region" << std::endl;
 				return false;
 			}
+			
 			std::cout << "[Player " << playerConquering->getName() << "] This region is already conquered and has " << numberOfRaceTokens << " tokens on it. You will roll a dice!" << std::endl;
 			int numberRolled = playerConquering->getRollingDiceFacility()->roll();
 			std::cout << "The dice shows a number " << numberRolled << std::endl;
 			std::cout << "You have " << playerConquering->getRaceTokens().size() << " tokens and rolled a number " << numberRolled << std::endl;
 			int numberOfTokensInRegion = reg->raceTokens.size();
 			if (numberOfTokensInRegion < (playerConquering->getRaceTokens().size() + numberRolled)) {
+				if (reg->containsLostTribe()) {
+					reg->setTribeOnRegion(false);
+				}
+				else {
+					std::cout << "This region was owned by : " << reg->ownedBy << std::endl;
+				}
+			//	std::cout << MainGame().players.size() << std::endl;
 				g[regionIndex] = playerConquering->conquers(reg);
 				this->gameMap->setGameMap(g);
 				return true;
@@ -96,7 +104,7 @@ bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering) {
 				vertex_d regConqueredByPlater = tempReg.getIndex();
 				// boost::vertex(regOneDescriptor, g);
 				//tempReg.getIndex();
-				bool isAdj = boost::edge(boost::vertex(regToConquerDescriptor, g), boost::vertex(regConqueredByPlater, g), g).second;
+				bool isAdj = boost::edge(regToConquerDescriptor, regConqueredByPlater, g).second;
 
 				if (isAdj) {
 					int numberOfRaceTokens = reg->raceTokens.size();

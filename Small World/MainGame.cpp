@@ -282,8 +282,8 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 			if (userInput == 1) {
 				mapConquerer->redeployTroops(this->players[player]);
 			}
-
-			this->players[player]->scores();
+			int currentScore = this->players[player]->scores();
+			std::cout << "Player [ #" << player << " : " << this->players[player]->getName() << "] has scored " <<  std::endl;
 
 			if (count > 1) {
 				isFirstTurn = false;

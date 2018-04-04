@@ -168,7 +168,7 @@ bool MapConquerer::redeployTroops(Player* player)
 		std::cin >> regionRecipient;
 		for (int i = 0; i < numberOfTokens; ++i) {
 			player->conqueredRegions[regionDonor]->raceTokens.pop_back();
-			player->conqueredRegions[regionRecipient]->raceTokens.push_back(new MatchingRaceToken(player->getFantasyRaceBanner()->getRace()->getRaceType));
+			player->conqueredRegions[regionRecipient]->raceTokens.push_back(new MatchingRaceToken(player->getFantasyRaceBanner()->getRace()->getRaceType()));
 		}
 		std::cout << "You moved " << numberOfTokens << " from region # " << regionDonor << " to region  # " << regionRecipient << std::endl;
 		std::cout << "Do you want to keep redeploying troops ? Press any number of yes, 0 to stop : " << std::endl;

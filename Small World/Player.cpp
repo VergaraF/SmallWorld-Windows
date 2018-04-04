@@ -14,6 +14,7 @@ Player::Player()
 	this->rollingDiceFacility = new Dice();
 	this->summarySheet = new SummarySheet();
 	this->gameTurnMarkerPosition = 0;
+	this->score = 0;
 
 }
 
@@ -25,6 +26,7 @@ Player::Player(std::string name)
 	this->rollingDiceFacility = new Dice();
 	this->summarySheet = new SummarySheet();
 	this->gameTurnMarkerPosition = 0;
+	this->score = 0;
 }
 
 int Player::picks_race(std::vector<FantasyRaceBanner*> banners) 
@@ -73,17 +75,16 @@ Region& Player::conquers(Region* regionConquered)
 	return *regionConquered;
 }
 
-void Player::scores() 
+int Player::scores() 
 {
 	//TODO: getr score from special powers
-	int temp = 0;
+	int temp =  this->score;
 	for (int region = 0; region < this->conqueredRegions.size(); ++region) {
 		temp += this->conqueredRegions[region]->raceTokens.size();
-
-
 	}
 
 	this->score = temp;
+	return temp;
 }
 
 void Player::setName(std::string name) 

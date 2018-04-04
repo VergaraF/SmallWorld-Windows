@@ -148,9 +148,36 @@ bool MapConquerer::conquerRegion(int regionIndex, Player* playerConquering, int 
 	return true;
 }
 
-bool MapConquerer::redeployTroops(Player *)
+bool MapConquerer::redeployTroops(Player* player)
 {
-	//TODO Redeploy troops implementation
+	bool keepRedeploying = true;
+	while (keepRedeploying) {
+		std::cout << "You have the current regions conquered with the following amount of tokens on each : " << std::endl;
+		for (int regionIndex = 0; regionIndex < player->conqueredRegions.size(); ++regionIndex) {
+			std::cout << "[ Region : " << regionIndex << " ] Tokens : " << player->conqueredRegions[regionIndex]->raceTokens.size() << std::endl;
+		}
+		std::cout << "Enter the number of region you'd like to switch tokens from : " << std::endl;
+		int regionDonor;
+		std::cin >> regionDonor;
+		std::cout << "Enter the number of tokens you'd like to move : " << std::endl;
+		int numberOfTokens;
+		std::cin >> numberOfTokens;
+		std::cout << "You want to move " << numberOfTokens << " tokens from region # " << regionDonor << std::endl;
+		std::cout << "Enter the number of the region you'd like to move your tokens TO : " << std::endl;
+		int regionRecipient;
+		std::cin >> regionRecipient;
+		for (int i = 0; i < numberOfTokens; ++i) {
+			player->conqueredRegions[regionDonor]->raceTokens.pop_back();
+			player->conqueredRegions[regionRecipient]->raceTokens.push_back(new MatchingRaceToken(player->getFantasyRaceBanner()->getRace()->getRaceType));
+		}
+		std::cout << "You moved " << numberOfTokens << " from region # " << regionDonor << " to region  # " << regionRecipient << std::endl;
+		std::cout << "Do you want to keep redeploying troops ? Press any number of yes, 0 to stop : " << std::endl;
+		int keepRedeployingDecision;
+		std::cin >> keepRedeployingDecision;
+		if (keepRedeployingDecision == 0) {
+			keepRedeploying = false;
+		}
+	}
 	return true;
 
 }

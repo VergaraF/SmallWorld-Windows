@@ -55,12 +55,20 @@ Region& Player::conquers(Region* regionConquered)
 		for (int i = 0; i < userInput; ++i) {
 			this->raceTokens.pop_back();
 			regionConquered->raceTokens.push_back(new MatchingRaceToken(this->fantasyRaceBanner->getRace()->getRaceType()));
+			
 		}
+		regionConquered->setTokens(userInput);
+		std::cout << "Tokens placed." << std::endl;
 	}
 	else {
-		std::cout << "You don't have enough tokens to perform this action";
+		std::cout << "You don't have enough tokens to perform this action. " << "You have " << this->raceTokens.size() << " available." << std::endl;
+		if (this->raceTokens.size() == 1) {
+			regionConquered->raceTokens.push_back(new MatchingRaceToken(this->fantasyRaceBanner->getRace()->getRaceType()));
+			this->raceTokens.pop_back();
+
+		}
 	}
-	std::cout << "Tokens placed." << std::endl;
+	
 	this->conqueredRegions.push_back(regionConquered);
 	return *regionConquered;
 }

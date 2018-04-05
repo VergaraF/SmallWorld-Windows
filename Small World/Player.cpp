@@ -67,11 +67,19 @@ Region& Player::conquers(Region* regionConquered)
 		if (this->raceTokens.size() == 1) {
 			regionConquered->raceTokens.push_back(new MatchingRaceToken(this->fantasyRaceBanner->getRace()->getRaceType()));
 			this->raceTokens.pop_back();
+		}
+		else {
+			for (int i = 0; i < this->raceTokens.size(); ++i) {
+				this->raceTokens.pop_back();
+				regionConquered->raceTokens.push_back(new MatchingRaceToken(this->fantasyRaceBanner->getRace()->getRaceType()));
 
+			}
+			regionConquered->setTokens(userInput);
+			std::cout << "You placed your remaining tokens in this region." << std::endl;
 		}
 	}
 	
-	this->conqueredRegions.push_back(regionConquered);
+	this->conqueredRegions.emplace_back(regionConquered);
 	return *regionConquered;
 }
 

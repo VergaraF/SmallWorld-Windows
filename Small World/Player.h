@@ -32,13 +32,13 @@ public:
 	int goInDecline(std::vector<FantasyRaceBanner*>);
 	SummarySheet* getSummarySheet();
 	Dice* getRollingDiceFacility();
-	std::vector<Region*> getConqueredRegions();
+	std::vector<Region> getConqueredRegions();
 	std::vector<Coin*> getCoins();
 	std::vector<MatchingRaceToken*> getRaceTokens();
 	int gameTurnMarkerPosition;
 	std::string getName();
 	void giveRaceTokens(RaceType);
-	std::vector<Region*> conqueredRegions;
+	std::vector<Region> conqueredRegions;
 private:
 	std::string name;
 	FantasyRaceBanner* fantasyRaceBanner;

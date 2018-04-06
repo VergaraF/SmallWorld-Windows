@@ -8,7 +8,7 @@ StartUp::StartUp()
 	this->startPlug = new StartPlug();
 	executeStartPlug();
 	setTokensOnRegions();
-	this->mapConquerer = new MapConquerer(this->gameMap);
+	this->mapConquerer = new MapConquerer(this->gameMap, this->startPlug->players);
 
 }
 void StartUp::executeStartPlug() {

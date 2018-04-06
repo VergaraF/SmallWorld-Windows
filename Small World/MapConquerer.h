@@ -6,11 +6,12 @@
 class MapConquerer
 {
 public:
-	MapConquerer(GameMap*);
+	MapConquerer(GameMap*, std::vector<Player*>);
 	~MapConquerer();
 	GameMap* gameMap;
-	void attemptToConquerRegion(Player*, int, std::vector<Player*>);
-	bool conquerRegion(int, Player*, int, std::vector<Player*>);
-	bool redeployTroops(Player*);
+	std::vector<Player*> playersInGame;
+	void attemptToConquerRegion(Player&, int);
+	bool conquerRegion(int, Player&, int);
+	bool redeployTroops(Player*, int, std::vector<Player*>&);
 };
 

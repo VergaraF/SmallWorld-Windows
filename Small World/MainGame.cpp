@@ -25,7 +25,7 @@ MainGame::MainGame()
 		break;
 	}
 	}
-	this->mapConquerer = new MapConquerer(this->startUp->getGameMap());
+	this->mapConquerer = this->startUp->mapConquerer;
 
 }
 
@@ -219,7 +219,7 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 	int count = 0;
 	int player = startPlayerIndex;
 	while (this->currentGameTurnPosition <= this->gameTurnRack) {
-		
+		mapConquerer->playersInGame = this->players;
 		while (player < this->players.size()) {
 			keepConquering = true;
 			if (player == startPlayerIndex && !isFirstTurn) {
@@ -230,9 +230,10 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 			count++;
 			if (isFirstTurn) {
 				while (keepConquering) {
-					mapConquerer->attemptToConquerRegion(this->players[player], player, this->players);
+					mapConquerer->attemptToConquerRegion(*(this->players[player]), player);
+					this->players = mapConquerer->playersInGame;
 					if (this->players[player]->getRaceTokens().size() > 0) {
-						std::cout << "Player [ #" << player << " : " << this->players[player]->getName() << "] Do you want to keep conquering? Type 1 for yes or 0 for no " << std::endl;
+ 						std::cout << "Player [ #" << player << " : " << this->players[player]->getName() << "] Do you want to keep conquering? Type 1 for yes or 0 for no " << std::endl;
 						int userInput;
 						std::cin >> userInput;
 						if (userInput == 0) {
@@ -255,7 +256,8 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 				}
 				else if (userInput == 0) {
 					while (keepConquering) {
-						mapConquerer->attemptToConquerRegion(this->players[player], player, this->players);
+						mapConquerer->attemptToConquerRegion(*this->players[player], player);
+						this->players = mapConquerer->playersInGame;
 						if (this->players[player]->getRaceTokens().size() > 0) {
 							std::cout << "Player [ #" << player << " : " << this->players[player]->getName() << "] Do you want to keep conquering? Type 1 for yes or 0 for no " << std::endl;
 							int userInput;
@@ -280,7 +282,7 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 			int userInput;
 			std::cin >> userInput;
 			if (userInput == 1) {
-				mapConquerer->redeployTroops(this->players[player]);
+				mapConquerer->redeployTroops(this->players[player], player, this->players);
 			}
 			int currentScore = this->players[player]->scores();
 			std::cout << "Player [ #" << player << " : " << this->players[player]->getName() << "] has scored " <<  std::endl;

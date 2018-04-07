@@ -10,6 +10,7 @@ int Observer::regionsOwnedForPlayerFive;
 
 std::vector<std::string> Observer::playerConquests;
 std::vector<int> Observer::playerCoins;
+std::vector<std::string> Observer::playerHands;
 
 void Observer::notifyNumberOfPlayers(int numOfPlayers) {
 	this->numberOfPlayersInGame = numOfPlayers;

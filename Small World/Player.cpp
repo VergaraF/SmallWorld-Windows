@@ -34,7 +34,7 @@ Player::Player(std::string name)
 //automatic is a flag that let's the player choose race automatic or manually (AI or manual player)
 int Player::picks_race(std::vector<FantasyRaceBanner*> banners, bool automatic) 
 {
-	this->obs->notifyAction("Player [" + this->name + "] is picking a race");
+	this->obs->notifyAction("[" + this->name + "] is picking a race");
 	if (!automatic) {
 		std::cout << "Pick a race from the following. Enter the number for desired race: " << std::endl;
 		std::stringstream temp;
@@ -63,6 +63,7 @@ int Player::picks_race(std::vector<FantasyRaceBanner*> banners, bool automatic)
 
 Region& Player::conquers(Region* regionConquered) 
 {
+	this->obs->notifyAction("[" + this->name + "] conquered a region");
 	regionConquered->hasBeenConquered(true);
 	regionConquered->ownedBy = this->name;
 	regionConquered->setTokens(0);
@@ -102,12 +103,14 @@ Region& Player::conquers(Region* regionConquered)
 int Player::scores() 
 {
 	//TODO: getr score from special powers
+	this->obs->notifyAction("[" + this->name + "] is scoring some points");
 	int temp =  this->score;
 	for (int region = 0; region < this->conqueredRegions.size(); ++region) {
 		temp += this->conqueredRegions[region].raceTokens.size();
 	}
 
 	this->score = temp;
+	this->obs->notifyCoins(temp);
 	return temp;
 }
 

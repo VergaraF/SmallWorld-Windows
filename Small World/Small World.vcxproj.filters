@@ -78,6 +78,9 @@
     <ClCompile Include="MapConquerer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Observer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dice.h">
@@ -141,6 +144,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MapConquerer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

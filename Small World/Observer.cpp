@@ -73,5 +73,8 @@ void Observer::notifyCoins(int coins) {
 	playerCoins.push_back(coins);
 }
 
+void Observer::notifyHand(std::string handString) {
+	playerHands.push_back(handString);
+}
 
 

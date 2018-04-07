@@ -15,6 +15,7 @@ Player::Player()
 	this->summarySheet = new SummarySheet();
 	this->gameTurnMarkerPosition = 0;
 	this->score = 0;
+	this->obs = new Observer();
 
 }
 
@@ -27,21 +28,37 @@ Player::Player(std::string name)
 	this->summarySheet = new SummarySheet();
 	this->gameTurnMarkerPosition = 0;
 	this->score = 0;
+	this->obs = new Observer();
 }
 
-int Player::picks_race(std::vector<FantasyRaceBanner*> banners) 
+//automatic is a flag that let's the player choose race automatic or manually (AI or manual player)
+int Player::picks_race(std::vector<FantasyRaceBanner*> banners, bool automatic) 
 {
-	std::cout << "Pick a race from the following. Enter the number for desired race: " << std::endl;
-	std::stringstream temp;
-	for (int i = 0; i < banners.size(); ++i) {
-		temp << "[" << i << "] " << banners[i]->getRace()->toString() << " : " << banners[i]->getPower()->toString() << std::endl;
-	}
-	std::cout << temp.str() << std::endl;
-	int userInput;
-	std::cin >> userInput;
+	this->obs->notifyAction("Player [" + this->name + "] is picking a race");
+	if (!automatic) {
+		std::cout << "Pick a race from the following. Enter the number for desired race: " << std::endl;
+		std::stringstream temp;
+		for (int i = 0; i < banners.size(); ++i) {
+			temp << "[" << i << "] " << banners[i]->getRace()->toString() << " : " << banners[i]->getPower()->toString() << std::endl;
+		}
+		std::cout << temp.str() << std::endl;
+		int userInput;
+		std::cin >> userInput;
 
-	this->fantasyRaceBanner = banners[userInput];
-	return userInput;
+		this->fantasyRaceBanner = banners[userInput];
+		std::string handStringRepresentation = banners[userInput]->getRace()->toString() + " " + banners[userInput]->getPower()->toString();
+		this->getObserver()->notifyHand(handStringRepresentation);
+		return userInput; //race picked
+	}
+	else {
+		// random selected race
+		std::cout << "Races available : " << std::endl;
+		std::stringstream temp;
+		for (int i = 0; i < banners.size(); ++i) {
+			temp << "[" << i << "] " << banners[i]->getRace()->toString() << " : " << banners[i]->getPower()->toString() << std::endl;
+		}
+		std::cout << temp.str() << std::endl;
+	}
 }
 
 Region& Player::conquers(Region* regionConquered) 
@@ -160,4 +177,17 @@ void Player::giveRaceTokens(RaceType raceType)
 {
 	this->raceTokens.push_back(new MatchingRaceToken(raceType));
 }
+
+Observer* Player::getObserver() {
+	return this->obs;
+}
+
+void Player::selectObserver()
+{
+}
+
+void Player::setObserver(Observer* obs) {
+	this->obs = obs;
+}
+
 

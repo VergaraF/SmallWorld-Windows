@@ -12,6 +12,7 @@ public:
 	virtual void notifyRegionsOwned(int) = 0;
 	virtual void notifyNumberOfPlayers(int) = 0;
 	virtual void notifyConquest(std::string) = 0;
+	virtual void notifyHand(std::string) = 0;
 	virtual void notifyCoins(int) = 0;
 
 	static int playerNumber;
@@ -26,6 +27,7 @@ public:
 	
 	static std::vector<std::string> playerConquests;
 	static std::vector<int> playerCoins;
+	static std::vector<std::string> playerHands;
 };
 
 class Observer : public ObserverInterface 
@@ -36,6 +38,7 @@ public:
 	void notifyRegionsOwned(int) override;
 	void notifyNumberOfPlayers(int) override;
 	void notifyConquest(std::string) override;
+	void notifyHand(std::string) override;
 	void notifyCoins(int) override;
 
 	static int playerNumber;
@@ -50,6 +53,7 @@ public:
 
 	static std::vector<std::string> playerConquests;
 	static std::vector<int> playerCoins;
+	static std::vector<std::string> playerHands;
 
 };
 

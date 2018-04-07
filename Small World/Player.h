@@ -14,6 +14,7 @@
 #include "Coin.h"
 #include "MatchingRaceToken.h"
 #include "Region.h"
+#include "Observer.h"
 
 #ifndef MODEL_PLAYER_H_
 #define MODEL_PLAYER_H_
@@ -23,7 +24,7 @@ class Player
 public:
 	Player();
 	Player(std::string);
-	int picks_race(std::vector<FantasyRaceBanner*>);
+	int picks_race(std::vector<FantasyRaceBanner*>, bool);
 	Region& conquers(Region*);
 	int scores();
 	void setName(std::string);
@@ -39,6 +40,11 @@ public:
 	std::string getName();
 	void giveRaceTokens(RaceType);
 	std::vector<Region> conqueredRegions;
+	Observer* obs;
+	void selectObserver();
+	void setObserver(Observer* observer);
+	Observer* getObserver();
+
 private:
 	std::string name;
 	FantasyRaceBanner* fantasyRaceBanner;

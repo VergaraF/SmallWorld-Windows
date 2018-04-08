@@ -131,6 +131,7 @@ FantasyRaceBanner * Player::getSecondFantasyRaceBanner()
 
 int Player::goInDecline(std::vector<FantasyRaceBanner*> banners)
 {
+	this->obs->notifyAction("[" + this->name + "] is going in decline and choosing his new race");
 	this->fantasyRaceBanner->setStatus(Status::DECLINE);
 	this->secondFantasyRaceBanner = this->fantasyRaceBanner;
 	std::cout << "Pick a race from the following. Enter the number for desired race: " << std::endl;
@@ -143,6 +144,8 @@ int Player::goInDecline(std::vector<FantasyRaceBanner*> banners)
 	std::cin >> userInput;
 	this->fantasyRaceBanner = banners[userInput];
 	banners.erase(banners.begin() + userInput);
+	std::string handStringRepresentation = banners[userInput]->getRace()->toString() + " " + banners[userInput]->getPower()->toString();
+	this->getObserver()->notifyHand(handStringRepresentation);
 	return userInput;
 }
 

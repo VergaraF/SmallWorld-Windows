@@ -34,7 +34,7 @@ Player::Player(std::string name)
 //automatic is a flag that let's the player choose race automatic or manually (AI or manual player)
 int Player::picks_race(std::vector<FantasyRaceBanner*> banners, bool automatic) 
 {
-	this->obs->notifyAction("[" + this->name + "] is picking a race");
+	this->obs->notifyPlayerAction("[" + this->name + "] is picking a race");
 	if (!automatic) {
 		std::cout << "Pick a race from the following. Enter the number for desired race: " << std::endl;
 		std::stringstream temp;
@@ -47,7 +47,7 @@ int Player::picks_race(std::vector<FantasyRaceBanner*> banners, bool automatic)
 
 		this->fantasyRaceBanner = banners[userInput];
 		std::string handStringRepresentation = banners[userInput]->getRace()->toString() + " " + banners[userInput]->getPower()->toString();
-		this->getObserver()->notifyHand(handStringRepresentation);
+		this->getObserver()->notifyPlayerHand(handStringRepresentation);
 		return userInput; //race picked
 	}
 	else {
@@ -63,7 +63,7 @@ int Player::picks_race(std::vector<FantasyRaceBanner*> banners, bool automatic)
 
 Region& Player::conquers(Region* regionConquered) 
 {
-	this->obs->notifyAction("[" + this->name + "] conquered a region");
+	this->obs->notifyPlayerAction("[" + this->name + "] conquered a region");
 	regionConquered->hasBeenConquered(true);
 	regionConquered->ownedBy = this->name;
 	regionConquered->setTokens(0);
@@ -96,21 +96,21 @@ Region& Player::conquers(Region* regionConquered)
 			std::cout << "You placed your remaining tokens in this region." << std::endl;
 		}
 	}
-	this->obs->notifyConquest("Conquered Region " + regionConquered->getIndex());
+	this->obs->notifyPlayerConquest("Conquered Region " + regionConquered->getIndex());
 	return *regionConquered;
 }
 
 int Player::scores() 
 {
 	//TODO: getr score from special powers
-	this->obs->notifyAction("[" + this->name + "] is scoring some points");
+	this->obs->notifyPlayerAction("[" + this->name + "] is scoring some points");
 	int temp =  this->score;
 	for (int region = 0; region < this->conqueredRegions.size(); ++region) {
 		temp += this->conqueredRegions[region].raceTokens.size();
 	}
 
 	this->score = temp;
-	this->obs->notifyCoins(temp);
+	this->obs->notifyPlayerCoins(temp);
 	return temp;
 }
 
@@ -131,7 +131,7 @@ FantasyRaceBanner * Player::getSecondFantasyRaceBanner()
 
 int Player::goInDecline(std::vector<FantasyRaceBanner*> banners)
 {
-	this->obs->notifyAction("[" + this->name + "] is going in decline and choosing his new race");
+	this->obs->notifyPlayerAction("[" + this->name + "] is going in decline and choosing his new race");
 	this->fantasyRaceBanner->setStatus(Status::DECLINE);
 	this->secondFantasyRaceBanner = this->fantasyRaceBanner;
 	std::cout << "Pick a race from the following. Enter the number for desired race: " << std::endl;
@@ -145,7 +145,7 @@ int Player::goInDecline(std::vector<FantasyRaceBanner*> banners)
 	this->fantasyRaceBanner = banners[userInput];
 	banners.erase(banners.begin() + userInput);
 	std::string handStringRepresentation = banners[userInput]->getRace()->toString() + " " + banners[userInput]->getPower()->toString();
-	this->getObserver()->notifyHand(handStringRepresentation);
+	this->getObserver()->notifyPlayerHand(handStringRepresentation);
 	return userInput;
 }
 

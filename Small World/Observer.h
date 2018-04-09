@@ -7,24 +7,21 @@
 class ObserverInterface
 {
 public:
-	virtual void notifyAction(std::string) = 0;
-	virtual void notifyPlayer(int) = 0;
+	virtual void notifyPlayerAction(std::string) = 0;
+	virtual void notifyObserverOfPlayer(int) = 0;
 	virtual void notifyRegionsOwned(int) = 0;
-	virtual void notifyNumberOfPlayers(int) = 0;
-	virtual void notifyConquest(std::string) = 0;
-	virtual void notifyHand(std::string) = 0;
-	virtual void notifyCoins(int) = 0;
-
+	virtual void notifyNumberOfPlayersInGame(int) = 0;
+	virtual void notifyPlayerConquest(std::string) = 0;
+	virtual void notifyPlayerHand(std::string) = 0;
+	virtual void notifyPlayerCoins(int) = 0;
 	static int playerNumber;
 	static int numberOfPlayersInGame;
 	static int numberOfRegionsOnMap;
-
 	static int regionsOwnedForPlayerOne;
 	static int regionsOwnedForPlayerTwo;
 	static int regionsOwnedForPlayerThree;
 	static int regionsOwnedForPlayerFour;
 	static int regionsOwnedForPlayerFive;
-	
 	static std::vector<std::string> playerConquests;
 	static std::vector<int> playerCoins;
 	static std::vector<std::string> playerHands;
@@ -33,27 +30,23 @@ public:
 class Observer : public ObserverInterface 
 {
 public:
-	void notifyAction(std::string) override;
-	void notifyPlayer(int) override;
+	void notifyPlayerAction(std::string) override;
+	void notifyObserverOfPlayer(int) override;
 	void notifyRegionsOwned(int) override;
-	void notifyNumberOfPlayers(int) override;
-	void notifyConquest(std::string) override;
-	void notifyHand(std::string) override;
-	void notifyCoins(int) override;
-
+	void notifyNumberOfPlayersInGame(int) override;
+	void notifyPlayerConquest(std::string) override;
+	void notifyPlayerHand(std::string) override;
+	void notifyPlayerCoins(int) override;
 	static int playerNumber;
 	static int numberOfPlayersInGame;
 	static int numberOfRegionsOnMap;
-
 	static int regionsOwnedForPlayerOne;
 	static int regionsOwnedForPlayerTwo;
 	static int regionsOwnedForPlayerThree;
 	static int regionsOwnedForPlayerFour;
 	static int regionsOwnedForPlayerFive;
-
 	static std::vector<std::string> playerConquests;
 	static std::vector<int> playerCoins;
 	static std::vector<std::string> playerHands;
-
 };
 

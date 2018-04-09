@@ -1,4 +1,5 @@
 #include "Observer.h"
+
 int Observer::playerNumber;
 int Observer::numberOfPlayersInGame;
 int Observer::numberOfRegionsOnMap;
@@ -7,12 +8,11 @@ int Observer::regionsOwnedForPlayerTwo;
 int Observer::regionsOwnedForPlayerThree;
 int Observer::regionsOwnedForPlayerFour;
 int Observer::regionsOwnedForPlayerFive;
-
 std::vector<std::string> Observer::playerConquests;
 std::vector<int> Observer::playerCoins;
 std::vector<std::string> Observer::playerHands;
 
-void Observer::notifyNumberOfPlayers(int numOfPlayers) {
+void Observer::notifyNumberOfPlayersInGame(int numOfPlayers) {
 	this->numberOfPlayersInGame = numOfPlayers;
 	if (numOfPlayers == 2) {
 		numberOfRegionsOnMap = (int)Regions::FOR_TWO_PLAYERS;
@@ -31,51 +31,51 @@ void Observer::notifyNumberOfPlayers(int numOfPlayers) {
 		numberOfRegionsOnMap = 0;
 	}
 }
-void Observer::notifyConquest(std::string conquests){
-	playerConquests.push_back(conquests);
+void Observer::notifyPlayerConquest(std::string conquests){
+	this->playerConquests.push_back(conquests);
 }
 
-void Observer::notifyAction(std::string currentPlayerAction) {
+void Observer::notifyPlayerAction(std::string currentPlayerAction) {
 	std::stringstream temp;
 	temp << "Player # " << playerNumber << currentPlayerAction << std::endl;
 	std::cout << temp.str() << std::endl;
 }
 
-void Observer::notifyPlayer(int player) {
-	playerNumber = player;
+void Observer::notifyObserverOfPlayer(int playerNum) {
+	this->playerNumber = playerNum;
 }
 
 void Observer::notifyRegionsOwned(int regionsOwnedByPlayer) {
 	switch(playerNumber) {
 	case 1: {
-		regionsOwnedForPlayerOne = regionsOwnedByPlayer;
+		this->regionsOwnedForPlayerOne = regionsOwnedByPlayer;
 		break;
 	}
 	case 2: {
-		regionsOwnedForPlayerTwo = regionsOwnedByPlayer;
+		this->regionsOwnedForPlayerTwo = regionsOwnedByPlayer;
 		break;
 	}
 	case 3: {
-		regionsOwnedForPlayerThree = regionsOwnedByPlayer;
+		this->regionsOwnedForPlayerThree = regionsOwnedByPlayer;
 		break;
 	}
 	case 4:{
-		regionsOwnedForPlayerFour = regionsOwnedByPlayer;
+		this->regionsOwnedForPlayerFour = regionsOwnedByPlayer;
 		break;
 	}
 	case 5: {
-		regionsOwnedForPlayerFive = regionsOwnedByPlayer;
+		this->regionsOwnedForPlayerFive = regionsOwnedByPlayer;
 	}
 	//throw exception
 	}	
 }
 
-void Observer::notifyCoins(int coins) {
-	playerCoins.push_back(coins);
+void Observer::notifyPlayerCoins(int coins) {
+	this->playerCoins.push_back(coins);
 }
 
-void Observer::notifyHand(std::string handString) {
-	playerHands.push_back(handString);
+void Observer::notifyPlayerHand(std::string handString) {
+	this->playerHands.push_back(handString);
 }
 
 

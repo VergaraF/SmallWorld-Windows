@@ -46,7 +46,42 @@ void StartPlug::createPlayers(int numOfPlayers)
 				this->players.push_back(new Player(name, true));
 			}
 			else {
-				this->players.push_back(new Player(name, false));
+				std::cout << "Enter the type of player of your opponent, choose one number from the following : " << std::endl;
+				std::cout << "[0] Moderate " << std::endl;
+				std::cout << "[1] Random " << std::endl;
+				std::cout << "[2] Aggressive " << std::endl;
+				std::cout << "[3] Defensive " << std::endl;
+				std::cout << "If no valid option is entered, a Random opponent wil be assigned! " << std::endl;
+				int userInput;
+				std::cin >> userInput;
+				if (userInput >= 0 && userInput < 4) {
+					switch (userInput) {
+					case 0: {
+						this->players.push_back(new ModeratePlayer(name, false));
+						break;
+					}
+					case 1: {
+						this->players.push_back(new RandomPlayer(name, false));
+						break;
+					}
+					case 2: {
+						this->players.push_back(new AggressivePlayer(name, false));
+						break;
+					}
+					case 3: {
+						this->players.push_back(new DefensivePlayer(name, false));
+						break;
+					}
+					default :
+						//throw exception, invalid entry
+						break;
+					}
+				}
+				else {
+					this->players.push_back(new RandomPlayer(name, false));
+
+				}
+
 			}
 		}
 		std::cout << numOfPlayers << " players created succesfully!" << std::endl;

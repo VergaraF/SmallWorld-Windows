@@ -113,10 +113,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AggressivePlayer.cpp" />
     <ClCompile Include="BasePlayer.cpp" />
     <ClCompile Include="Decorator.cpp" />
+    <ClCompile Include="DefensivePlayer.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MapConquerer.cpp" />
+    <ClCompile Include="ModeratePlayer.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="RandomPlayer.cpp" />
     <ClCompile Include="StartPlug.cpp" />
@@ -140,10 +143,13 @@
     <ClCompile Include="Token.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AggressivePlayer.h" />
     <ClInclude Include="BasePlayer.h" />
     <ClInclude Include="Decorator.h" />
+    <ClInclude Include="DefensivePlayer.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="MapConquerer.h" />
+    <ClInclude Include="ModeratePlayer.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="RandomPlayer.h" />
     <ClInclude Include="StartPlug.h" />

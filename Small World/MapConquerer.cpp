@@ -15,6 +15,7 @@ MapConquerer::~MapConquerer()
 
 void MapConquerer::attemptToConquerRegion(Player& playerConquering, int playerIndex, bool automated)
 {
+	bool indexToAvoid[80] = { false };
 	int userInput;
 	if (!automated) {
 		std::cout << "Please enter the region index that you'd like to conquer. " << std::endl
@@ -27,7 +28,12 @@ void MapConquerer::attemptToConquerRegion(Player& playerConquering, int playerIn
 			<< "The map has " << this->gameMap->numberOfRegions << " to choose from" << std::endl;
 		std::srand(std::time(0));
 		int userInput = rand() % this->gameMap->numberOfRegions;
-		conquerRegion(userInput - 1, playerConquering, playerIndex);
+		while (indexToAvoid[userInput]){
+			userInput = rand() % this->gameMap->numberOfRegions;
+		}
+		if (!conquerRegion(userInput - 1, playerConquering, playerIndex)) {
+			indexToAvoid[userInput] = true;
+		}
 	}
 }
 
@@ -46,6 +52,7 @@ bool MapConquerer::conquerRegion(int regionIndex, Player& playerConquering, int 
 			playerConquering.getObserver()->notifyRegionsOwned(playerConquering.conqueredRegions.size());
 			this->playersInGame.at(playerIndex) = &playerConquering;
 			this->gameMap->setGameMap(g);
+			return true;
 		}
 		else {
 			Region* tempReg;

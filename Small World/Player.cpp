@@ -94,7 +94,6 @@ Region& Player::conquers(Region* regionConquered)
 
 int Player::scores() 
 {
-	//TODO: getr score from special powers
 	this->obs->notifyPlayerAction("[" + this->name + "] is scoring some points");
 	int temp =  this->score;
 	for (int region = 0; region < this->conqueredRegions.size(); ++region) {

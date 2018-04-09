@@ -2,6 +2,10 @@
 
 #include "MapLoader.h"
 #include "Player.h"
+#include "AggressivePlayer.h"
+#include "ModeratePlayer.h"
+#include "RandomPlayer.h"
+#include "DefensivePlayer.h"
 #include "Deck.h"
 #include <filesystem>
 #include <iostream>

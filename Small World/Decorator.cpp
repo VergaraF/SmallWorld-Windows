@@ -116,8 +116,8 @@ void PlayerCoinObserver::notifyPlayerCoins(int coins) {
 	this->decoratorObserver->notifyPlayerCoins(coins);
 
 	std::stringstream temp;
-	for (int i = 0; i < this->playerHands.size(); i++) {
-		temp << "Player " << i + 1 << " has " << this->playerHands[i] << " coins." << std::endl;
+	for (int i = 0; i < this->playerCoins.size(); i++) {
+		temp << "Player " << i + 1 << " has " << this->playerCoins[i] << " coins." << std::endl;
 	}
 	std::cout << temp.str();
 }

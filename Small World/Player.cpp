@@ -96,7 +96,7 @@ Region& Player::conquers(Region* regionConquered)
 			std::cout << "You placed your remaining tokens in this region." << std::endl;
 		}
 	}
-	
+	this->obs->notifyConquest("Conquered Region " + regionConquered->getIndex());
 	return *regionConquered;
 }
 

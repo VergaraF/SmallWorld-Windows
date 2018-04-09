@@ -36,12 +36,18 @@ GameMap* StartPlug::loadMap()
 
 void StartPlug::createPlayers(int numOfPlayers)
 {
+	std::cout << "The first player name you enter will be your player. Choose your name carefully! " << std::endl;
 	if (numOfPlayers >= 2 && numOfPlayers <= 5) {
 		for (int player = 0; player < numOfPlayers; ++player) {
 			std::string name;
 			std::cout << "Enter player name :" << std::endl;
 			std::cin >> name;
-			this->players.push_back(new Player(name));
+			if (player == 0) {
+				this->players.push_back(new Player(name, true));
+			}
+			else {
+				this->players.push_back(new Player(name, false));
+			}
 		}
 		std::cout << numOfPlayers << " players created succesfully!" << std::endl;
 	}

@@ -163,10 +163,48 @@ bool MapConquerer::redeployTroops(Player* playerConquering, int playerIndex, std
 {
 	bool keepRedeploying = true;
 	while (keepRedeploying) {
+		std::cout << "You have " << playerConquering->getRaceTokens().size() << " tokens" << std::endl;
+
 		std::cout << "You have the current regions conquered with the following amount of tokens on each : " << std::endl;
 		for (int regionIndex = 0; regionIndex < playerConquering->conqueredRegions.size(); ++regionIndex) {
 			std::cout << "[ Region : " << regionIndex << " ] Tokens : " << playerConquering->conqueredRegions[regionIndex].raceTokens.size() << std::endl;
 		}
+
+		std::cout << "If you wish to place any owned tokens in any region please press 1, otherwise press any number : " << std::endl;
+
+		int userInput;
+		std::cin >> userInput;
+		bool keepDeploying = true;
+		if (userInput == 1) {
+			while (keepDeploying) {
+				std::cout << "Enter the number of region you'd like to place your tokens : " << std::endl;
+				std::cin >> userInput;
+				int numberOfTokens;
+				std::cout << "How many tokens do you want to deploy at that region? : " << std::endl;
+				std::cin >> numberOfTokens;
+				if (numberOfTokens <= playerConquering->conqueredRegions.size()) {
+					for (int i = 0; i < numberOfTokens; i++) {
+						playerConquering->conqueredRegions[userInput].raceTokens.push_back(new MatchingRaceToken(playerConquering->getFantasyRaceBanner()->getRace()->getRaceType()));
+						playerConquering->getRaceTokens().pop_back();
+					}
+					std::stringstream temp;
+					temp << " placed " << numberOfTokens << " on Region Index # " << playerConquering->conqueredRegions[userInput].getIndex();
+					temp << std::endl << "That region now has " << playerConquering->conqueredRegions[userInput].getTokens() << " tokens.";
+					playerConquering->getObserver()->notifyPlayerAction(temp.str());
+				}
+				else {
+					std::cout << "You don't have enough tokens to perform this action, try again. " << std::endl;
+				}
+
+				std::cout << "Do you want to keep deploying tokens to your conquered regions ? Press 0 for no, otherwise enter any number " << std::endl;
+				std::cin >> userInput;
+				if (userInput == 0) {
+					keepDeploying = false;
+				}
+			}
+		}
+
+		playerConquering->getObserver()->notifyPlayerAction("is redeploying some tokens ");
 		std::cout << "Enter the number of region you'd like to switch tokens from : " << std::endl;
 		int regionDonor;
 		std::cin >> regionDonor;

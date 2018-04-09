@@ -7,6 +7,8 @@ MainGame::MainGame()
 	this->startUp = new StartUp();
 	this->players = this->startUp->getPlayers();
 	int numberOfRegions = this->startUp->getGameMap()->numberOfRegions;
+	this->tokensGrantedAtEveryTurn = 6;
+
 	switch (numberOfRegions) {
 	case((int)Regions::FOR_TWO_PLAYERS): {
 		this->gameTurnRack = (int)GameTurnRack::EIGHT;
@@ -218,22 +220,36 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 	bool isFirstTurn = true;
 	int count = 0;
 	int player = startPlayerIndex;
-	while (this->currentGameTurnPosition <= this->gameTurnRack) {
+	int playerCount = 1;
+	bool playerNotified[5] = { false, false, false, false, false};
+	gameObserver.notifyNumberOfPlayersInGame(this->players.size());
+	while (this->currentGameTurnPosition < this->gameTurnRack) {
 		mapConquerer->playersInGame = this->players;
+
 		while (player < this->players.size()) {
 			keepConquering = true;
+
 			if (player == startPlayerIndex && !isFirstTurn) {
 				this->currentGameTurnPosition++;
 			}
-			std::cout << "Player [ #" << player << " : " << this->players[player]->getName() << "] turn # " << currentGameTurnPosition << std::endl;
 
+			std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] turn # " << currentGameTurnPosition << std::endl;
 			count++;
-			if (isFirstTurn) {
+
+			if (isFirstTurn) {		
+				if (!playerNotified[playerCount - 1]) {
+					if (playerCount <= this->players.size()) {
+						this->players[player]->getObserver()->notifyObserverOfPlayer(playerCount);
+						playerNotified[playerCount - 1] = true;
+						playerCount++;
+					}					
+				}
+				
 				while (keepConquering) {
 					mapConquerer->attemptToConquerRegion(*(this->players[player]), player);
 					this->players = mapConquerer->playersInGame;
 					if (this->players[player]->getRaceTokens().size() > 0) {
- 						std::cout << "Player [ #" << player << " : " << this->players[player]->getName() << "] Do you want to keep conquering? Type 1 for yes or 0 for no " << std::endl;
+ 						std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] Do you want to keep conquering? Type 1 for yes or 0 for no " << std::endl;
 						int userInput;
 						std::cin >> userInput;
 						if (userInput == 0) {
@@ -241,51 +257,60 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 						}
 					}
 					else {
-						std::cout << "Player [ #" << player << " : " << this->players[player]->getName() << "] You don't have more tokens to keep conquering at the moment " << std::endl;
+						std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] You don't have more tokens to keep conquering at the moment " << std::endl;
 						keepConquering = false;
 					}
 				}
 			}
 			else {
-				std::cout << "Player [ #" << player << " : " << this->players[player]->getName() << "] Do you want to go IN DECLINE, or keep conquering? Type 1 for decline or 0 for conquering " << std::endl;
-				int userInput;
-				std::cin >> userInput;
-				if (userInput == 1) {
-					int indexOfRaceBannerChose = this->players[player]->goInDecline(racesAvailable);
-					racesAvailable = this->startUp->getRaceBannersFromDeck();
+				//give every player 6 new tokens on every turn
+				
+				this->players[player]->getObserver()->notifyPlayerAction(" has been awarded with # of tokens : " + this->tokensGrantedAtEveryTurn);
+				for (int i = 0; i < 6; i++) {
+					this->players[player]->giveRaceTokens(this->players[player]->getFantasyRaceBanner()->getRace()->getRaceType());
 				}
-				else if (userInput == 0) {
-					while (keepConquering) {
-						mapConquerer->attemptToConquerRegion(*this->players[player], player);
-						this->players = mapConquerer->playersInGame;
-						if (this->players[player]->getRaceTokens().size() > 0) {
-							std::cout << "Player [ #" << player << " : " << this->players[player]->getName() << "] Do you want to keep conquering? Type 1 for yes or 0 for no " << std::endl;
-							int userInput;
-							std::cin >> userInput;
-							if (userInput == 0) {
+				int dontDoAnything;
+				std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] If you DO NOT want to conquer or go in decline, type 0. Otherwise, press any number. " << std::endl;
+				std::cin >> dontDoAnything;
+				if (dontDoAnything != 0) {
+					std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] Do you want to go IN DECLINE, or keep conquering? Type 1 for decline or 0 for conquering " << std::endl;
+					int userInput;
+					std::cin >> userInput;
+					if (userInput == 1) {
+						int indexOfRaceBannerChose = this->players[player]->goInDecline(racesAvailable);
+						racesAvailable = this->startUp->getRaceBannersFromDeck();
+					}
+					else if (userInput == 0) {
+						while (keepConquering) {
+							mapConquerer->attemptToConquerRegion(*this->players[player], player);
+							this->players = mapConquerer->playersInGame;
+							if (this->players[player]->getRaceTokens().size() > 0) {
+								std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] Do you want to keep conquering? Type 1 for yes or 0 for no " << std::endl;
+								int userInput;
+								std::cin >> userInput;
+								if (userInput == 0) {
+									keepConquering = false;
+								}
+							}
+							else {
+								std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] You don't have more tokens to keep conquering at the moment " << std::endl;
 								keepConquering = false;
 							}
 						}
-						else {
-							std::cout << "Player [ #" << player << " : " << this->players[player]->getName() << "] You don't have more tokens to keep conquering at the moment " << std::endl;
-							keepConquering = false;
-						}
 					}
-					//mapConquerer->attemptToConquerRegion(this->players[player]);
+					else {
+						std::cout << "Invalid entry." << std::endl;
+					}
 				}
-				else {
-					std::cout << "Invalid entry." << std::endl;
-				}
-			}
-
-			std::cout << "You can't conquer more regions at the moment. Do you want to redeploy your troops ? press 1 for yes, 0 for no" << std::endl;
+			}		
+			std::cout << "You can't conquer more regions at the moment or you chose not to. Do you want to redeploy (or deploy troops to your existing regions) your troops ? press 1 for yes, 0 for no" << std::endl;
 			int userInput;
 			std::cin >> userInput;
 			if (userInput == 1) {
 				mapConquerer->redeployTroops(this->players[player], player, this->players);
 			}
 			int currentScore = this->players[player]->scores();
-			std::cout << "Player [ #" << player << " : " << this->players[player]->getName() << "] has scored " <<  std::endl;
+			std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] has scored " <<  std::endl;
 
 			if (count > 1) {
 				isFirstTurn = false;
@@ -299,7 +324,7 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 			}
 		}
 	}
-	std::cout << "The game has finished! Winner is : " << "[Place_Holder]";
+	std::cout << "The game has finished! Winner is : " << "[Place_Holder]" << std::endl;
 }
 
 

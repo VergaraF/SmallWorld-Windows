@@ -19,7 +19,7 @@ Player::Player()
 
 }
 
-Player::Player(std::string name) 
+Player::Player(std::string name, bool isHuman = false) 
 {
 	this->name = name;
 	this->fantasyRaceBanner = new FantasyRaceBanner(RaceType::NONE, SpecialPowerType::BLANK);
@@ -29,6 +29,7 @@ Player::Player(std::string name)
 	this->gameTurnMarkerPosition = 0;
 	this->score = 0;
 	this->obs = new Observer();
+	this->isHuman = isHuman;
 }
 
 //automatic is a flag that let's the player choose race automatic or manually (AI or manual player)

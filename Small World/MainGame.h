@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "StartUp.h"
+#include "Observer.h"
 
 enum class GameTurnRack {
 	EIGHT = 8,
@@ -25,5 +26,8 @@ public:
 	std::vector<int> racesToAvoid;
 	std::vector<int> powersToAvoid;
 	void assignRaceTokenPerPlayer();
+	Observer gameObserver;
+private:
+	int tokensGrantedAtEveryTurn;
 };
 

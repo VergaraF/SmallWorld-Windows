@@ -23,7 +23,7 @@ class Player
 {
 public:
 	Player();
-	Player(std::string);
+	Player(std::string, bool);
 	int picks_race(std::vector<FantasyRaceBanner*>, bool);
 	Region& conquers(Region*);
 	int scores();
@@ -40,12 +40,13 @@ public:
 	std::string getName();
 	void giveRaceTokens(RaceType);
 	std::vector<Region> conqueredRegions;
-	Observer* obs;
 	void selectObserver();
 	void setObserver(Observer* observer);
 	Observer* getObserver();
+	bool isHuman;
 
 private:
+	Observer * obs;
 	std::string name;
 	FantasyRaceBanner* fantasyRaceBanner;
 	FantasyRaceBanner* secondFantasyRaceBanner;

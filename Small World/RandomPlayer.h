@@ -6,7 +6,7 @@ class RandomPlayer :
 {
 public:
 	RandomPlayer() : Player() {}
-	explicit RandomPlayer(std::string name) : Player(name) {}
+	explicit RandomPlayer(std::string name, bool isHuman = false) : Player(name, isHuman) {}
 	int picks_race(std::vector<FantasyRaceBanner*>) override;
 	Region& conquers(Region*) override;
 	int goInDecline(std::vector<FantasyRaceBanner*>) override;

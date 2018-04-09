@@ -15,10 +15,10 @@ class Player :
 {
 public:
 	Player();
-	Player(std::string);
+	Player(std::string, bool);
 	int picks_race(std::vector<FantasyRaceBanner*>) override;
 	Region& conquers(Region*) override;
-	int scores() override;
+	int scores();
 	void setName(std::string);
 	FantasyRaceBanner* getFantasyRaceBanner();
 	FantasyRaceBanner* getSecondFantasyRaceBanner();

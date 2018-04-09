@@ -113,6 +113,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BasePlayer.cpp" />
     <ClCompile Include="Decorator.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MapConquerer.cpp" />
@@ -139,6 +140,7 @@
     <ClCompile Include="Token.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BasePlayer.h" />
     <ClInclude Include="Decorator.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="MapConquerer.h" />

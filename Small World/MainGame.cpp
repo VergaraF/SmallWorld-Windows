@@ -228,23 +228,21 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 
 		while (player < this->players.size()) {
 			keepConquering = true;
-
+			if (!playerNotified[playerCount - 1]) {
+				if (playerCount <= this->players.size()) {
+					this->players[player]->getObserver()->notifyObserverOfPlayer(playerCount);
+					playerNotified[playerCount - 1] = true;
+					playerCount++;
+				}
+			}
 			if (player == startPlayerIndex && !isFirstTurn) {
 				this->currentGameTurnPosition++;
 			}
-
 			std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] turn # " << currentGameTurnPosition << std::endl;
 			count++;
+			this->players[player]->selectObserver();
 
-			if (isFirstTurn) {		
-				if (!playerNotified[playerCount - 1]) {
-					if (playerCount <= this->players.size()) {
-						this->players[player]->getObserver()->notifyObserverOfPlayer(playerCount);
-						playerNotified[playerCount - 1] = true;
-						playerCount++;
-					}					
-				}
-				
+			if (isFirstTurn) {			
 				while (keepConquering) {
 					mapConquerer->attemptToConquerRegion(*(this->players[player]), player);
 					this->players = mapConquerer->playersInGame;

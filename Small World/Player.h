@@ -15,6 +15,7 @@
 #include "MatchingRaceToken.h"
 #include "Region.h"
 #include "Observer.h"
+#include "Decorator.h"
 
 #ifndef MODEL_PLAYER_H_
 #define MODEL_PLAYER_H_
@@ -55,6 +56,7 @@ private:
 	std::vector<Coin*> coins;
 	std::vector<MatchingRaceToken*> raceTokens;
 	int score;
+	bool isSelectingObserver;
 };
 
 

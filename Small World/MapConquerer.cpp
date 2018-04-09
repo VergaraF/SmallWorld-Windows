@@ -35,6 +35,7 @@ bool MapConquerer::conquerRegion(int regionIndex, Player& playerConquering, int 
 		if (reg->isEdge()) {
 			g[regionIndex] = playerConquering.conquers(reg);
 			playerConquering.conqueredRegions.emplace_back(g[regionIndex]);
+			playerConquering.getObserver()->notifyRegionsOwned(playerConquering.conqueredRegions.size());
 			this->playersInGame.at(playerIndex) = &playerConquering;
 			this->gameMap->setGameMap(g);
 		}
@@ -55,6 +56,7 @@ bool MapConquerer::conquerRegion(int regionIndex, Player& playerConquering, int 
 					g[regionIndex] = playerConquering.conquers(reg);
 					playerConquering.conqueredRegions.emplace_back(g[regionIndex]);
 					this->playersInGame.at(playerIndex) = &playerConquering;
+					playerConquering.getObserver()->notifyRegionsOwned(playerConquering.conqueredRegions.size());
 					this->gameMap->setGameMap(g);
 					//this->playersInGame.at(playerIndex)
 					foundAdjRegion = isAdj;
@@ -105,6 +107,7 @@ bool MapConquerer::conquerRegion(int regionIndex, Player& playerConquering, int 
 				g[regionIndex] = playerConquering.conquers(reg);
 				playerConquering.conqueredRegions.emplace_back(g[regionIndex]);
 				this->playersInGame.at(playerIndex) = &playerConquering;
+				playerConquering.getObserver()->notifyRegionsOwned(playerConquering.conqueredRegions.size());
 				this->gameMap->setGameMap(g);
 				return true;
 			}
@@ -136,6 +139,7 @@ bool MapConquerer::conquerRegion(int regionIndex, Player& playerConquering, int 
 						g[regionIndex] = playerConquering.conquers(reg);
 						playerConquering.conqueredRegions.emplace_back(g[regionIndex]);
 						this->playersInGame.at(playerIndex) = &playerConquering;
+						playerConquering.getObserver()->notifyRegionsOwned(playerConquering.conqueredRegions.size());
 						this->gameMap->setGameMap(g);
 						
 					}

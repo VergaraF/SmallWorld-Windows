@@ -75,7 +75,7 @@ void MapOwnershipObserver::showCurrentMapOwnsership() {
 	double percentOfOwnershipForPlayerFour = this->getPercentageForPlayer(4);
 	double percentOfOwnershipForPlayerFive = this->getPercentageForPlayer(5);
 
-	double percentageOfFreeRegions = this->numberOfRegionsOnMap - (percentOfOwnershipForPlayerOne + percentOfOwnershipForPlayerTwo + percentOfOwnershipForPlayerThree + percentOfOwnershipForPlayerFour + percentOfOwnershipForPlayerFive);
+	double percentageOfFreeRegions = (double)100 - (percentOfOwnershipForPlayerOne + percentOfOwnershipForPlayerTwo + percentOfOwnershipForPlayerThree + percentOfOwnershipForPlayerFour + percentOfOwnershipForPlayerFive);
 	std::stringstream temp;
 	temp << "***************************************************************************************" << std::endl;
 	temp << "Regions occupied by player one : " << std::setprecision(2) << std::fixed << percentOfOwnershipForPlayerOne << " %" << std::endl;

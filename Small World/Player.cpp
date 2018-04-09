@@ -16,6 +16,7 @@ Player::Player()
 	this->gameTurnMarkerPosition = 0;
 	this->score = 0;
 	this->obs = new Observer();
+	this->isSelectingObserver = true;
 
 }
 
@@ -30,12 +31,13 @@ Player::Player(std::string name, bool isHuman = false)
 	this->score = 0;
 	this->obs = new Observer();
 	this->isHuman = isHuman;
+	this->isSelectingObserver = true;
 }
 
 //automatic is a flag that let's the player choose race automatic or manually (AI or manual player)
 int Player::picks_race(std::vector<FantasyRaceBanner*> banners, bool automatic) 
 {
-	this->obs->notifyPlayerAction("[" + this->name + "] is picking a race");
+	this->obs->notifyPlayerAction(" [" + this->name + "] is picking a race");
 	if (!automatic) {
 		std::cout << "Pick a race from the following. Enter the number for desired race: " << std::endl;
 		std::stringstream temp;
@@ -75,8 +77,7 @@ Region& Player::conquers(Region* regionConquered)
 	if (userInput <= this->raceTokens.size()) {
 		for (int i = 0; i < userInput; ++i) {
 			this->raceTokens.pop_back();
-			regionConquered->raceTokens.push_back(new MatchingRaceToken(this->fantasyRaceBanner->getRace()->getRaceType()));
-			
+			regionConquered->raceTokens.push_back(new MatchingRaceToken(this->fantasyRaceBanner->getRace()->getRaceType()));	
 		}
 		regionConquered->setTokens(userInput);
 		std::cout << "Tokens placed." << std::endl;
@@ -132,6 +133,7 @@ FantasyRaceBanner * Player::getSecondFantasyRaceBanner()
 
 int Player::goInDecline(std::vector<FantasyRaceBanner*> banners)
 {
+	this->obs->notifyRegionsOwned(this->conqueredRegions.size());
 	this->obs->notifyPlayerAction("[" + this->name + "] is going in decline and choosing his new race");
 	this->fantasyRaceBanner->setStatus(Status::DECLINE);
 	this->secondFantasyRaceBanner = this->fantasyRaceBanner;
@@ -191,6 +193,44 @@ Observer* Player::getObserver() {
 
 void Player::selectObserver()
 {
+	if (!this->isSelectingObserver) {
+		return;
+	}
+
+	this->obs->notifyPlayerAction(" is choosing what information to display. ");
+	std::cout << "Enter the number of the desired information you want to be displayed : " << std::endl;
+	std::cout << "[0] Basic game information " << std::endl;
+	std::cout << "[1] Map occupancy " << std::endl;
+	std::cout << "[2] Hands of players " << std::endl;
+	std::cout << "[3] Scored coins " << std::endl;
+	std::cout << "[4] Quit displaying this menu." << std::endl;
+
+	int userInput;
+	std::cin >> userInput;
+
+	if (userInput >= 0 && userInput < 5) {
+		switch (userInput) {
+		case (1): {
+			Observer* newObserver = new MapOwnershipObserver(this->obs);
+			this->obs = newObserver;
+			break;
+		}case (2): {
+			Observer* newObserver = new PlayerHandObserver(this->obs);
+			this->obs = newObserver;
+			break;
+		}case (3): {
+			Observer* newObserver = new PlayerCoinObserver(this->obs);
+			this->obs = newObserver;
+			break;
+		}case (4): {
+			this->isSelectingObserver = false;
+			break;
+		}
+		}
+	}
+	else {
+		std::cout << "Invalid entry, please make sure you enter a number from 0 to 4." << std::endl;
+	}
 }
 
 void Player::setObserver(Observer* obs) {

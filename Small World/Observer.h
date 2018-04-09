@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include "GameMap.h"
+#include <iomanip>
 
 class ObserverInterface
 {
@@ -27,7 +28,8 @@ public:
 	static std::vector<std::string> playerHands;
 };
 
-class Observer : public ObserverInterface 
+class Observer : 
+	public ObserverInterface 
 {
 public:
 	void notifyPlayerAction(std::string) override;

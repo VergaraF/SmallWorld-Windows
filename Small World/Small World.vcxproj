@@ -117,6 +117,7 @@
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MapConquerer.cpp" />
     <ClCompile Include="Observer.cpp" />
+    <ClCompile Include="RandomPlayer.cpp" />
     <ClCompile Include="StartPlug.cpp" />
     <ClCompile Include="StartUp.cpp" />
     <ClCompile Include="SummarySheet.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="MapConquerer.h" />
     <ClInclude Include="Observer.h" />
+    <ClInclude Include="RandomPlayer.h" />
     <ClInclude Include="StartPlug.h" />
     <ClInclude Include="StartUp.h" />
     <ClInclude Include="SummarySheet.h" />

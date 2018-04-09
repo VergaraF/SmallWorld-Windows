@@ -20,7 +20,7 @@ Player::Player()
 
 }
 
-Player::Player(std::string name, bool isHuman = false) 
+Player::Player(std::string name) 
 {
 	this->name = name;
 	this->fantasyRaceBanner = new FantasyRaceBanner(RaceType::NONE, SpecialPowerType::BLANK);
@@ -30,15 +30,13 @@ Player::Player(std::string name, bool isHuman = false)
 	this->gameTurnMarkerPosition = 0;
 	this->score = 0;
 	this->obs = new Observer();
-	this->isHuman = isHuman;
 	this->isSelectingObserver = true;
 }
 
 //automatic is a flag that let's the player choose race automatic or manually (AI or manual player)
-int Player::picks_race(std::vector<FantasyRaceBanner*> banners, bool automatic) 
+int Player::picks_race(std::vector<FantasyRaceBanner*> banners) 
 {
 	this->obs->notifyPlayerAction(" [" + this->name + "] is picking a race");
-	if (!automatic) {
 		std::cout << "Pick a race from the following. Enter the number for desired race: " << std::endl;
 		std::stringstream temp;
 		for (int i = 0; i < banners.size(); ++i) {
@@ -52,16 +50,6 @@ int Player::picks_race(std::vector<FantasyRaceBanner*> banners, bool automatic)
 		std::string handStringRepresentation = banners[userInput]->getRace()->toString() + " " + banners[userInput]->getPower()->toString();
 		this->getObserver()->notifyPlayerHand(handStringRepresentation);
 		return userInput; //race picked
-	}
-	else {
-		// random selected race
-		std::cout << "Races available : " << std::endl;
-		std::stringstream temp;
-		for (int i = 0; i < banners.size(); ++i) {
-			temp << "[" << i << "] " << banners[i]->getRace()->toString() << " : " << banners[i]->getPower()->toString() << std::endl;
-		}
-		std::cout << temp.str() << std::endl;
-	}
 }
 
 Region& Player::conquers(Region* regionConquered) 

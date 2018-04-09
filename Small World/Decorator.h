@@ -1,10 +1,10 @@
 #pragma once
 
 #include "Observer.h"
-#include <iomanip>
 
 
-class Decorator : public Observer
+class Decorator : 
+	public Observer
 {
 public:
 	explicit Decorator(Observer*);
@@ -18,7 +18,8 @@ public:
 	void notifyPlayerCoins(int) override;
 };
 
-class MapOwnershipObserver : public Decorator 
+class MapOwnershipObserver :
+	public Decorator 
 {
 public:
 	explicit MapOwnershipObserver(Observer* obs) : Decorator(obs) {}
@@ -29,14 +30,16 @@ private:
 };
 
 
-class PlayerHandObserver : public Decorator
+class PlayerHandObserver :
+	public Decorator
 {
 public:
 	explicit PlayerHandObserver(Observer* obs) : Decorator(obs) {}
 	void notifyPlayerHand(std::string) override;
 };
 
-class PlayerCoinObserver : public Decorator
+class PlayerCoinObserver : 
+	public Decorator
 {
 public:
 	explicit PlayerCoinObserver(Observer* obs) : Decorator(obs) {}

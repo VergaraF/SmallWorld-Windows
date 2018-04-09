@@ -44,7 +44,7 @@ void MainGame::letPlayersChooseRace()
 	std::vector<FantasyRaceBanner*> racesAvailable = this->startUp->raceBanners;
 
 	for (int player = 0; player < this->players.size(); ++player) {
-		int indexOfRaceBannerChose = this->players[player]->picks_race(racesAvailable, false);
+		int indexOfRaceBannerChose = this->players[player]->picks_race(racesAvailable);
 		racesToAvoid.push_back((int)this->players[player]->getFantasyRaceBanner()->getRace()->getRaceType());
 		powersToAvoid.push_back((int)this->players[player]->getFantasyRaceBanner()->getPower()->getType());
 		for (int raceIndex = 0; raceIndex < racesAvailable.size(); ++raceIndex) {

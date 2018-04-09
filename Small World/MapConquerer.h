@@ -10,7 +10,7 @@ public:
 	~MapConquerer();
 	GameMap* gameMap;
 	std::vector<Player*> playersInGame;
-	void attemptToConquerRegion(Player&, int);
+	void attemptToConquerRegion(Player&, int, bool);
 	bool conquerRegion(int, Player&, int);
 	bool redeployTroops(Player*, int, std::vector<Player*>&);
 };

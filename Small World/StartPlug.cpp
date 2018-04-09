@@ -43,10 +43,10 @@ void StartPlug::createPlayers(int numOfPlayers)
 			std::cout << "Enter player name :" << std::endl;
 			std::cin >> name;
 			if (player == 0) {
-				this->players.push_back(new Player(name, true));
+				this->players.push_back(new Player(name));
 			}
 			else {
-				this->players.push_back(new Player(name, false));
+				this->players.push_back(new Player(name));
 			}
 		}
 		std::cout << numOfPlayers << " players created succesfully!" << std::endl;

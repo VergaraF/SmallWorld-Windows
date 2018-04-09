@@ -5,33 +5,24 @@
  *      Author: fvergara
  */
 
-#include <iostream>
-#include <vector>
-#include "Dice.h"
-#include "GameMap.h"
-#include "FantasyRaceBanner.h"
-#include "SummarySheet.h"
-#include "Coin.h"
-#include "MatchingRaceToken.h"
-#include "Region.h"
-#include "Observer.h"
-#include "Decorator.h"
+#include "BasePlayer.h"
 
 #ifndef MODEL_PLAYER_H_
 #define MODEL_PLAYER_H_
 
-class Player
+class Player :
+	public BasePlayer
 {
 public:
 	Player();
-	Player(std::string, bool);
-	int picks_race(std::vector<FantasyRaceBanner*>, bool);
-	Region& conquers(Region*);
-	int scores();
+	Player(std::string);
+	int picks_race(std::vector<FantasyRaceBanner*>) override;
+	Region& conquers(Region*) override;
+	int scores() override;
 	void setName(std::string);
 	FantasyRaceBanner* getFantasyRaceBanner();
 	FantasyRaceBanner* getSecondFantasyRaceBanner();
-	int goInDecline(std::vector<FantasyRaceBanner*>);
+	int goInDecline(std::vector<FantasyRaceBanner*>) override;
 	SummarySheet* getSummarySheet();
 	Dice* getRollingDiceFacility();
 	std::vector<Region> getConqueredRegions();
@@ -46,8 +37,7 @@ public:
 	Observer* getObserver();
 	bool isHuman;
 
-private:
-	Observer * obs;
+protected:
 	std::string name;
 	FantasyRaceBanner* fantasyRaceBanner;
 	FantasyRaceBanner* secondFantasyRaceBanner;
@@ -57,6 +47,7 @@ private:
 	std::vector<MatchingRaceToken*> raceTokens;
 	int score;
 	bool isSelectingObserver;
+	Observer* obs;
 };
 
 

@@ -13,14 +13,22 @@ MapConquerer::~MapConquerer()
 {
 }
 
-void MapConquerer::attemptToConquerRegion(Player& playerConquering, int playerIndex)
+void MapConquerer::attemptToConquerRegion(Player& playerConquering, int playerIndex, bool automated)
 {
-//	Player* playerConqueringx = this->playersInGame[playerIndex];
-	std::cout << "Please enter the region index that you'd like to conquer. " << std::endl
-		<< "Your map has " << this->gameMap->numberOfRegions << " to choose from" << std::endl;
 	int userInput;
-	std::cin >> userInput;
-	conquerRegion(userInput, playerConquering, playerIndex);
+	if (!automated) {
+		std::cout << "Please enter the region index that you'd like to conquer. " << std::endl
+			<< "Your map has " << this->gameMap->numberOfRegions << " to choose from" << std::endl;
+		std::cin >> userInput;
+		conquerRegion(userInput, playerConquering, playerIndex);
+	}
+	else {
+		std::cout << "Oponent will enter the region index that he'd like to conquer. " << std::endl
+			<< "The map has " << this->gameMap->numberOfRegions << " to choose from" << std::endl;
+		std::srand(std::time(0));
+		int userInput = rand() % this->gameMap->numberOfRegions;
+		conquerRegion(userInput - 1, playerConquering, playerIndex);
+	}
 }
 
 bool MapConquerer::conquerRegion(int regionIndex, Player& playerConquering, int playerIndex) {

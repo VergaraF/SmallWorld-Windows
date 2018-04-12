@@ -34,97 +34,106 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 	
 	std::string token;
 	while (std::getline(fileContents, line))
-	{
-		Region* reg = new Region();
-		for (std::istringstream stringstream(line); stringstream >> token;) {
-			lineTokens.push_back(token);
+	{ 
+		try {
+
+
+			Region* reg = new Region();
+			for (std::istringstream stringstream(line); stringstream >> token;) {
+				lineTokens.push_back(token);
+			}
+
+			std::stringstream temp(lineTokens[0]);
+			temp >> regionIndex;
+
+			if (!(regionIndex >= 0 && regionIndex <= 47)) {
+				std::cout << "Invalid region number, thus invalid map" << std::endl;
+				std::exit;
+			}
+
+			if (lineTokens.size() < 3) {
+				std::cout << "Invalid region map. A region must have an index, name and at least one neighbour" << std::endl;
+				std::exit;
+			}
+
+			regionType = lineTokens[1];
+			isEdge = lineTokens[2];
+
+			hasTribe = lineTokens[3];
+
+			int tempInt;
+			for (unsigned i = 4; i < lineTokens.size(); i++) {
+				std::stringstream temp(lineTokens[i]);
+				temp >> tempInt;
+				neighbourRegions.push_back(tempInt);
+			}
+
+
+
+			std::transform(regionType.begin(), regionType.end(), regionType.begin(), ::tolower);
+			std::transform(isEdge.begin(), isEdge.end(), isEdge.begin(), ::tolower);
+			std::transform(hasTribe.begin(), hasTribe.end(), hasTribe.begin(), ::tolower);
+
+
+			if (!regionType.compare("water")) {
+				reg->setRegionType(RegionType::WATER);
+			}
+			else if (!regionType.compare("mountain")) {
+				reg->setRegionType(RegionType::MOUNTAIN);
+			}
+			else if (!regionType.compare("none")) {
+				//do nothing
+			}
+			else {
+				std::cout << "Invalid region type" << std::endl;
+			}
+
+			if (!isEdge.compare("edge")) {
+				reg->setRegionType(RegionType::EDGE);
+			}
+			else if (!isEdge.compare("no")) {
+				//do nothing
+			}
+			else
+			{
+				std::cout << "Invalid map. A region can either be edge or not. " << std::endl;
+				std::exit;
+			}
+
+			if (!hasTribe.compare("tribe")) {
+				reg->setTribeOnRegion(true);
+			}
+			else if (!hasTribe.compare("notribe")) {
+				//do nothing
+			}
+			else {
+				std::cout << "Invalid map. A region can either have a tribe on it or not. " << std::endl;
+				std::exit;
+			}
+
+			//reg.neighborIndexes = neighbourRegions;
+			//create a new region for this line
+
+			//Region test = reg;
+			RegionToAdd regionToAdd;
+			regionToAdd.index = regionIndex;
+			regionToAdd.region = reg;
+			regionToAdd.region->setRegionIndex(regionToAdd.index);
+
+			for (int i = 0; i < neighbourRegions.size(); ++i) {
+				regionToAdd.neighbours.push_back(neighbourRegions[i]);
+			}
+			//regionToAdd.neighbours = neighbourRegions;
+
+			//and add it to the list of regions
+			allRegions.push_back(regionToAdd);
+
+			lineTokens.clear();
+			neighbourRegions.clear();
 		}
-
-		std::stringstream temp(lineTokens[0]);
-		temp >> regionIndex;
-
-		if (!(regionIndex >= 0 && regionIndex <= 47)) {
-			std::cout << "Invalid region number, thus invalid map" << std::endl;
-			std::exit;
+		catch (...) {
+			throw "Wrong map file submited. Operation failed. Reopen the game to try again."
 		}
-
-		if (lineTokens.size() < 3) {
-			std::cout << "Invalid region map. A region must have an index, name and at least one neighbour" << std::endl;
-			std::exit;
-		}
-
-		regionType= lineTokens[1];
-		isEdge = lineTokens[2];
-
-		hasTribe = lineTokens[3];
-
-		int tempInt;
-		for (unsigned i = 4; i < lineTokens.size(); i++) {
-			std::stringstream temp(lineTokens[i]);
-			temp >> tempInt;
-			neighbourRegions.push_back(tempInt);
-		}
-
-		
-
-		std::transform(regionType.begin(), regionType.end(), regionType.begin(), ::tolower);
-		std::transform(isEdge.begin(), isEdge.end(), isEdge.begin(), ::tolower);
-		std::transform(hasTribe.begin(), hasTribe.end(), hasTribe.begin(), ::tolower);
-
-		
-		if (!regionType.compare("water")) {
-			reg->setRegionType(RegionType::WATER);
-		}
-		else if (!regionType.compare("mountain")) {
-			reg->setRegionType(RegionType::MOUNTAIN);
-		}
-		else if (!regionType.compare("none")) {
-			//do nothing
-		}
-		else{
-			std::cout << "Invalid region type" << std::endl;
-		}
-
-		if (!isEdge.compare("edge")) {
-			reg->setRegionType(RegionType::EDGE);
-		}
-		else if (!isEdge.compare("no")) {
-			//do nothing
-		}else
-		{
-			std::cout << "Invalid map. A region can either be edge or not. " << std::endl;
-			std::exit;
-		}
-
-		if (!hasTribe.compare("tribe")) {
-			reg->setTribeOnRegion(true);
-		}
-		else if (!hasTribe.compare("notribe")) {
-			//do nothing
-		}else{
-			std::cout << "Invalid map. A region can either have a tribe on it or not. " << std::endl;
-			std::exit;
-		}
-
-		//reg.neighborIndexes = neighbourRegions;
-		//create a new region for this line
-
-		//Region test = reg;
-		RegionToAdd regionToAdd;
-		regionToAdd.index = regionIndex;
-		regionToAdd.region = reg;
-		regionToAdd.region->setRegionIndex(regionToAdd.index);
-		
-		for (int i = 0; i < neighbourRegions.size(); ++i) {
-			regionToAdd.neighbours.push_back(neighbourRegions[i]);
-		}
-		//regionToAdd.neighbours = neighbourRegions;
-
-		//and add it to the list of regions
-		allRegions.push_back(regionToAdd);
-
-		lineTokens.clear();
-		neighbourRegions.clear();
 	}
 
 	//create empty map

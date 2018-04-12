@@ -132,11 +132,9 @@ GameMap* MapLoader::readInfoFromFile(std::ifstream& fileContents) {
 			neighbourRegions.clear();
 		}
 		catch (...) {
-			throw "Wrong map file submited. Operation failed. Reopen the game to try again."
+			throw "Wrong map file submited. Operation failed. Reopen the game to try again.";
 		}
 	}
-
-	//create empty map
 	
 
 	std::vector<vertex_d> vertices;

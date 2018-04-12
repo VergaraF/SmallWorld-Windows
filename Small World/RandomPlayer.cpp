@@ -11,7 +11,7 @@ int RandomPlayer::picks_race(std::vector<FantasyRaceBanner*> banners)
 	std::cout << temp.str() << std::endl;
 	std::srand(std::time(0));
 	int userInput = rand() % banners.size();
-	this->fantasyRaceBanner = banners[userInput-1];
+	this->fantasyRaceBanner = banners[userInput];
 	std::string handStringRepresentation = banners[userInput]->getRace()->toString() + " " + banners[userInput]->getPower()->toString();
 	this->obs->notifyPlayerHand(handStringRepresentation);
 	return userInput; //race picked
@@ -27,8 +27,8 @@ Region& RandomPlayer::conquers(Region* regionConquered)
 	std::cout << "An random oponent conquered a region!  " << std::endl;
 	int userInput = rand() % this->raceTokens.size();
 	this->obs->notifyPlayerAction("[" + this->name + "] will place a random # of tokens");
-	if (userInput - 1 <= this->raceTokens.size()) {
-		for (int i = 0; i < userInput - 1; ++i) {
+	if (userInput <= this->raceTokens.size() && userInput != 0) {
+		for (int i = 0; i < userInput; ++i) {
 			this->raceTokens.pop_back();
 			regionConquered->raceTokens.push_back(new MatchingRaceToken(this->fantasyRaceBanner->getRace()->getRaceType()));
 		}

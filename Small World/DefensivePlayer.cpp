@@ -11,7 +11,7 @@ int DefensivePlayer::picks_race(std::vector<FantasyRaceBanner*> banners)
 	std::cout << temp.str() << std::endl;
 	std::srand(std::time(0));
 	int userInput = rand() % banners.size();
-	this->fantasyRaceBanner = banners[userInput - 1];
+	this->fantasyRaceBanner = banners[userInput];
 	std::string handStringRepresentation = banners[userInput]->getRace()->toString() + " " + banners[userInput]->getPower()->toString();
 	this->obs->notifyPlayerHand(handStringRepresentation);
 	return userInput; //race picked

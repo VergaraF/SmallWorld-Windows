@@ -28,9 +28,7 @@ MainGame::MainGame()
 	}
 	}
 	this->mapConquerer = this->startUp->mapConquerer;
-
 }
-
 
 MainGame::~MainGame()
 {
@@ -39,7 +37,6 @@ MainGame::~MainGame()
 void MainGame::letPlayersChooseRace()
 {
 	std::vector<FantasyRaceBanner*> temp;
-	//this->startUp->getRaceBannersFromDeck(racesToAvoid, powersToAvoid);
 	this->startUp->getRaceBannersFromDeck();
 	std::vector<FantasyRaceBanner*> racesAvailable = this->startUp->raceBanners;
 
@@ -48,14 +45,12 @@ void MainGame::letPlayersChooseRace()
 		racesToAvoid.push_back((int)this->players[player]->getFantasyRaceBanner()->getRace()->getRaceType());
 		powersToAvoid.push_back((int)this->players[player]->getFantasyRaceBanner()->getPower()->getType());
 		for (int raceIndex = 0; raceIndex < racesAvailable.size(); ++raceIndex) {
-
 			if (indexOfRaceBannerChose != raceIndex) {
 				temp.push_back(racesAvailable[raceIndex]);
 			}
 		}
 		racesAvailable = temp;
 		temp.clear();
-		//this->startUp->getRaceBannersFromDeck(racesToAvoid, powersToAvoid);
 	}
 }
 
@@ -73,89 +68,62 @@ void MainGame::assignRaceTokenPerPlayer()
 			numberOfCoinsToGive = 6;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
 				players[player]->giveRaceTokens(RaceType::ELVES);
-				//this->startUp->getDeck().
-				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
-
 			break;
 		}
 		case RaceType::ORCS: {
 			numberOfCoinsToGive = 5;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
 				players[player]->giveRaceTokens(RaceType::ORCS);
-				//this->startUp->getDeck().
-				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
-
 			break;
 		}
 		case RaceType::RATMEN: {
 			numberOfCoinsToGive = 8;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
 				players[player]->giveRaceTokens(RaceType::RATMEN);
-				//this->startUp->getDeck().
-				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
-
 			break;
 		}
 		case RaceType::TROLLS: {
 			numberOfCoinsToGive = 5;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
 				players[player]->giveRaceTokens(RaceType::TROLLS);
-				//this->startUp->getDeck().
-				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
-
 			break;
 		}
 		case RaceType::HALFLINGS: {
 			numberOfCoinsToGive = 6;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
 				players[player]->giveRaceTokens(RaceType::HALFLINGS);
-				//this->startUp->getDeck().
-				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
-
 			break;
 		}
 		case RaceType::WIZARDS: {
 			numberOfCoinsToGive = 5;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
-				//players[player]->getRaceTokens().push_back(new MatchingRaceToken(RaceType::WIZARDS));
 				players[player]->giveRaceTokens(RaceType::WIZARDS);
-				//this->startUp->getDeck().
-				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
-
 			break;
 		}
 		case RaceType::AMAZON: {
 			numberOfCoinsToGive = 6;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
 				players[player]->giveRaceTokens(RaceType::AMAZON);
-				//this->startUp->getDeck().
-				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
-
 			break;
 		}
 		case RaceType::SORCERERS: {
 			numberOfCoinsToGive = 5;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
 				players[player]->giveRaceTokens(RaceType::SORCERERS);
-				//this->startUp->getDeck().
-				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
-
 			break;
 		}
 		case RaceType::DWARVES: {
 			numberOfCoinsToGive = 3;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
 				players[player]->giveRaceTokens(RaceType::DWARVES);
-				//this->startUp->getDeck().
-				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
 
 			break;
@@ -164,52 +132,37 @@ void MainGame::assignRaceTokenPerPlayer()
 			numberOfCoinsToGive = 5;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
 				players[player]->giveRaceTokens(RaceType::GHOULS);
-				//this->startUp->getDeck().
-				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
-
 			break;
 		}
 		case RaceType::TRITONS: {
 			numberOfCoinsToGive = 6;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
 				players[player]->giveRaceTokens(RaceType::TRITONS);
-				//this->startUp->getDeck().
-				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
-
 			break;
 		}
 		case RaceType::GIANTS: {
 			numberOfCoinsToGive = 6;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
 				players[player]->giveRaceTokens(RaceType::GIANTS);
-				//this->startUp->getDeck().
-				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
-
 			break;
 		}
 		case RaceType::HUMANS: {
 			numberOfCoinsToGive = 5;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
 				players[player]->giveRaceTokens(RaceType::HUMANS);
-				//this->startUp->getDeck().
-				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
-
 			break;
 		}
 		case RaceType::SKELETONS: {
 			numberOfCoinsToGive = 6;
 			for (int i = 0; i < numberOfCoinsToGive; ++i) {
 				players[player]->giveRaceTokens(RaceType::SKELETONS);
-				//this->startUp->getDeck().
-				//TODO REMOVE TOKENS FROM DECK. Implement different race tokens stack as for now they are all combined
 			}
 			break;
 		}
-
 		}
 	}
 }
@@ -223,6 +176,7 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 	int playerCount = 1;
 	bool playerNotified[5] = { false, false, false, false, false };
 	gameObserver.notifyNumberOfPlayersInGame(this->players.size());
+
 	while (this->currentGameTurnPosition < this->gameTurnRack) {
 		mapConquerer->playersInGame = this->players;
 
@@ -255,7 +209,13 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 						std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] Do you want to keep conquering? Type 1 for yes or 0 for no " << std::endl;
 						int userInput;
 						if (this->players[player]->isHuman) {
-							std::cin >> userInput;
+							try {
+								std::cin >> userInput;
+							}
+							catch (...) {
+								throw "You entered an invalid input value. Small World was expecting a number but received something else.\n";
+								userInput = 0;
+							}
 							if (userInput == 0) {
 								keepConquering = false;
 							}
@@ -268,7 +228,7 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 				}
 			}
 			else {
-				this->players[player]->getObserver()->notifyPlayerAction(" has been awarded with # of tokens : " + this->tokensGrantedAtEveryTurn);
+				this->players[player]->getObserver()->notifyPlayerAction(" received some tokens at the beginning of his turn ");
 				for (int i = 0; i < 6; i++) {
 					this->players[player]->giveRaceTokens(this->players[player]->getFantasyRaceBanner()->getRace()->getRaceType());
 				}
@@ -280,32 +240,38 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 					if (dontDoAnything != 0) {
 						std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] Do you want to go IN DECLINE, or keep conquering? Type 1 for decline or 0 for conquering " << std::endl;
 						int userInput;
-						std::cin >> userInput;
-						if (userInput == 1) {
-							int indexOfRaceBannerChose = this->players[player]->goInDecline(racesAvailable);
-							racesAvailable = this->startUp->getRaceBannersFromDeck();
-						}
-						else if (userInput == 0) {
-							while (keepConquering) {
-								mapConquerer->attemptToConquerRegion(*this->players[player], player, false);
-								this->players = mapConquerer->playersInGame;
-								if (this->players[player]->getRaceTokens().size() > 0) {
-									std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] Do you want to keep conquering? Type 1 for yes or 0 for no " << std::endl;
-									int userInput;
-									std::cin >> userInput;
-									if (userInput == 0) {
+						try {
+							std::cin >> userInput;
+							if (userInput == 1) {
+								int indexOfRaceBannerChose = this->players[player]->goInDecline(racesAvailable);
+								racesAvailable = this->startUp->getRaceBannersFromDeck();
+							}
+							else if (userInput == 0) {
+								while (keepConquering) {
+									mapConquerer->attemptToConquerRegion(*this->players[player], player, false);
+									this->players = mapConquerer->playersInGame;
+									if (this->players[player]->getRaceTokens().size() > 0) {
+										std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] Do you want to keep conquering? Type 1 for yes or 0 for no " << std::endl;
+										int userInput;
+										std::cin >> userInput;
+										if (userInput == 0) {
+											keepConquering = false;
+										}
+									}
+									else {
+										std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] You don't have more tokens to keep conquering at the moment " << std::endl;
 										keepConquering = false;
 									}
 								}
-								else {
-									std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] You don't have more tokens to keep conquering at the moment " << std::endl;
-									keepConquering = false;
-								}
+							}
+							else {
+								std::cout << "You entered a wrong option that does not exist" << std::endl;
 							}
 						}
-						else {
-							std::cout << "Invalid entry." << std::endl;
+						catch(...){
+							throw "Invalid entry, you should enter an interger and not a character";
 						}
+						
 					}
 				}//player is a bot - always conquer
 				else {
@@ -318,14 +284,20 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 				std::cout << "You can't conquer more regions at the moment or you chose not to. Do you want to redeploy (or deploy troops to your existing regions) your troops ? press 1 for yes, 0 for no" << std::endl;
 				int userInput;
 				if (this->players[player]->isHuman) {
-					std::cin >> userInput;
+					try {
+						std::cin >> userInput;
+					}
+					catch (...) {
+						throw "There seems to be an error with your entry. You'll redeploy troops";
+						userInput = 1;
+					}
 					if (userInput == 1) {
 						mapConquerer->redeployTroops(this->players[player], player, this->players);
 					}
 				}
 			}
 			int currentScore = this->players[player]->scores();
-			std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] has scored " << std::endl;
+			std::cout << "Player [ on chair # " << player << " : " << this->players[player]->getName() << "] has scored some coins." << std::endl;
 
 			if (count > 1) {
 				isFirstTurn = false;

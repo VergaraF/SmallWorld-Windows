@@ -195,7 +195,14 @@ void Player::selectObserver()
 	std::cout << "[4] Quit displaying this menu." << std::endl;
 
 	int userInput;
-	std::cin >> userInput;
+	try {
+		std::cin >> userInput;
+
+	}
+	catch (...) {
+		throw "Bad entry, you'll be assigned the basic game information display \n";
+		userInput = 0;
+	}
 
 	if (userInput >= 0 && userInput < 5) {
 		switch (userInput) {

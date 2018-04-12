@@ -36,6 +36,7 @@ public:
 	void setObserver(Observer* observer);
 	Observer* getObserver();
 	bool isHuman;
+	int getScore();
 
 protected:
 	std::string name;

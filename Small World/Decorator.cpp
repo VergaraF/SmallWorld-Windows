@@ -117,7 +117,7 @@ void PlayerCoinObserver::notifyPlayerCoins(int coins) {
 
 	std::stringstream temp;
 	for (int i = 0; i < this->playerCoins.size(); i++) {
-		temp << "Player " << (i + i) % this->numberOfPlayersInGame << " has " << this->playerCoins[i] << " coins." << std::endl;
+		temp << "Player " << i % this->numberOfPlayersInGame << " has " << this->playerCoins[i] << " coins." << std::endl;
 	}
 	std::cout << temp.str();
 }

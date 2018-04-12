@@ -270,6 +270,7 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 						}
 						catch(...){
 							throw "Invalid entry, you should enter an interger and not a character";
+							keepConquering = false;
 						}
 						
 					}
@@ -311,7 +312,15 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 			}
 		}
 	}
-	std::cout << "The game has finished! Winner is : " << "[Place_Holder]" << std::endl;
+	int tempScore = 0;
+	int tempWinnerIndex = 0;
+	for (int i = 0; i < this->players.size(); ++i) {
+		if (this->players[i]->getScore() > tempScore) {
+			tempScore = this->players[i]->getScore();
+			tempWinnerIndex = i;
+		}
+	}
+	std::cout << "The game has finished!!!!!!" << std::endl << "[!] Winner is : " << this->players[tempWinnerIndex]->getName() << std::endl;
 }
 
 

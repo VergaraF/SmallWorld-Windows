@@ -133,7 +133,13 @@ int Player::goInDecline(std::vector<FantasyRaceBanner*> banners)
 	}
 	std::cout << temp.str() << std::endl;
 	int userInput;
-	std::cin >> userInput;
+	try {
+		std::cin >> userInput;
+	}
+	catch (...) {
+		throw "You didnt enter a valid number. You'll be assigned the race on the first [0] position \n";
+		userInput = 0;
+	}
 	this->fantasyRaceBanner = banners[userInput];
 	banners.erase(banners.begin() + userInput);
 	std::string handStringRepresentation = banners[userInput]->getRace()->toString() + " " + banners[userInput]->getPower()->toString();
@@ -233,4 +239,6 @@ void Player::setObserver(Observer* obs) {
 	this->obs = obs;
 }
 
-
+int Player::getScore() {
+	return this->score;
+}

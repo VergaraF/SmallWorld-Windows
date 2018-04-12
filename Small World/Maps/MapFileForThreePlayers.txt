@@ -1,0 +1,30 @@
+0 water edge notribe 1 7 12
+1 none edge tribe 2 7 8
+2 mountain edge notribe 3 8 9
+3 none edge notribe 4 9 10
+4 none edge tribe 5 10 11
+5 none edge notribe 6 11
+6 none edge tribe 11 16 17
+7 none no tribe 8 12
+8 none no notribe 9 12 13
+9 none no notribe 10 13 14
+10 none no tribe 11 14 15
+11 none no notribe 15 16
+12 mountain edge notribe 13 18
+13 none no notribe 14 18 19
+14 water no notribe 15 19 20 21
+15 mountain no notribe 16 21 22
+16 none no notribe 17 22 23
+17 mountain edge notribe 23 29
+18 none edge notribe 19 24 25
+19 none no notribe 20 25 26
+20 none no notribe 21 26 27
+21 none no tribe 22 27 28
+22 none no notribe 23 29
+23 none no tribe 28 29
+24 none edge notribe 25
+25 mountain edge notribe 26
+26 mountain edge notribe 27
+27 none edge notribe 28
+28 none edge tribe 29
+29 water edge notribe

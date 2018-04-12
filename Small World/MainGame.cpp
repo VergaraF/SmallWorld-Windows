@@ -175,6 +175,7 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 	int player = startPlayerIndex;
 	int playerCount = 1;
 	bool playerNotified[5] = { false, false, false, false, false };
+
 	gameObserver.notifyNumberOfPlayersInGame(this->players.size());
 
 	while (this->currentGameTurnPosition < this->gameTurnRack) {
@@ -325,12 +326,34 @@ void MainGame::playGameLoop(int startPlayerIndex) {
 
 
 int main() {
-	MainGame* newGame = new MainGame();
+	MainGame* firstGame = new MainGame();
+	MainGame* secondGame = new MainGame();
+	MainGame* thirdGame = new MainGame();
+	MainGame* fourthGame = new MainGame();
 
-	newGame->letPlayersChooseRace();
-	newGame->assignRaceTokenPerPlayer();
-	int firstPlayer = newGame->getFirstPlayerIndex();
-	newGame->playGameLoop(firstPlayer);
+	std::cout << "Starting first game!" << std::endl;
+	firstGame->letPlayersChooseRace();
+	firstGame->assignRaceTokenPerPlayer();
+	int firstPlayer = firstGame->getFirstPlayerIndex();
+	firstGame->playGameLoop(firstPlayer);
+
+	std::cout << "Starting second game!" << std::endl;
+	secondGame->letPlayersChooseRace();
+	secondGame->assignRaceTokenPerPlayer();
+	int firstPlayerForSecondGame = secondGame->getFirstPlayerIndex();
+	secondGame->playGameLoop(firstPlayerForSecondGame);
+
+	std::cout << "Starting third game!" << std::endl;
+	thirdGame->letPlayersChooseRace();
+	thirdGame->assignRaceTokenPerPlayer();
+	int firstPlayerForThirdGame = thirdGame->getFirstPlayerIndex();
+	thirdGame->playGameLoop(firstPlayerForThirdGame);
+
+	std::cout << "Starting fourth game!" << std::endl;
+	fourthGame->letPlayersChooseRace();
+	fourthGame->assignRaceTokenPerPlayer();
+	int firstPlayerForFourthGame = fourthGame->getFirstPlayerIndex();
+	fourthGame->playGameLoop(firstPlayerForFourthGame);
 }
 
 

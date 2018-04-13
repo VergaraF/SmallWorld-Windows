@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BasePlayer">
+    <Position X="0.5" Y="0.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>BasePlayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AggressivePlayer">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>AggressivePlayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player">
+    <Position X="2.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CABAAABAQAgAIAAoAAAYADIgACAEAADABKAEQQAiAIA=</HashCode>
+      <FileName>Player.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="summarySheet" />
+      <Field Name="rollingDiceFacility" />
+      <Field Name="fantasyRaceBanner" />
+      <Field Name="secondFantasyRaceBanner" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DefensivePlayer">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAIAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>DefensivePlayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModeratePlayer">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAQIA=</HashCode>
+      <FileName>ModeratePlayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RandomPlayer">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>RandomPlayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dice">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAACAAAAAAQAAAAAAAggAAAAAAAAAAAAAEAABA=</HashCode>
+      <FileName>Dice.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SummarySheet">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SummarySheet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Coin">
+    <Position X="9.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAABAAAAAAAACAAQAAAAAAAAAA=</HashCode>
+      <FileName>Coin.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FantasyRaceBanner">
+    <Position X="6.5" Y="3.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAEAAAABAAAIEAAAAAIAAAAEABEAAAAEAAAAAAAA=</HashCode>
+      <FileName>FantasyRaceBanner.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="race" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GameMap">
+    <Position X="0.5" Y="8.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAAEAAAABACAAAAAQAAIAAAAAAAAAQAAEQQAAAARAA=</HashCode>
+      <FileName>GameMap.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="gameMap" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StartPlug">
+    <Position X="4.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAABIAgAAACAAAA=</HashCode>
+      <FileName>StartPlug.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StartUp">
+    <Position X="7" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IQgAAAAACBAQAIABAAAAAEAAiAEAIEAIAAAQAQAACgA=</HashCode>
+      <FileName>StartUp.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="gameMap" />
+      <Field Name="startPlug" />
+      <Field Name="mapConquerer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Race">
+    <Position X="4" Y="12.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QAQAAEAAAAQAAAAAAAAABAAABAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Race.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="race" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Region">
+    <Position X="7" Y="12.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAGIAAAQiCEAAAIAAIAAMkAAAAAgIAAAEAQAKAAhEQA=</HashCode>
+      <FileName>Region.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapConquerer">
+    <Position X="10.5" Y="5.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAAABAAAAAAAQAAAAAAAABAAAAAAAACAQAAAAA=</HashCode>
+      <FileName>MapConquerer.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="gameMap" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MapLoader">
+    <Position X="9.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapLoader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainGame">
+    <Position X="9.25" Y="11.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>BBIAAAAAAAAAAAAAAACIAABgAAgAAABA4AABAACEAgA=</HashCode>
+      <FileName>MainGame.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="mapConquerer" />
+      <Field Name="startUp" />
+      <Field Name="gameObserver" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ObserverInterface">
+    <Position X="11.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AgAEgAAEAgAhEAAAAAQACAAAAAAAAIAAABAAEAAEATA=</HashCode>
+      <FileName>Observer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Observer">
+    <Position X="13" Y="7.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AgAEgAAEAgAhEAAAAAQACAAAAAAAAIAAABAAEAAEATA=</HashCode>
+      <FileName>Observer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Decorator">
+    <Position X="11" Y="17.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AgAEAAAAAAAhCAAAAAABCAAAAAAAAAAAAAAAAAAAASA=</HashCode>
+      <FileName>Decorator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapOwnershipObserver">
+    <Position X="10.75" Y="21.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAgACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Decorator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerHandObserver">
+    <Position X="8.75" Y="21.25" Width="1.75" />
+    <InheritanceLine Type="Decorator" FixedToPoint="true">
+      <Path>
+        <Point X="12.25" Y="20.281" />
+        <Point X="12.25" Y="20.875" />
+        <Point X="9.562" Y="20.875" />
+        <Point X="9.562" Y="21.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Decorator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerCoinObserver">
+    <Position X="13.5" Y="21.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Decorator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniqueSpecialPowerBadge">
+    <Position X="14" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAABAAAAQABAAAEAAAAIAAAAAA=</HashCode>
+      <FileName>UniqueSpecialPowerBadge.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Deck">
+    <Position X="0.5" Y="17.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAASAABCFAAAAAAAAAIBAAAAgACQ=</HashCode>
+      <FileName>Deck.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePiece">
+    <Position X="3.25" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAASCAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GamePiece.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LostTribeToken">
+    <Position X="3" Y="21" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAA=</HashCode>
+      <FileName>LostTribeToken.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MatchingRaceToken">
+    <Position X="6.25" Y="21" Width="2.25" />
+    <InheritanceLine Type="Token" FixedFromPoint="true">
+      <Path>
+        <Point X="5.5" Y="20.812" />
+        <Point X="5.5" Y="22.035" />
+        <Point X="6.25" Y="22.035" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAABAAAAABAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MatchingRaceToken.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Token" Collapsed="true">
+    <Position X="4.5" Y="20.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAAA=</HashCode>
+      <FileName>Token.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="RegionToAdd">
+    <Position X="9.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>MapLoader.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="Graph" Collapsed="true">
+    <Position X="1" Y="16.75" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameMap.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="vertex_d" Collapsed="true">
+    <Position X="0.5" Y="16" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameMap.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="edge_d" Collapsed="true">
+    <Position X="2.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameMap.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="IndexMap" Collapsed="true">
+    <Position X="3" Y="9.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StartUp.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="Status">
+    <Position X="2.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>FantasyRaceBanner.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Players">
+    <Position X="4.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAACAAAAAAAIAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>GameMap.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Regions">
+    <Position X="3" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAEAgAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameMap.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RaceType">
+    <Position X="0.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAIAAAEACABAAE0AAEBAAAAAAQAAAAAABgAAAAAA=</HashCode>
+      <FileName>Race.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Utils">
+    <Position X="6.5" Y="11.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Race.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RegionType">
+    <Position X="2.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAACAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Region.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GameTurnRack">
+    <Position X="9.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAIAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>MainGame.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SpecialPowerType">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAABgAACAAACGAEYgAAAIBCAAgQAIACAAAIRAAAAA=</HashCode>
+      <FileName>UniqueSpecialPowerBadge.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GamePieceType">
+    <Position X="5.25" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAACAAAEAAAACAIAAAAAQAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>GamePiece.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
